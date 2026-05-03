@@ -10,7 +10,6 @@
 - Optional: Sugar and dried rose petals (for the rim)
 
 ### Alcohol
-- All Base ingredients
 - 60ml Gin or Vodka
 
 ## Directions

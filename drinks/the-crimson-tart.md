@@ -10,7 +10,6 @@
 - Optional: Lemon zest and salt (for the rim)
 
 ### Alcohol
-- All Base ingredients
 - 60ml Bourbon or Gin
 
 ## Directions
