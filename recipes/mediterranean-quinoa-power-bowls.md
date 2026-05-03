@@ -5,3 +5,7 @@
 
 ## Directions
 Toss quinoa and chickpeas with fresh vegetables and olives. Dress with olive oil, lemon, and honey.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

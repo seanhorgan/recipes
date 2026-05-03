@@ -5,3 +5,7 @@
 
 ## Directions
 Brown turkey with oregano. Mix with quinoa and sauce. Stuff peppers and bake at 375°F for 25 mins.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

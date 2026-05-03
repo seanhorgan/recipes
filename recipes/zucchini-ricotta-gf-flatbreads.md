@@ -5,3 +5,7 @@
 
 ## Directions
 Spread ricotta on flatbreads. Layer zucchini on top. Drizzle with oil. Bake at 425°F for 12 mins. Top with a handful of fresh arugula.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

@@ -5,3 +5,7 @@
 
 ## Directions
 Slice polenta into fries; toss with oil and bake at 400°F for 20 mins. Reheat soup and stir in spinach to wilt. Serve with apple/walnut/feta salad.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

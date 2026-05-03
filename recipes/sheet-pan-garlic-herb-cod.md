@@ -5,3 +5,7 @@
 
 ## Directions
 Roast potatoes and asparagus with oil/salt at 400°F for 15 mins. Add cod to the center. Top with garlic, oregano, and lemon. Roast 10–12 more mins.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

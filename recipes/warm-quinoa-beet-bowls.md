@@ -5,3 +5,7 @@
 
 ## Directions
 Warm cooked quinoa and beets in a pan. Place over a bed of arugula. Top with crumbled goat cheese, walnuts, and a heavy drizzle of Jar A.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

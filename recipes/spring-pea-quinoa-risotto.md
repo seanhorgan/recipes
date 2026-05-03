@@ -5,3 +5,7 @@
 
 ## Directions
 Warm pre-cooked quinoa with a splash of broth. Stir in peas and pre-sautéed leeks. Finish with yogurt and lemon zest for a creamy texture.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

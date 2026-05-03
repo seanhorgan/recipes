@@ -5,3 +5,7 @@
 
 ## Directions
 Roast halved potatoes at 400°F for 15 mins. Add salmon and asparagus. Top salmon with dill and lemon slices. Roast 10–12 mins.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

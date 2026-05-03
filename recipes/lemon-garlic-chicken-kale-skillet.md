@@ -5,3 +5,7 @@
 
 ## Directions
 Sauté chicken in olive oil until golden (8 mins). Add kale and 2 tbsp water; cover for 2 mins to steam. Pour in remaining Zing dressing and simmer for 1 min.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

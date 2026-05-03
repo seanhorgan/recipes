@@ -5,3 +5,7 @@
 
 ## Directions
 Simmer beans, peppers, and spinach in a large pan. Smash a few beans into the broth to thicken it. Nestle cod on top, cover, and steam for 8-10 mins until fish is flaky.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

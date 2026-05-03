@@ -5,3 +5,7 @@
 
 ## Directions
 Sear cod 3-4 mins per side. Toss cabbage with orange segments and lemon-oil dressing. Serve cod over the slaw.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

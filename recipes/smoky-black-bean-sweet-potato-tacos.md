@@ -5,3 +5,7 @@
 
 ## Directions
 Warm sweet potatoes and beans with cumin. Serve in charred tortillas with mashed avocado and onions.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

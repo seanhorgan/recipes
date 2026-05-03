@@ -5,3 +5,7 @@
 
 ## Directions
 Sauté shrimp 2 mins per side; remove. Sauté asparagus for 4 mins. Return shrimp to pan with cashews and glaze. Toss for 1 min until everything is coated and sticky.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

@@ -5,3 +5,7 @@
 
 ## Directions
 Preheat oven to 400°F. Toss peppers, onion, and asparagus with olive oil and salt on a large sheet pan. Roast for 10 mins. Move veggies to the side, add shrimp and pesto, tossing to coat. Roast 5–7 more mins until shrimp are pink.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

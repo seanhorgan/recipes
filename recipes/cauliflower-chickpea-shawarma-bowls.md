@@ -5,3 +5,7 @@
 
 ## Directions
 Warm sorghum and veggies. Mix yogurt, lemon, and cumin for the sauce. Serve over raw spinach.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

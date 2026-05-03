@@ -5,3 +5,7 @@
 
 ## Directions
 Sauté sausage with prepped leeks. Add beans and tomatoes. Simmer for 10 mins. Serve in deep bowls over warm quinoa.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

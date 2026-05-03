@@ -5,3 +5,7 @@
 
 ## Directions
 Toss warm sorghum and carrots together. Top with feta and chopped parsley.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

@@ -5,3 +5,7 @@
 
 ## Directions
 (Sunday Prep) Roast cauliflower and chickpeas with oil and paprika at 400°F for 25 mins. (Night of) Warm veggies in a skillet for 5 mins. Mash avocado with lime and salt; spread on tostadas. Top with veggies and salsa.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

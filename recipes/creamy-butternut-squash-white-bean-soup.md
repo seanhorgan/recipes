@@ -5,3 +5,7 @@
 
 ## Directions
 Simmer roasted squash, beans, and broth for 10 mins. Add thyme. Use an immersion blender until smooth. Serve with olive-oil-toasted GF crustinis.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)

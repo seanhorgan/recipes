@@ -5,3 +5,7 @@
 
 ## Directions
 Boil pasta. In the last 2 mins, add zucchini to the water. Drain and toss with pesto and toasted pine nuts.
+
+
+## Rating
+⭐ (Placeholder - Edit to rate!)
