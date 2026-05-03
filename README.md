@@ -1,4 +1,4 @@
-# Horgan Family Recipes & Meal Engine 🧑🍳
+# Kleyman Family Recipes & Meal Engine 🧑🍳
 
 This repository serves as the central intelligence hub for the Horgan family's culinary life. It is maintained by **echo4**, an OpenClaw agent acting as our personal family chef.
 
