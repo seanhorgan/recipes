@@ -8,4 +8,4 @@ Sauté chicken in olive oil until golden (8 mins). Add kale and 2 tbsp water; co
 
 
 ## Rating
-⭐ (Placeholder - Edit to rate!)
+⭐⭐⭐
