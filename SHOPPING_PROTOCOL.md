@@ -9,4 +9,6 @@
 - **History Tracking:** Every time a recipe is included in a weekly meal plan, append the meal plan's date (YYYY-MM-DD) to a "## History" section at the bottom of the recipe file.
 
 ## Planning Rules
-- **Meal Variety:** Ensure each night in a weekly plan features a different meal type (e.g., only one flatbread night per week, only one heavy shrimp night, etc.). Avoid repeating specific dish formats (like multiple flatbreads or multiple stir-fries) within the same 7-day period.
+- **Meal Variety:** Ensure each night in a weekly plan features a different meal type (e.g., only one flatbread night per week, only one heavy shrimp night, etc.). Avoid repeating specific dish formats.
+- **Family Sizing:** When recipes involve sweet potatoes, default to 5 large potatoes (1 per person + 1 extra for growth). 
+- **Protein Boost:** For the kids' growth stage, look for ways to boost protein in vegetarian or lighter meals (e.g., adding parmesan, increasing ricotta, or mashing chickpeas into bases).
