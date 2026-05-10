@@ -6,4 +6,4 @@
 - **Category Integrity:** Keep items in their respective sections (Produce, Dairy, etc.).
 
 ## Recipe Maintenance
-- **History Tracking:** Every time a recipe is included in a weekly meal plan, append the meal plan's date to a "## History" section at the bottom of the recipe file.
+- **History Tracking:** Every time a recipe is included in a weekly meal plan, append the meal plan's date (YYYY-MM-DD) to a "## History" section at the bottom of the recipe file.
