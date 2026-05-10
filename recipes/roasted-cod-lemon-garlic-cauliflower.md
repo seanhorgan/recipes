@@ -12,3 +12,6 @@
 1. Toss cauliflower with lemon juice, oil, and garlic powder; roast at 400°F for 20 mins.
 2. Place cod fillets directly on the cauliflower tray for the final 10–12 minutes.
 3. Serve over a bed of warm pre-cooked quinoa.
+
+## Rating
+⭐⭐⭐⭐
