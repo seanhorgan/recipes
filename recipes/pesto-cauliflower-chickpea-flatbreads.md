@@ -17,6 +17,3 @@
 4. Drizzle the GF pesto generously over the top.
 5. Bake at 425°F for 5-8 mins until flatbread is crisp.
 6. Finish with fresh arugula.
-
-## History
-- 2026-05-11
