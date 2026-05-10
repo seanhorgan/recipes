@@ -12,3 +12,4 @@
 - **Meal Variety:** Ensure each night in a weekly plan features a different meal type (e.g., only one flatbread night per week, only one heavy shrimp night, etc.). Avoid repeating specific dish formats.
 - **Family Sizing:** When recipes involve sweet potatoes, default to 5 large potatoes (1 per person + 1 extra for growth). 
 - **Protein Boost:** For the kids' growth stage, look for ways to boost protein in vegetarian or lighter meals (e.g., adding parmesan, increasing ricotta, or mashing chickpeas into bases).
+- **Kid Preferences:** Substitute Tahini with a Lemon-Garlic Yogurt sauce (1/2 cup Greek yogurt, 1 lemon, 1 tbsp honey, 1/2 tsp garlic powder, 2 tbsp water). 
