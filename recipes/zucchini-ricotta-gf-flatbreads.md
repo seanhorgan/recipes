@@ -1,16 +1,26 @@
 # Zucchini & Ricotta GF Flatbreads
 
+*A light, pizza-inspired meal with natural fibers.*
+
 ## Ingredients
-2 GF flatbreads, 1 cup ricotta cheese, 1 zucchini (sliced into rounds), red pepper flakes, arugula.
+- 2-4 GF Flatbreads
+- 1.5 cups Ricotta cheese (increased for protein)
+- 1/4 cup Grated Parmesan (added for protein boost)
+- 1-2 Zucchini (sliced into rounds)
+- 1 can Chickpeas (optional: mash into the ricotta for extra "hidden" protein)
+- Red pepper flakes
+- Handful of Arugula
 
 ## Directions
-Spread ricotta on flatbreads. Layer zucchini on top. Drizzle with oil. Bake at 425°F for 12 mins. Top with a handful of fresh arugula.
-
-
-## Rating
-⭐⭐⭐⭐⭐
-
-Kids loved these.
+1. In a small bowl, mix the ricotta with parmesan (and optional mashed chickpeas) for a higher protein base.
+2. Spread the protein-rich cheese mixture on the flatbreads.
+3. Layer zucchini rounds on top. Drizzle with olive oil.
+4. Bake at 425°F for 12 mins.
+5. Top with fresh arugula.
 
 ## History
 - 2026-05-11
+
+## Rating
+⭐⭐⭐⭐⭐
+Kids loved these.
