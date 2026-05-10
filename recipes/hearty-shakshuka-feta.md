@@ -12,3 +12,6 @@
 1. Simmer marinara sauce with diced bell peppers and a pinch of cumin.
 2. Crack eggs into the sauce; cover with a tight lid and cook on medium-low until whites are set.
 3. Top with crumbled feta and serve with toasted GF bread.
+
+## Rating
+⭐⭐⭐⭐⭐
