@@ -13,4 +13,6 @@
 - **Family Sizing:** When recipes involve sweet potatoes, default to 5 large potatoes (1 per person + 1 extra). 
 - **Protein Boost:** Boost protein in vegetarian/lighter meals (e.g., parmesan, extra ricotta, mashed chickpeas).
 - **Kid Preferences:** Substitute Tahini with a Lemon-Garlic Yogurt sauce.
-- **Preparation Preference:** For potato-based mashes, use yellow potatoes and keep the skins on during mashing for texture and nutrients.
+- **Preparation Preference:** 
+    - For potato-based mashes, use yellow potatoes and keep the skins on during mashing.
+    - For cauliflower, always default to a **2 lb "family pack" of pre-cut florets** for easy prep.
