@@ -13,5 +13,5 @@
 2. Crack eggs into the sauce; cover with a tight lid and cook on medium-low until whites are set.
 3. Top with crumbled feta and serve with toasted GF bread.
 
-## Rating
-⭐⭐⭐⭐⭐
+## History
+- 2026-05-11
