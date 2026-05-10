@@ -5,7 +5,5 @@
 - **Naming Consistency:** Use the more descriptive/plural name (e.g., "Lemons").
 - **Category Integrity:** Keep items in their respective sections (Produce, Dairy, etc.).
 
-## Common Aliases
-- Lemon/Lemons -> Lemons
-- Feta/Feta cheese -> Feta cheese
-- Goat/Goat cheese -> Goat cheese
+## Recipe Maintenance
+- **History Tracking:** Every time a recipe is included in a weekly meal plan, append the meal plan's date to a "## History" section at the bottom of the recipe file.
