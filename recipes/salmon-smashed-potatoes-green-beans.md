@@ -14,3 +14,6 @@
 3. Pat salmon fillets dry and place skin-side down on a separate tray.
 4. Slide the salmon into the oven for the final 10–12 minutes of the potato roasting time.
 5. Add green beans to the potato tray for the last 10 minutes.
+
+## Rating
+⭐⭐⭐⭐⭐
