@@ -12,3 +12,6 @@
 1. Briefly warm the pre-roasted sweet potatoes and quinoa in a skillet.
 2. Stir in the black beans and a splash of lime juice.
 3. Serve topped with a generous dollop of Lemon-Garlic Yogurt sauce and pumpkin seeds.
+
+## History
+- 2026-05-11
