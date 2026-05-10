@@ -8,4 +8,6 @@ Spread ricotta on flatbreads. Layer zucchini on top. Drizzle with oil. Bake at 4
 
 
 ## Rating
-⭐ (Placeholder - Edit to rate!)
+⭐⭐⭐⭐⭐
+
+Kids loved these.
