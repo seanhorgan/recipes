@@ -11,3 +11,6 @@
 1. Boil the pasta according to package directions.
 2. Warm the marinara sauce in a pan with the white beans and spinach until the spinach is wilted.
 3. Toss the cooked pasta into the sauce; add a splash of pasta water if needed to bind.
+
+## History
+- 2026-05-11
