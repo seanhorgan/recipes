@@ -9,3 +9,6 @@ Prepped red lentils, 1 can coconut milk, cooked quinoa/sorghum, 1 head cauliflow
 
 ## Rating
 ⭐ (Placeholder - Edit to rate!)
+
+## History
+- 2026-05-04
