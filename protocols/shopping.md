@@ -3,8 +3,11 @@
 ## Consolidation Rules
 - **No Duplicates:** Merge identical or near-identical items (e.g., "Feta" and "Feta cheese").
 - **Quantity Merging:** Combine quantities (e.g., "Arugula (2 bags)" + "Arugula (1 bag)" = "Arugula (3 bags)").
-- **Naming Consistency:** Use the more descriptive/plural name (e.g., "Lemons").
-- **Category Integrity:** Keep items in Produce, Meat/Fish, Dairy, Pantry, etc.
+
+## Dietary Defaults (Gluten-Free)
+- **Pasta:** Default to Red Lentil or Chickpea GF pasta.
+- **Bread:** Default to GF Baguettes, Sourdough, or Flatbreads.
+- **Grains:** Use Quinoa, Sorghum, or Rice.
 
 ## Ingredient Specifics
 - **Cauliflower:** Always default to a **2 lb "family pack" of pre-cut florets**.
