@@ -22,5 +22,6 @@
 - 2026-05-11
 
 ## Rating
+⭐⭐⭐⭐
 ⭐⭐⭐⭐⭐
 Kids loved these.
