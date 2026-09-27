@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { loadRepo } from '../src/lib/repo.ts';
 import { buildWeekLists, writeWeekLists } from '../src/lib/weekLists.ts';
 import { agentContext } from '../src/lib/agentContext.ts';
+import { parsePlan, prepStepKey } from '../src/lib/plan.ts';
 
 const CATALOG = `| Ingredient | Aisle | Kind | Buy as | Also called |
 |---|---|---|---|---|
@@ -61,4 +62,28 @@ test('agent context names the next week and lists recipes', () => {
   assert.match(ctx, /week of October 5, 2026 → `2026\/October\/2026-10-05.md` \(a plan already exists/);
   assert.match(ctx, /\| Bowls \| a \| plant \|/);
   assert.match(agentContext(loadRepo(files()), '2026-10-07'), /week of October 12, 2026/);
+});
+
+test('prep steps that differ only by storage notes, case, or punctuation count as the same', () => {
+  assert.equal(prepStepKey('Cook the quinoa. Refrigerate.'), prepStepKey('cook the quinoa'));
+  assert.equal(prepStepKey('Cook the quinoa. (Bowls, Salmon)', true), prepStepKey('Cook the quinoa. Refrigerate. (Tacos)', true));
+  assert.notEqual(prepStepKey('Cook the quinoa.'), prepStepKey('Cook the sorghum.'));
+  assert.equal(prepStepKey('Boil the potatoes (about 15 mins). (Salmon)', true), 'boil the potatoes about 15 mins');
+});
+
+test('the builder merges near-identical steps and keeps the fuller wording', () => {
+  const f = files();
+  f.set('recipes/b.md', f.get('recipes/b.md')!.replace('1. Cook the quinoa.', '1. Cook the quinoa. Refrigerate.'));
+  const repo = loadRepo(f);
+  const lists = buildWeekLists(repo.plans[0], repo.recipes, repo.sauces, repo.catalog);
+  assert.equal(lists.sundayPrep[0], 'Cook the quinoa. Refrigerate. (Bowls, Salmon)');
+  assert.equal(lists.sundayPrep.filter((s) => /quinoa/i.test(s)).length, 1);
+});
+
+test('the validator warns about duplicate Sunday Prep steps in a plan', () => {
+  const plan = '# Week\n\n## Monday: Leftovers\n\n## Sunday Prep\n- [ ] Cook the quinoa. Refrigerate. (A)\n- [ ] Roast carrots. (B)\n- [x] cook the quinoa (C)\n';
+  const { issues } = parsePlan('2026/October/2026-10-05.md', plan);
+  assert.deepEqual(issues.items.map((i) => [i.level, i.line, i.message]), [
+    ['warning', 8, 'Same Sunday Prep step as line 6; merge them into one line naming both recipes'],
+  ]);
 });

@@ -69,7 +69,8 @@ npm run plan -- new 2026-10-05 mon=lemon-dill-salmon-asparagus:Ali tue=red-lenti
 - Name the file for the week's Monday, in that Monday's month folder, e.g. `2026/October/2026-10-05.md`.
 - One heading per night: `## Monday: [Recipe Title](../../recipes/<slug>.md)`, with `Cook: Name` under it if known.
 - `## Sunday Prep`: each recipe's `## Sunday Prep` steps as `- [ ] <step> (<Recipe Title>)`, in dinner order.
-  Merge identical steps (such as "Cook the quinoa") into one line naming both recipes. Add
+  Steps that are the same apart from wording like a trailing "Refrigerate." (for example "Cook the quinoa") go on
+  one line naming every recipe; the validator warns about duplicates. Add
   `- [ ] Make the <Sauce> (for <Recipe>)` for each linked sauce.
 - `## Shopping List`: follow [`reference/shopping.md`](../../reference/shopping.md). Include linked sauces' ingredients
   and merge duplicates, adding up the quantities. Group under `### Aisle` headings in the aisle order of

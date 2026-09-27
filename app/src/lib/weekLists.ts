@@ -2,7 +2,7 @@
 // following reference/shopping.md, and writes them into a plan file.
 import { AISLES, formatQuantity, matchIngredient, type Catalog, type CatalogEntry, type Ingredient } from './ingredients.ts';
 import { parseDocument, resolveLink } from './markdown.ts';
-import { parseChecklistItem, formatChecklistItem, type Plan } from './plan.ts';
+import { parseChecklistItem, formatChecklistItem, prepStepKey, type Plan } from './plan.ts';
 import type { Recipe } from './recipe.ts';
 
 export interface WeekLists {
@@ -48,12 +48,18 @@ export function buildWeekLists(
 ): WeekLists {
   const week = planRecipes(plan, recipes);
 
-  // Sunday prep: each recipe's steps in dinner order (identical steps, like "Cook the quinoa", merged),
-  // then one line per sauce to make.
-  const steps = new Map<string, string[]>();
+  // Sunday prep: each recipe's steps in dinner order, with matching steps (like "Cook the quinoa." and
+  // "Cook the quinoa. Refrigerate.") merged into one line that keeps the fuller wording; then one line per sauce.
+  const steps = new Map<string, { text: string; titles: string[] }>();
   const sauceUsers = new Map<string, { sauce: Recipe; users: string[] }>();
   for (const r of week) {
-    for (const step of r.sundayPrep) steps.set(step.text, [...(steps.get(step.text) ?? []), r.title]);
+    for (const step of r.sundayPrep) {
+      const key = prepStepKey(step.text);
+      const entry = steps.get(key) ?? { text: step.text, titles: [] };
+      if (step.text.length > entry.text.length) entry.text = step.text;
+      if (!entry.titles.includes(r.title)) entry.titles.push(r.title);
+      steps.set(key, entry);
+    }
     for (const ing of r.ingredients) {
       const sauce = ing.link ? sauces.get(resolveLink(r.path, ing.link)) : undefined;
       if (!sauce || ing.optional) continue;
@@ -62,7 +68,7 @@ export function buildWeekLists(
       sauceUsers.set(sauce.path, entry);
     }
   }
-  const sundayPrep = [...steps].map(([text, titles]) => `${text} (${[...new Set(titles)].join(', ')})`);
+  const sundayPrep = [...steps.values()].map(({ text, titles }) => `${text} (${titles.join(', ')})`);
   for (const { sauce, users } of sauceUsers.values()) {
     sundayPrep.push(`Make the ${sauce.title} (for ${users.join(', ')})`);
   }

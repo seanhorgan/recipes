@@ -54,6 +54,21 @@ export function parseChecklistItem(text: string, line: number): ChecklistItem | 
   };
 }
 
+/**
+ * What makes two Sunday Prep steps "the same": the text without its "(Recipe name)" label, trailing storage
+ * sentences ("Refrigerate."), case, or punctuation. "Cook the quinoa. Refrigerate." matches "Cook the quinoa."
+ */
+export function prepStepKey(text: string, withLabel = false): string {
+  const step = withLabel ? text.replace(/\s*\([^()]*\)\s*$/, '') : text;
+  return step
+    .split(/(?<=[.!?])\s+/)
+    .filter((sentence) => !/^(refrigerate|chill|cool|store|keep)\b/i.test(sentence.trim()))
+    .join(' ')
+    .toLowerCase()
+    .replace(/[^a-z0-9°]+/g, ' ')
+    .trim();
+}
+
 export function formatChecklistItem(item: Pick<ChecklistItem, 'text' | 'done' | 'claimedBy'>): string {
   return `- [${item.done ? 'x' : ' '}] ${item.text}${item.claimedBy ? ` — ${item.claimedBy}` : ''}`;
 }
@@ -106,6 +121,13 @@ export function parsePlan(path: string, text: string): { plan: Plan; issues: Iss
   for (const s of doc.sections) {
     if (s.heading === 'Sunday Prep') {
       plan.sundayPrep = parseChecklist(s.lines, issues, false).flatMap((g) => g.items);
+      const seen = new Map<string, number>();
+      for (const item of plan.sundayPrep) {
+        const key = prepStepKey(item.text, true);
+        const first = seen.get(key);
+        if (first === undefined) seen.set(key, item.line);
+        else issues.warn(`Same Sunday Prep step as line ${first}; merge them into one line naming both recipes`, item.line);
+      }
       continue;
     }
     if (s.heading === 'Shopping List') {
