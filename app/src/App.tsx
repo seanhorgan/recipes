@@ -7,6 +7,7 @@ import { RecipeDetail, SauceDetail } from './pages/RecipeDetail.tsx';
 import { PlanList, PlanDetail } from './pages/Plans.tsx';
 import { Planner } from './pages/Planner.tsx';
 import { Settings } from './pages/Settings.tsx';
+import { Tonight } from './pages/Tonight.tsx';
 
 function Page({ route }: { route: string[] }) {
   const [section, id] = route;
@@ -27,6 +28,7 @@ function Page({ route }: { route: string[] }) {
   }
   if (section === 'plan') return <Planner monday={id} />;
   if (section === 'settings') return <Settings />;
+  if (section === 'tonight') return <Tonight />;
   return (
     <>
       <h1>Not found</h1>
@@ -60,6 +62,7 @@ export function App() {
   const tab = route[0] === 'sauces' ? 'recipes' : route[0] === 'plan' ? 'plans' : (route[0] ?? '');
   const tabs = [
     ['', 'This week'],
+    ['tonight', 'Tonight'],
     ['recipes', 'Recipes'],
     ['plans', 'Plans'],
   ];

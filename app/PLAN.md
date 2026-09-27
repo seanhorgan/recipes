@@ -13,6 +13,19 @@ Needs Node 22.18 or newer.
 1. **Variety** — make it easy to avoid repeating the same recipes, proteins, and key ingredients.
 2. **Collaboration** — two adults share Sunday planning, shopping, Sunday prep, and weeknight cooking.
 
+## Jobs to be done
+Each job works in the app and through an agent skill (`skills/`), so it can be done either way.
+
+| Job | In the app | Agent skill |
+|---|---|---|
+| 1. Plan meals for the week | Planner (`#/plan`): picker sorted by longest since cooked, cooks, notes, live variety check | `plan-week` |
+| 2. Adjust plans for ingredients at home | "What you have" search in the planner and Recipes; Edit plan; check off shopping items you already have | `adjust-plan` |
+| 3. Prep meals for the week | Sunday Prep checklist with "I'll do it" claims | `sunday-prep` |
+| 4. Make the meal for the night | Tonight (`#/tonight`): unfinished prep first, ingredients, big steps, keep screen on | `cook-tonight` |
+| 5. Adjust a meal (substitution, change of plans) | Tonight: add a note ("Swap: …"), or change dinners in the planner | `cook-tonight`, `adjust-plan` |
+| 6. Browse recipes | Recipes: search by several ingredients; sort by longest since cooked, recently cooked, most cooked, rating, time | `find-recipes` |
+| 7. Rate a recipe | Stars and a note on the recipe page and on Tonight | `rate-meal` |
+
 ## Decisions
 | Topic | Decision |
 |---|---|
@@ -60,4 +73,5 @@ Needs Node 22.18 or newer.
      Saving writes the plan with its Sunday Prep and Shopping List; editing keeps checked items.
    - Sunday Prep and Shopping List checkboxes on the plan page save for everyone; "Copy for Instacart".
    - The built site has a Content Security Policy (own scripts only; network only to api.github.com).
-3. **The week itself**: Sunday prep, Tonight, and ratings.
+3. **The week itself** (done): Tonight view, Sunday Prep claims, ratings in the app, notes on a night, multi-ingredient
+   search and more sorts, and agent skills for every job above.

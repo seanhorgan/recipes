@@ -6,6 +6,7 @@ import { parsePlan } from '../lib/plan.ts';
 import { currentRating, PROTEINS } from '../lib/recipe.ts';
 import { buildPlanText, buildWeekLists, renderPlanDays, type DraftDay } from '../lib/weekLists.ts';
 import { varietyReport } from '../lib/variety.ts';
+import { searchRecipes, searchTerms } from '../lib/search.ts';
 import { Chip, PROTEIN_LABEL, Section, Stars, ago, shortDate } from '../ui.tsx';
 import { href } from '../router.ts';
 import { FAMILY_COOKS } from '../family.ts';
@@ -55,7 +56,7 @@ function PlannerForm({ monday }: { monday: string }) {
 
   // Preview what will be saved: variety, Sunday prep, and shopping list size.
   const preview = useMemo(() => {
-    const text = renderPlanDays(monday, filled, repo.recipes);
+    const text = renderPlanDays(monday, filled.map((d) => ({ ...d, notes: d.notes.filter((n) => n.trim()) })), repo.recipes);
     const { plan } = parsePlan(planPath(monday), text);
     const lists = buildWeekLists(plan, repo.recipes, repo.sauces, repo.catalog);
     const prepMinutes = filled.reduce((sum, d) => sum + (d.recipePath ? (repo.recipes.get(d.recipePath)?.prepMinutes ?? 0) : 0), 0);
@@ -70,7 +71,7 @@ function PlannerForm({ monday }: { monday: string }) {
   const onSave = async () => {
     setSaving(true);
     setError(null);
-    const draft = filled;
+    const draft = filled.map((d) => ({ ...d, notes: d.notes.map((n) => n.trim()).filter(Boolean) }));
     edit(planPath(monday), {
       // Built against the latest version of the file at save time, so checked items carry over.
       apply: (previous) => buildPlanText(monday, draft, repo.recipes, repo.sauces, repo.catalog, previous),
@@ -141,7 +142,14 @@ function PlannerForm({ monday }: { monday: string }) {
                     Remove
                   </button>
                 </div>
-                {d.notes.map((n) => <span key={n} className="muted day-note">{n}</span>)}
+                <textarea
+                  className="day-notes"
+                  rows={Math.max(1, d.notes.length)}
+                  value={d.notes.join('\n')}
+                  onChange={(e) => setDay(d.day, { notes: e.target.value.split('\n') })}
+                  placeholder="Note (optional): a swap, a kid boost…"
+                  aria-label={`Notes for ${DAYS[d.day]}`}
+                />
               </div>
             </li>
           );
@@ -217,13 +225,17 @@ function RecipePicker({ monday, day, current, onPick, onClose }: {
   }, [onClose]);
 
   const recent = addDays(monday, -28);
-  const rows = [...repo.recipes.values()]
-    .filter((r) => !query.trim() || `${r.title} ${r.ingredients.map((i) => i.name).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase()))
-    .map((r) => {
+  const terms = searchTerms(query);
+  const rows = searchRecipes([...repo.recipes.values()], query)
+    .map(({ recipe: r, matched }) => {
       const dates = (history.get(r.path) ?? []).filter((d) => d < monday);
-      return { r, last: dates.at(-1) ?? null, isRecent: (dates.at(-1) ?? '') >= recent };
+      return { r, matched, last: dates.at(-1) ?? null, isRecent: (dates.at(-1) ?? '') >= recent };
     })
-    .sort((a, b) => Number(a.isRecent) - Number(b.isRecent) || (a.last ?? '').localeCompare(b.last ?? '') || a.r.title.localeCompare(b.r.title));
+    .sort((a, b) =>
+      (terms.length > 1 ? b.matched.length - a.matched.length : 0) ||
+      Number(a.isRecent) - Number(b.isRecent) ||
+      (a.last ?? '').localeCompare(b.last ?? '') ||
+      a.r.title.localeCompare(b.r.title));
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -232,9 +244,9 @@ function RecipePicker({ monday, day, current, onPick, onClose }: {
           <h2>{DAYS[day]}, {shortDate(addDays(monday, day)).slice(4)}</h2>
           <button className="button" onClick={onClose} aria-label="Close">✕</button>
         </div>
-        <input ref={search} type="search" placeholder="Search recipes or ingredients" value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input ref={search} type="search" placeholder="Search, or list what you have: salmon, lemon" value={query} onChange={(e) => setQuery(e.target.value)} />
         <ul className="pick-list">
-          {rows.map(({ r, last, isRecent }) => (
+          {rows.map(({ r, matched, last, isRecent }) => (
             <li key={r.path}>
               <button className={`pick${current.recipePath === r.path ? ' selected' : ''}`} onClick={() => onPick({ recipePath: r.path, label: '' })}>
                 <span className="day-title">{r.title}</span>
@@ -248,6 +260,7 @@ function RecipePicker({ monday, day, current, onPick, onClose }: {
                     <span className="muted">{last ? `Last ${ago(last, today)}` : 'Never planned'}</span>
                   )}
                 </span>
+                {terms.length > 1 && <span className="card-sub">Uses {matched.join(', ')}</span>}
               </button>
             </li>
           ))}
