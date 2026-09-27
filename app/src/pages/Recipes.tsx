@@ -37,7 +37,7 @@ export function Recipes() {
       return byName(a, b);
     });
     return list;
-  }, [f, today]);
+  }, [f, today, repo]);
 
   const toggleProtein = (p: Protein) =>
     update({ proteins: f.proteins.includes(p) ? f.proteins.filter((x) => x !== p) : [...f.proteins, p] });

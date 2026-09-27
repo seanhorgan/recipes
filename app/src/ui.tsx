@@ -30,7 +30,9 @@ export function Inline({ text, from }: { text: string; from: string }) {
         if (p.startsWith('*') && p.endsWith('*') && p.length > 2) return <em key={i}>{p.slice(1, -1)}</em>;
         const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(p);
         if (link) {
-          const internal = /^https?:/.test(link[2]) ? null : routeFor(resolveLink(from, link[2]));
+          // Only web links and repo-relative links; anything else (javascript:, data:, ...) renders as plain text.
+          if (/^[a-z][a-z0-9+.-]*:/i.test(link[2]) && !/^https?:/i.test(link[2])) return link[1];
+          const internal = /^https?:/i.test(link[2]) ? null : routeFor(resolveLink(from, link[2]));
           return internal ? (
             <a key={i} href={internal}>{link[1]}</a>
           ) : (

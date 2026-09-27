@@ -2,6 +2,7 @@ import { repo, currentPlan, focusMonday, latestPlan, recipeStats, todayIso, days
 import { currentRating } from '../lib/recipe.ts';
 import { formatLong } from '../lib/dates.ts';
 import { PlanView } from './Plans.tsx';
+import { useSync } from '../sync.ts';
 import { PROTEIN_LABEL, RecipeRating, Section, ago, routeFor } from '../ui.tsx';
 import { href } from '../router.ts';
 
@@ -37,6 +38,7 @@ function Comebacks({ today }: { today: string }) {
 
 export function Home() {
   const today = todayIso();
+  const sync = useSync();
   const monday = focusMonday(today);
   const plan = currentPlan(today);
   const latest = latestPlan();
@@ -50,10 +52,15 @@ export function Home() {
         <>
           <h1>This week</h1>
           <div className="callout">
-            <p>
-              <strong>No plan yet for the week of {formatLong(monday)}.</strong> Ask an agent to plan it
-              (it will follow <code>SKILLS.md</code>); the in-app planner arrives in the next phase.
-            </p>
+            <p><strong>No plan yet for the week of {formatLong(monday)}.</strong></p>
+            {sync.connected ? (
+              <p><a className="button primary" href={href('plan', monday)}>Plan the week</a></p>
+            ) : (
+              <p>
+                <a href={href('settings')}>Connect this device</a> to plan it here, or ask an agent to plan it (it
+                follows <code>SKILLS.md</code>).
+              </p>
+            )}
             {latest && (
               <p>Most recent plan: <a href={href('plans', latest.monday)}>week of {formatLong(latest.monday)}</a></p>
             )}

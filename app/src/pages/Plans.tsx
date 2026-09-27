@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { repo, history, todayIso } from '../data.ts';
+import { edit, useSync } from '../sync.ts';
+import { setChecklistItem, type ChecklistItem, type Plan } from '../lib/plan.ts';
 import { formatLong } from '../lib/dates.ts';
-import type { Plan } from '../lib/plan.ts';
 import { PROTEINS } from '../lib/recipe.ts';
 import { varietyReport } from '../lib/variety.ts';
 import { Chip, GitHubLinks, PROTEIN_LABEL, Section, shortDate, routeFor } from '../ui.tsx';
@@ -8,9 +10,13 @@ import { href } from '../router.ts';
 
 export function PlanList() {
   const plans = [...repo.plans].reverse();
+  const sync = useSync();
   return (
     <>
-      <h1>Weekly plans</h1>
+      <div className="title-row">
+        <h1>Weekly plans</h1>
+        {sync.connected && <a className="button primary" href={href('plan')}>Plan a week</a>}
+      </div>
       <ul className="card-list">
         {plans.map((p) => (
           <li key={p.path}>
@@ -55,7 +61,10 @@ export function PlanView({ plan, heading }: { plan: Plan; heading?: string }) {
 
   return (
     <>
-      <h1>{heading ?? `Week of ${formatLong(plan.monday)}`}</h1>
+      <div className="title-row">
+        <h1>{heading ?? `Week of ${formatLong(plan.monday)}`}</h1>
+        <EditPlanLink monday={plan.monday} />
+      </div>
       {heading && <p className="lede">Week of {formatLong(plan.monday)}</p>}
       <ol className="week">
         {plan.days.map((d) => {
@@ -90,29 +99,17 @@ export function PlanView({ plan, heading }: { plan: Plan; heading?: string }) {
 
       {plan.sundayPrep.length > 0 && (
         <Section title={`Sunday Prep · ${prepDone}/${plan.sundayPrep.length} done`}>
-          <ul className="checklist">
-            {plan.sundayPrep.map((i) => (
-              <li key={i.line} className={i.done ? 'done' : ''}>
-                <input type="checkbox" checked={i.done} disabled aria-label={i.text} /> {i.text}
-                {i.claimedBy && <span className="muted"> — {i.claimedBy}</span>}
-              </li>
-            ))}
-          </ul>
+          <Checklist plan={plan} section="Sunday Prep" items={plan.sundayPrep} />
         </Section>
       )}
 
       {shopItems.length > 0 && (
         <Section title={`Shopping list · ${shopDone}/${shopItems.length} checked`}>
+          <CopyForInstacart plan={plan} />
           {plan.shopping.map((g) => (
             <div key={g.aisle}>
               {(plan.shopping.length > 1 || g.aisle !== 'Other') && <h3>{g.aisle}</h3>}
-              <ul className="checklist">
-                {g.items.map((i) => (
-                  <li key={i.line} className={i.done ? 'done' : ''}>
-                    <input type="checkbox" checked={i.done} disabled aria-label={i.text} /> {i.text}
-                  </li>
-                ))}
-              </ul>
+              <Checklist plan={plan} section="Shopping List" items={g.items} />
             </div>
           ))}
         </Section>
@@ -121,6 +118,59 @@ export function PlanView({ plan, heading }: { plan: Plan; heading?: string }) {
       <GitHubLinks path={plan.path} />
     </>
   );
+}
+
+/** Checkboxes save straight to the plan file on a connected device; read-only otherwise. */
+function Checklist({ plan, section, items }: { plan: Plan; section: 'Sunday Prep' | 'Shopping List'; items: ChecklistItem[] }) {
+  const sync = useSync();
+  const toggle = (item: ChecklistItem, done: boolean) =>
+    edit(plan.path, {
+      apply: (text) => setChecklistItem(text ?? '', section, item.text, done),
+      describe: `${done ? 'check' : 'uncheck'} ${item.text.replace(/ · .*$/, '')}`,
+    });
+  return (
+    <ul className="checklist">
+      {items.map((i) => (
+        <li key={`${i.line}:${i.text}`} className={i.done ? 'done' : ''}>
+          <label>
+            <input type="checkbox" checked={i.done} disabled={!sync.connected} onChange={(e) => toggle(i, e.target.checked)} />
+            <span>
+              {i.text}
+              {i.claimedBy && <span className="muted"> — {i.claimedBy}</span>}
+            </span>
+          </label>
+        </li>
+      ))}
+      {!sync.connected && section === 'Sunday Prep' && (
+        <li className="muted hint"><a href={href('settings')}>Connect this device</a> to check items off.</li>
+      )}
+    </ul>
+  );
+}
+
+function CopyForInstacart({ plan }: { plan: Plan }) {
+  const [copied, setCopied] = useState<string | null>(null);
+  const copy = async () => {
+    const lines = plan.shopping.flatMap((g) => g.items.filter((i) => !i.done).map((i) => i.text.replace(' · ', ' — ')));
+    try {
+      await navigator.clipboard.writeText(lines.join('\n'));
+      setCopied(`Copied ${lines.length} item${lines.length === 1 ? '' : 's'}`);
+    } catch {
+      setCopied("Couldn't copy on this device");
+    }
+    setTimeout(() => setCopied(null), 2500);
+  };
+  return (
+    <p className="row">
+      <button className="button" onClick={copy}>Copy for Instacart</button>
+      <span className="muted" role="status">{copied ?? 'Unchecked items, one per line'}</span>
+    </p>
+  );
+}
+
+function EditPlanLink({ monday }: { monday: string }) {
+  const sync = useSync();
+  return sync.connected ? <a className="button" href={href('plan', monday)}>Edit plan</a> : null;
 }
 
 export function PlanDetail({ plan }: { plan: Plan }) {

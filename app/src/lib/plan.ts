@@ -55,6 +55,34 @@ export function parseChecklistItem(text: string, line: number): ChecklistItem | 
 }
 
 /**
+ * Sets one checklist item's done state in a plan's `## Sunday Prep` or `## Shopping List`, matched by its text.
+ * Idempotent, so it can be re-applied on top of a newer version of the file. Unknown items are left alone.
+ */
+export function setChecklistItem(
+  planText: string,
+  section: 'Sunday Prep' | 'Shopping List',
+  itemText: string,
+  done: boolean,
+): string {
+  const lines = planText.split('\n');
+  let inSection = false;
+  for (let i = 0; i < lines.length; i++) {
+    const h2 = /^##\s+(.+?)\s*$/.exec(lines[i]);
+    if (h2) {
+      inSection = h2[1] === section;
+      continue;
+    }
+    if (!inSection) continue;
+    const item = parseChecklistItem(lines[i], i + 1);
+    if (item && item.text === itemText) {
+      lines[i] = formatChecklistItem({ ...item, done });
+      break;
+    }
+  }
+  return lines.join('\n');
+}
+
+/**
  * What makes two Sunday Prep steps "the same": the text without its "(Recipe name)" label, trailing storage
  * sentences ("Refrigerate."), case, or punctuation. "Cook the quinoa. Refrigerate." matches "Cook the quinoa."
  */
