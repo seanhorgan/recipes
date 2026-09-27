@@ -1,24 +1,10 @@
 import { recipeStats, repo, todayIso, history } from '../data.ts';
-import type { Ingredient } from '../lib/ingredients.ts';
+import { formatQuantity, type Ingredient } from '../lib/ingredients.ts';
 import { resolveLink } from '../lib/markdown.ts';
 import type { Recipe } from '../lib/recipe.ts';
 import { Chip, GitHubLinks, Inline, PROTEIN_LABEL, RecipeRating, Section, Stars, ago, routeFor, shortDate } from '../ui.tsx';
 import { mondayOf } from '../lib/dates.ts';
 import { href } from '../router.ts';
-
-function formatQty(i: Ingredient): string {
-  if (!i.quantity) return '';
-  const n = (x: number) => {
-    const whole = Math.floor(x);
-    const frac = Math.round((x - whole) * 100) / 100;
-    const f = ({ 0.25: '¼', 0.33: '⅓', 0.5: '½', 0.67: '⅔', 0.75: '¾' } as Record<number, string>)[frac];
-    return f ? (whole ? `${whole}${f}` : f) : String(Math.round(x * 100) / 100);
-  };
-  const q = i.quantity.min === i.quantity.max ? n(i.quantity.min) : `${n(i.quantity.min)}–${n(i.quantity.max)}`;
-  const plural = i.quantity.max > 1 && i.unit && !['oz', 'lb', 'g', 'ml', 'tsp', 'tbsp', 'loaf'].includes(i.unit);
-  const unit = i.unit ? ` ${i.unit}${plural ? (/(ch|sh|x)$/.test(i.unit) ? 'es' : 's') : ''}` : '';
-  return `${q}${unit}${i.size ? ` (${i.size})` : ''}`;
-}
 
 function IngredientList({ recipe }: { recipe: Recipe }) {
   const groups: { name: string | null; items: Ingredient[] }[] = [];
@@ -35,7 +21,7 @@ function IngredientList({ recipe }: { recipe: Recipe }) {
           <ul className="ingredients">
             {g.items.map((i) => {
               const sauce = i.link ? routeFor(resolveLink(recipe.path, i.link)) : null;
-              const qty = formatQty(i);
+              const qty = i.quantity ? formatQuantity(i.quantity, i.unit, i.size) : '';
               return (
                 <li key={i.line}>
                   {i.optional && <span className="muted">Optional: </span>}
