@@ -1,5 +1,5 @@
 // Builds a week's Sunday Prep checklist and consolidated Shopping List from its recipes,
-// following protocols/shopping.md, and writes them into a plan file.
+// following reference/shopping.md, and writes them into a plan file.
 import { AISLES, formatQuantity, matchIngredient, type Catalog, type CatalogEntry, type Ingredient } from './ingredients.ts';
 import { parseDocument, resolveLink } from './markdown.ts';
 import { parseChecklistItem, formatChecklistItem, type Plan } from './plan.ts';

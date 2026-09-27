@@ -6,7 +6,7 @@ import type { Plan } from './lib/plan.ts';
 import type { Recipe } from './lib/recipe.ts';
 
 const modules = import.meta.glob<string>(
-  ['../../recipes/*.md', '../../sauces/*.md', '../../protocols/ingredients.md', '../../20*/*/*.md'],
+  ['../../recipes/*.md', '../../sauces/*.md', '../../reference/ingredients.md', '../../20*/*/*.md'],
   { query: '?raw', import: 'default', eager: true },
 );
 const files = new Map(Object.entries(modules).map(([path, text]) => [path.replace(/^(\.\.\/)+/, ''), text]));

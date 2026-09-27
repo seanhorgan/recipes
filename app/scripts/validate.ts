@@ -1,4 +1,4 @@
-// Checks every recipe, sauce, weekly plan, and the ingredient catalog against protocols/schema.md.
+// Checks every recipe, sauce, weekly plan, and the ingredient catalog against reference/schema.md.
 // Usage: npm run validate [-- --strict]   (--strict also fails on warnings)
 import { loadRepo } from '../src/lib/repo.ts';
 import { readRepoFiles } from './repoFiles.ts';

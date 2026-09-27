@@ -6,7 +6,7 @@ import { parsePlan, isPlanPath, type Plan } from './plan.ts';
 import { resolveLink } from './markdown.ts';
 import type { Issue } from './issues.ts';
 
-export const CATALOG_PATH = 'protocols/ingredients.md';
+export const CATALOG_PATH = 'reference/ingredients.md';
 
 export interface Repo {
   catalog: Catalog;

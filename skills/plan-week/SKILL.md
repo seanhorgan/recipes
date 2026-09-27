@@ -22,7 +22,7 @@ Use these defaults unless the person said otherwise. Ask only about things that 
 
 ## 2. Get the context
 
-Always read [`protocols/planning.md`](../../protocols/planning.md), which has the family's rules. Then get the recipe
+Always read [`reference/planning.md`](../../reference/planning.md), which has the family's rules. Then get the recipe
 list with last-cooked dates, using the first option that works for you:
 
 1. **You can run commands (Node 22.18+):** `cd app && npm ci && npm run plan -- context`
@@ -64,16 +64,16 @@ npm run plan -- new 2026-10-05 mon=lemon-dill-salmon-asparagus:Ali tue=red-lenti
 - If there are variety warnings, swap dinners and run it again with `--force`.
 - After editing a plan by hand, run `npm run plan -- fill 2026-10-05` to rebuild the two lists. Checked items stay checked.
 
-**If you can only edit files:** copy [`protocols/templates/plan.md`](../../protocols/templates/plan.md) and follow
-[`protocols/schema.md`](../../protocols/schema.md):
+**If you can only edit files:** copy [`reference/templates/plan.md`](../../reference/templates/plan.md) and follow
+[`reference/schema.md`](../../reference/schema.md):
 - Name the file for the week's Monday, in that Monday's month folder, e.g. `2026/October/2026-10-05.md`.
 - One heading per night: `## Monday: [Recipe Title](../../recipes/<slug>.md)`, with `Cook: Name` under it if known.
 - `## Sunday Prep`: each recipe's `## Sunday Prep` steps as `- [ ] <step> (<Recipe Title>)`, in dinner order.
   Merge identical steps (such as "Cook the quinoa") into one line naming both recipes. Add
   `- [ ] Make the <Sauce> (for <Recipe>)` for each linked sauce.
-- `## Shopping List`: follow [`protocols/shopping.md`](../../protocols/shopping.md). Include linked sauces' ingredients
+- `## Shopping List`: follow [`reference/shopping.md`](../../reference/shopping.md). Include linked sauces' ingredients
   and merge duplicates, adding up the quantities. Group under `### Aisle` headings in the aisle order of
-  [`protocols/ingredients.md`](../../protocols/ingredients.md), and use its "Buy as" text. Leave pantry staples off
+  [`reference/ingredients.md`](../../reference/ingredients.md), and use its "Buy as" text. Leave pantry staples off
   the list, and end with `*Check the pantry: ...*`.
 
 ## 5. Validate

@@ -1,4 +1,4 @@
-// Recipes (recipes/*.md) and sauces (sauces/*.md). Format: protocols/schema.md
+// Recipes (recipes/*.md) and sauces (sauces/*.md). Format: reference/schema.md
 import { parseDocument, listItems, type Line, type Section } from './markdown.ts';
 import { parseIngredientSection, type Ingredient } from './ingredients.ts';
 import { IssueList } from './issues.ts';
@@ -78,7 +78,7 @@ export function parseRecipe(path: string, text: string): { recipe: Recipe; issue
   // Header
   const fm = doc.frontmatter ?? {};
   if (doc.frontmatterError) issues.error(doc.frontmatterError, 1);
-  else if (!doc.frontmatter) issues.error('Missing the --- header at the top of the file (see protocols/schema.md)', 1);
+  else if (!doc.frontmatter) issues.error('Missing the --- header at the top of the file (see reference/schema.md)', 1);
 
   const allowed = kind === 'sauce' ? ['prep_minutes'] : ['protein', 'gluten_free', 'prep_minutes', 'weeknight_minutes', 'tags'];
   for (const key of Object.keys(fm)) {

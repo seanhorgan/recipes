@@ -1,4 +1,4 @@
-// Weekly plans (YYYY/Month/YYYY-MM-DD.md). Format: protocols/schema.md
+// Weekly plans (YYYY/Month/YYYY-MM-DD.md). Format: reference/schema.md
 import { parseDocument, resolveLink, type Line } from './markdown.ts';
 import { IssueList } from './issues.ts';
 import { DAYS, addDays, isIsoDate, planPath, weekdayIndex, type Day } from './dates.ts';
@@ -70,7 +70,7 @@ function parseChecklist(lines: Line[], issues: IssueList, withAisles: boolean): 
       groups.push(current);
       continue;
     }
-    if (/^[*_].*[*_]$/.test(t)) continue; // italic remark such as "*Following protocols/shopping.md*"
+    if (/^[*_].*[*_]$/.test(t)) continue; // italic remark such as "*Following reference/shopping.md*"
     const item = parseChecklistItem(t, l.line);
     if (!item) {
       issues.warn(`Expected a checklist item like "- [ ] text", got "${t}"`, l.line);

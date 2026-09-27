@@ -5,21 +5,25 @@ description: Add a new recipe (or import several from a doc or website) to the K
 
 # Add a recipe
 
-The full rules are in [`protocols/importing.md`](../../protocols/importing.md) and the file format is in
-[`protocols/schema.md`](../../protocols/schema.md). Read both first. In short:
+Use this for a single new dish, or to import several from an outside source (a Google Doc, a website, a chat with an
+AI agent). The file format is in [`reference/schema.md`](../../reference/schema.md); read it first.
 
-1. **Check for duplicates** in `recipes/` (same dish, or the same key ingredients and method). If the dish already
-   exists, keep the repo version; it has the family's edits.
-2. **Create** `recipes/<title-in-kebab-case>.md` from [`protocols/templates/recipe.md`](../../protocols/templates/recipe.md):
+1. **Check for duplicates.** Search `recipes/` for the same dish (same title, or the same key ingredients and method).
+   If it already exists, keep the repo version; it has the family's edits. Only add genuinely new details, such as a
+   missing quantity, and mention them in the commit message.
+2. **Create** `recipes/<title-in-kebab-case>.md` from [`reference/templates/recipe.md`](../../reference/templates/recipe.md):
    - Fill in the header: `protein`, `gluten_free`, `prep_minutes`, `weeknight_minutes`, `tags`.
-   - One ingredient per line, `quantity unit name, note`. Keep the source's quantities, and don't invent any.
-   - **Split the method** into `## Sunday Prep` (roasting, chopping, grains, sauces, anything that keeps) and
-     `## Weeknight` (15–30 minutes on the night; seafood is cooked on the night).
+   - One ingredient per line, `quantity unit name, note`. Keep the source's quantities, and don't invent any it
+     doesn't give.
+   - **Split the method** into `## Sunday Prep` (roasting, chopping, cooking grains, sauces, anything that keeps) and
+     `## Weeknight` (what's left for the night, ideally 15–30 minutes). Seafood is cooked on the night.
    - Shared sauces live in `sauces/` and are linked from the ingredient list.
-   - Apply [`protocols/planning.md`](../../protocols/planning.md): gluten-free by default, no mushrooms, and a
+   - Apply [`reference/planning.md`](../../reference/planning.md): gluten-free by default, no mushrooms, and a
      `## Kid Boost` if the meal is light on protein.
-3. **Add any new ingredients** to [`protocols/ingredients.md`](../../protocols/ingredients.md), with aisle, kind, and
+3. **Add any new ingredients** to [`reference/ingredients.md`](../../reference/ingredients.md), with aisle, kind, and
    how to buy it.
-4. **Validate:** `cd app && npm ci && npm run validate` should show 0 errors and 0 warnings. If you can't run
+4. **Don't add ratings.** The family adds those after cooking.
+5. **Dated weekly plans** in the source become plan files named for the week's Monday (see `reference/schema.md`).
+6. **Validate:** `cd app && npm ci && npm run validate` should show 0 errors and 0 warnings. If you can't run
    commands, check the "Validate recipes" GitHub Action after you push.
-5. **Commit** with the message `Add recipe: <Title>`. Don't add ratings; the family adds those after cooking.
+7. **Commit** with the message `Add recipe: <Title>` (or `Import recipes from <source>`).

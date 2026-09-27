@@ -1,4 +1,4 @@
-# Shopping Protocols
+# Shopping Rules
 
 ## Consolidation Rules
 - **No Duplicates:** Merge identical or near-identical items (e.g., "Feta" and "Feta cheese"). [`ingredients.md`](ingredients.md)

@@ -15,7 +15,7 @@ const recipe = (title: string, protein: string, tag: string, ingredients: string
 
 test('variety report flags repeated key ingredients, formats, and recent repeats', () => {
   const files = new Map([
-    ['protocols/ingredients.md', CATALOG],
+    ['reference/ingredients.md', CATALOG],
     ['recipes/a.md', recipe('A', 'fish', 'sheet-pan', '- 1 lb salmon\n- 1 bunch asparagus\n- 1 lemon')],
     ['recipes/b.md', recipe('B', 'plant', 'sheet-pan', '- 1 bunch asparagus\n- 1 lemon\n- Optional: 1 lb salmon')],
     ['recipes/c.md', recipe('C', 'plant', 'bowl', '- 1 lemon')],
