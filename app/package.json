@@ -7,11 +7,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/plan.ts context --out dist/agent-context.md",
     "preview": "vite preview",
     "validate": "node scripts/validate.ts",
     "test": "node --test test/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "plan": "node scripts/plan.ts"
   },
   "dependencies": {
     "react": "^19.3.0",

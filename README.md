@@ -29,4 +29,4 @@ These tasks are usually done by 2 adults so collaboration in each task is import
 - **App:** Open [seanhorgan.github.io/recipes](https://seanhorgan.github.io/recipes/) on your phone. The code lives in [`/app`](./app) (see [app/PLAN.md](./app/PLAN.md)).
 
 ## For Agents
-AI agents managing this repository should begin by reading [SKILLS.md](./SKILLS.md) to understand current protocols and preferences.
+AI agents managing this repository should begin by reading [SKILLS.md](./SKILLS.md). To plan a week, follow [skills/plan-week](./skills/plan-week/SKILL.md); to add recipes, follow [skills/add-recipe](./skills/add-recipe/SKILL.md).

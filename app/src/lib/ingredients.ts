@@ -122,6 +122,21 @@ export function parseIngredientSection(lines: Line[]): Ingredient[] {
   return out;
 }
 
+function formatNumber(x: number): string {
+  const whole = Math.floor(x);
+  const frac = Math.round((x - whole) * 100) / 100;
+  const f = ({ 0.25: '¼', 0.33: '⅓', 0.5: '½', 0.67: '⅔', 0.75: '¾' } as Record<number, string>)[frac];
+  return f ? (whole ? `${whole}${f}` : f) : String(Math.round(x * 100) / 100);
+}
+
+/** "1½ cups", "2–4", "1 jar (23 oz)". */
+export function formatQuantity(quantity: Quantity, unit: string | null, size: string | null = null): string {
+  const q = quantity.min === quantity.max ? formatNumber(quantity.min) : `${formatNumber(quantity.min)}–${formatNumber(quantity.max)}`;
+  const plural = quantity.max > 1 && unit && !['oz', 'lb', 'g', 'ml', 'tsp', 'tbsp', 'loaf'].includes(unit);
+  const u = unit ? ` ${unit}${plural ? (/(ch|sh|x)$/.test(unit) ? 'es' : 's') : ''}` : '';
+  return `${q}${u}${size ? ` (${size})` : ''}`;
+}
+
 // ---------------------------------------------------------------------------
 // Catalog
 
