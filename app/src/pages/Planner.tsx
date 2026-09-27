@@ -8,7 +8,8 @@ import { buildPlanText, buildWeekLists, renderPlanDays, type DraftDay } from '..
 import { varietyReport } from '../lib/variety.ts';
 import { searchRecipes, searchTerms } from '../lib/search.ts';
 import { Chip, PROTEIN_LABEL, Section, Stars, ago, shortDate } from '../ui.tsx';
-import { href } from '../router.ts';
+import { hashQuery, href } from '../router.ts';
+import { parsePlanLink, type LinkDraft } from '../lib/planLink.ts';
 import { FAMILY_COOKS } from '../family.ts';
 
 export function Planner({ monday: requested }: { monday?: string }) {
@@ -21,13 +22,14 @@ export function Planner({ monday: requested }: { monday?: string }) {
       <>
         <h1>Plan a week</h1>
         <p className="callout">
-          <a href={href('settings')}>Connect this device</a> to plan in the app. Until then, ask an agent to plan the
-          week (it follows <code>skills/plan-week</code>).
+          <a href={href('settings')}>Connect this device</a> to plan in the app{hashQuery() ? ', then open the plan link again' : ''}.
+          Until then, ask an agent to plan the week (it follows <code>skills/plan-week</code>).
         </p>
       </>
     );
   }
-  return <PlannerForm key={monday} monday={monday} />;
+  const query = hashQuery();
+  return <PlannerForm key={`${monday}?${query}`} monday={monday} link={parsePlanLink(query, repo.recipes)} />;
 }
 
 function draftFromPlan(monday: string): DraftDay[] {
@@ -42,9 +44,9 @@ function draftFromPlan(monday: string): DraftDay[] {
   }));
 }
 
-function PlannerForm({ monday }: { monday: string }) {
+function PlannerForm({ monday, link }: { monday: string; link: LinkDraft | null }) {
   const existing = repo.plans.some((p) => p.monday === monday);
-  const [days, setDays] = useState<DraftDay[]>(() => draftFromPlan(monday));
+  const [days, setDays] = useState<DraftDay[]>(() => link?.days ?? draftFromPlan(monday));
   const [picking, setPicking] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -105,6 +107,13 @@ function PlannerForm({ monday }: { monday: string }) {
         <a className="button" href={href('plan', addDays(monday, 7))} aria-label="Next week">→</a>
       </div>
 
+      {link && (
+        <div className="callout accent" role="status">
+          <p><strong>Filled in from a link.</strong> Check the week, change anything you like, then save.
+            {existing && ' This replaces the dinners in the saved plan; checked items stay checked.'}</p>
+          {link.problems.length > 0 && <ul className="bullets warn-list">{link.problems.map((p) => <li key={p}>{p}</li>)}</ul>}
+        </div>
+      )}
       <ol className="week">
         {[...days].sort((a, b) => a.day - b.day).map((d) => {
           const recipe = d.recipePath ? repo.recipes.get(d.recipePath) : undefined;

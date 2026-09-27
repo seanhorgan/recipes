@@ -230,3 +230,10 @@ footer { max-width: 760px; margin: 0 auto; padding: 1rem 16px 2rem; color: var(-
 .tonight-card .card-sub { color: var(--accent); font-weight: 600; }
 .steps.big li { font-size: 1.15rem; line-height: 1.55; margin: 0.8rem 0; cursor: pointer; }
 .steps li.done { color: var(--muted); text-decoration: line-through; }
+
+/* Add recipe */
+textarea.paste {
+  font: 0.85rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 400; width: 100%; min-height: 12rem;
+  padding: 0.6rem 0.75rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text);
+}
+.confirm { display: flex; gap: 0.5rem; align-items: center; margin: 0.5rem 0 0.75rem; font-weight: 600; }

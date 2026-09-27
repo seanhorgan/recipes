@@ -21,6 +21,12 @@ The skills follow the common `SKILL.md` format (a `name` and `description` heade
   are pointed here by those files at the repo root.
 - **Other agents** (for example Hermes or Muse) can load the `skills/` folder, or simply read the file for the task.
 
+## Chat assistants without repo access
+
+Claude chat (or any assistant that can't write to the repo) can still plan weeks, write new recipes, and update
+recipes: it hands the result to the family app, which saves it. Paste [chat/claude-project.md](chat/claude-project.md)
+into a Claude Project's instructions.
+
 ## How to work with the repo
 
 Use the first option you have. Every skill explains all three.

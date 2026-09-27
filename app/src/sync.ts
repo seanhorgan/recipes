@@ -5,6 +5,8 @@ import { fetchRepoFiles, getFile, putFile, verifyToken } from './github.ts';
 import { clearSettings, loadSettings, saveSettings, type DeviceSettings } from './settings.ts';
 import { WriteQueue, type Edit } from './lib/writeQueue.ts';
 import { isPlanPath, parsePlan } from './lib/plan.ts';
+import { parseRecipe } from './lib/recipe.ts';
+import { isRecipePath, isSaucePath } from './lib/repo.ts';
 
 export type SyncState = 'offline' | 'loading' | 'live' | 'saving' | 'error';
 
@@ -52,10 +54,14 @@ export function useSync(): SyncStatus {
   );
 }
 
-/** Refuse to save a plan the app itself can't read back. */
+/** Refuse to save a plan or recipe the app itself can't read back. */
 function checkFile(path: string, text: string): string | null {
-  if (!isPlanPath(path)) return null;
-  const errors = parsePlan(path, text).issues.items.filter((i) => i.level === 'error');
+  const issues = isPlanPath(path)
+    ? parsePlan(path, text).issues.items
+    : isRecipePath(path) || isSaucePath(path)
+      ? parseRecipe(path, text).issues.items
+      : [];
+  const errors = issues.filter((i) => i.level === 'error');
   return errors.length ? errors.map((e) => e.message).join('; ') : null;
 }
 
