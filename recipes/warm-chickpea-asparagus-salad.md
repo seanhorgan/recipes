@@ -1,11 +1,23 @@
+---
+protein: plant
+gluten_free: yes
+prep_minutes: 30
+weeknight_minutes: 10
+tags: [salad]
+---
 # Warm Chickpea & Asparagus Salad
 
 ## Ingredients
-Roasted lemon-zest chickpeas (from prep), 1 bunch asparagus, feta, arugula, Vinaigrette.
+- 2 cans chickpeas, rinsed
+- 1 lemon, zested and juiced
+- olive oil
+- 1 bunch asparagus
+- feta
+- arugula
 
-## Directions
-Sauté asparagus for 4 mins. Toss in the roasted chickpeas just to warm them. Serve over arugula with crumbled feta and lemon dressing.
+## Sunday Prep
+1. Toss the chickpeas with olive oil, lemon zest, and salt; roast at 400°F until crisp. Refrigerate.
 
-
-## Rating
-⭐ (Placeholder - Edit to rate!)
+## Weeknight
+1. Sauté the asparagus for 4 mins. Toss in the roasted chickpeas just to warm them.
+2. Serve over arugula with crumbled feta and a lemon juice and olive oil dressing.

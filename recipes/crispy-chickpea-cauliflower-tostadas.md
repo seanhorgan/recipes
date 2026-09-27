@@ -1,22 +1,29 @@
+---
+protein: plant
+gluten_free: yes
+prep_minutes: 30
+weeknight_minutes: 15
+tags: [tacos]
+---
 # Crispy Chickpea & Cauliflower Tostadas
 
 *High-fiber with a crunch; boosted for growth spurt support.*
 
 ## Ingredients
-- 2 lb family pack Cauliflower florets
-- 2 cans Chickpeas (rinsed)
-- 1 tsp Smoked paprika
+- 2 lb cauliflower florets
+- 2 cans chickpeas, rinsed
+- 1 tsp smoked paprika
+- olive oil
 - 8 GF corn tostada shells
-- 2 Avocados
-- 1/2 cup Salsa
-- 1/2 cup Greek yogurt or Feta cheese (protein boost)
-- Lime juice
+- 2 avocados
+- 1/2 cup salsa
+- 1/2 cup Greek yogurt or feta, protein boost
+- lime juice
 
-## Directions
-1. (Sunday Prep) Roast cauliflower and chickpeas with oil and paprika at 400°F for 25 mins.
-2. (Night of) Warm veggies in a skillet for 5 mins.
-3. Mash avocado with lime and salt; spread on tostadas.
-4. Top with veggies, salsa, and a generous dollop of yogurt or sprinkle of feta for extra protein.
+## Sunday Prep
+1. Roast the cauliflower and chickpeas with oil and paprika at 400°F for 25 mins. Refrigerate.
 
-## History
-- 2026-05-18
+## Weeknight
+1. Warm the veggies in a skillet for 5 mins.
+2. Mash the avocado with lime and salt; spread on the tostadas.
+3. Top with the veggies, salsa, and a generous dollop of yogurt or a sprinkle of feta for extra protein.

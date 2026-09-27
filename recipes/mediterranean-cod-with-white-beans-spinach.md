@@ -1,11 +1,19 @@
+---
+protein: fish
+gluten_free: yes
+prep_minutes: 0
+weeknight_minutes: 20
+tags: [skillet]
+---
 # Mediterranean Cod with White Beans & Spinach
 
 ## Ingredients
-1.5 lbs cod, 1 can white beans, 1 can pinto beans, 1 jar roasted red peppers, 1 bag spinach.
+- 1.5 lb cod
+- 1 can white beans, rinsed
+- 1 can pinto beans, rinsed
+- 1 jar roasted red peppers
+- 1 bag spinach
 
-## Directions
-Simmer beans, peppers, and spinach in a large pan. Smash a few beans into the broth to thicken it. Nestle cod on top, cover, and steam for 8-10 mins until fish is flaky.
-
-
-## Rating
-⭐ (Placeholder - Edit to rate!)
+## Weeknight
+1. Simmer the beans, peppers, and spinach in a large pan. Smash a few beans into the broth to thicken it.
+2. Nestle the cod on top, cover, and steam for 8–10 mins until the fish is flaky.

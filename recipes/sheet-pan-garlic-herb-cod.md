@@ -1,11 +1,26 @@
+---
+protein: fish
+gluten_free: yes
+prep_minutes: 10
+weeknight_minutes: 30
+tags: [sheet-pan]
+---
 # Sheet-Pan Garlic Herb Cod
 
 ## Ingredients
-1.5 lbs cod fillets, 1.5 lbs baby potatoes (halved), 1 bunch asparagus, 3 cloves garlic (minced), 1 tsp dried oregano, lemon slices, olive oil.
+- 1.5 lb cod fillets
+- 1.5 lb baby potatoes, halved
+- 1 bunch asparagus
+- 3 cloves garlic, minced
+- 1 tsp dried oregano
+- 1 lemon, sliced
+- olive oil
 
-## Directions
-Roast potatoes and asparagus with oil/salt at 400°F for 15 mins. Add cod to the center. Top with garlic, oregano, and lemon. Roast 10–12 more mins.
+## Sunday Prep
+1. Halve the potatoes; store covered in water in the fridge.
+2. Trim the asparagus and mince the garlic.
 
-
-## Rating
-⭐ (Placeholder - Edit to rate!)
+## Weeknight
+1. Roast the potatoes and asparagus with oil and salt at 400°F for 15 mins.
+2. Add the cod to the center. Top with garlic, oregano, and lemon.
+3. Roast 10–12 more mins.
