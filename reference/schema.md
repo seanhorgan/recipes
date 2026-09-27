@@ -10,9 +10,9 @@ they follow a few fixed conventions. Each fact lives in exactly one place:
 | What we cook each week, and who cooks it | `YYYY/Month/YYYY-MM-DD.md` (weekly plans) |
 | When a dish was last cooked | Derived from the weekly plans (not stored in recipes) |
 | How the family rated a dish | The recipe's `## Ratings` section |
-| Aisle, how to buy it, pantry staple | `protocols/ingredients.md` |
+| Aisle, how to buy it, pantry staple | `reference/ingredients.md` |
 
-Templates: [`protocols/templates/recipe.md`](templates/recipe.md) and [`protocols/templates/plan.md`](templates/plan.md).
+Templates: [`reference/templates/recipe.md`](templates/recipe.md) and [`reference/templates/plan.md`](templates/plan.md).
 
 Check your changes with the validator (it also runs automatically on every push):
 
@@ -97,7 +97,7 @@ tags: [sheet-pan]
 - **Sauces** are a link to a file in `sauces/`. The shopping list and Sunday prep include the sauce's ingredients and steps.
 - Write "juice of 1 lemon" as `1 lemon, juiced`.
 
-Each ingredient name should match a row (or alias) in [`protocols/ingredients.md`](ingredients.md). That's how the
+Each ingredient name should match a row (or alias) in [`reference/ingredients.md`](ingredients.md). That's how the
 shopping list knows the aisle and merges duplicates.
 
 ### Ratings

@@ -1,4 +1,4 @@
-// Variety checks for a week of dinners (rules: protocols/planning.md → Variety).
+// Variety checks for a week of dinners (rules: reference/planning.md → Variety).
 import { matchIngredient, type Catalog } from './ingredients.ts';
 import { PROTEINS, type Protein, type Recipe } from './recipe.ts';
 import type { Plan } from './plan.ts';

@@ -9,7 +9,7 @@ it lists the skills and the rules every agent follows.
 | Add or import recipes | [skills/add-recipe/SKILL.md](skills/add-recipe/SKILL.md) |
 
 Before committing:
-- Every file follows [protocols/schema.md](protocols/schema.md).
+- Every file follows [reference/schema.md](reference/schema.md).
 - Check your changes with `cd app && npm ci && npm run validate`. If you can't run commands, the "Validate recipes"
   GitHub Action checks every push.
 - The repo is public. Never commit tokens or other secrets.

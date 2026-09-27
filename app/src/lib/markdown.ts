@@ -1,4 +1,4 @@
-// Low-level helpers for the repo's markdown conventions (see protocols/schema.md).
+// Low-level helpers for the repo's markdown conventions (see reference/schema.md).
 import { parse as parseYaml } from 'yaml';
 
 export interface Line {

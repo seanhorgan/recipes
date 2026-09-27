@@ -1,4 +1,4 @@
-# Planning Protocols
+# Planning Rules
 
 ## Family Profile
 - **Total:** 4 People (Ali, Sean, Rose, Will).

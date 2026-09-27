@@ -167,7 +167,7 @@ test('links', () => {
 
 test('repo cross-checks and cook history', () => {
   const files = new Map([
-    ['protocols/ingredients.md', CATALOG + '| Salmon | Seafood | key | | salmon fillet |\n| Lemon | Produce | | | |\n'],
+    ['reference/ingredients.md', CATALOG + '| Salmon | Seafood | key | | salmon fillet |\n| Lemon | Produce | | | |\n'],
     ['recipes/lemon-dill-salmon.md', RECIPE],
     ['2026/March/2026-03-23.md', '# Week\n\n## Monday: [Salmon](../../recipes/lemon-dill-salmon.md)\n'],
     ['2026/September/2026-09-07.md', PLAN.replace('lemon-dill-salmon', 'missing')],

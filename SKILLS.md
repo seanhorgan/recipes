@@ -28,16 +28,18 @@ Use the first option you have. Every skill explains all three.
    - `npm run validate`: checks every file against the format.
 2. **You can fetch web pages:** the same planning context is published at
    https://seanhorgan.github.io/recipes/agent-context.md.
-3. **You can only read and write repo files:** follow the formats in [protocols/schema.md](protocols/schema.md).
+3. **You can only read and write repo files:** follow the formats in [reference/schema.md](reference/schema.md).
    The "Validate recipes" GitHub Action checks every push.
 
-## Rules and formats
+## Reference
 
-- **Family preferences, nutrition, and variety:** [protocols/planning.md](protocols/planning.md)
-- **Shopping list rules:** [protocols/shopping.md](protocols/shopping.md)
-- **Ingredients (aisle, how to buy, pantry staples):** [protocols/ingredients.md](protocols/ingredients.md)
-- **File formats:** [protocols/schema.md](protocols/schema.md), with templates in [protocols/templates/](protocols/templates)
-- **Importing recipes:** [protocols/importing.md](protocols/importing.md)
+`skills/` says *how* to do a task; `reference/` holds the rules, data, and formats that the skills, the app, and the
+family all share. Skills link here instead of repeating these, so each rule lives in one place.
+
+- **Family preferences, nutrition, and variety:** [reference/planning.md](reference/planning.md)
+- **Shopping list rules:** [reference/shopping.md](reference/shopping.md)
+- **Ingredients (aisle, how to buy, pantry staples):** [reference/ingredients.md](reference/ingredients.md)
+- **File formats:** [reference/schema.md](reference/schema.md), with templates in [reference/templates/](reference/templates)
 
 Key points:
 - "When was this last cooked" comes from the weekly plans. Don't write cook dates into recipes.
@@ -49,6 +51,6 @@ Key points:
 - `/sauces`: Shared sauces and dressings, linked from recipe ingredients.
 - `/drinks`: Beverage recipes (not yet in the standard format).
 - `/2026`: Weekly meal plans, by month.
-- `/protocols`: Rules, file formats, and the ingredient catalog.
+- `/reference`: Shared rules, file formats, and the ingredient catalog.
 - `/skills`: Step-by-step workflows for agents (linked into `.claude/skills` for Claude Code).
 - `/app`: The family meal-planning web app, the validator, and the planning scripts.

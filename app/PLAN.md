@@ -6,7 +6,7 @@ The markdown files in this repo stay the single source of truth; the app only re
 Live at https://seanhorgan.github.io/recipes/ (deployed by `.github/workflows/pages.yml` on every push to `main`).
 
 Developing: `npm install`, then `npm run dev` (local site), `npm test` (parser tests), `npm run typecheck`, and
-`npm run validate` (checks every recipe, sauce, plan, and the ingredient catalog against `protocols/schema.md`).
+`npm run validate` (checks every recipe, sauce, plan, and the ingredient catalog against `reference/schema.md`).
 Needs Node 22.18 or newer.
 
 ## Goals
@@ -26,12 +26,12 @@ Needs Node 22.18 or newer.
 | Recipe suggestions | Done by AI agents in chat sessions, not in the app. |
 | Drinks | Out of scope for now. |
 
-## Data format (Phase 0 defines it in full in `protocols/schema.md`)
+## Data format (Phase 0 defines it in full in `reference/schema.md`)
 - **Recipes** (`recipes/*.md`): a small YAML header (`protein`, `gluten_free`, `prep_minutes`, `weeknight_minutes`, `tags`), then
   `## Ingredients` (`- qty unit name, note`), `## Sunday Prep`, `## Weeknight`, `## Kid Boost`, `## Notes`, `## Ratings`.
   No fact is stored twice.
 - **Sauces** (`sauces/*.md`): shared sauces, linked from recipe ingredients so the shopping list and Sunday prep include them.
-- **Ingredient catalog** (`protocols/ingredients.md`): name, aisle, how to buy, pantry-staple flag. Drives shopping-list
+- **Ingredient catalog** (`reference/ingredients.md`): name, aisle, how to buy, pantry-staple flag. Drives shopping-list
   grouping, merging, and variety checks.
 - **Weekly plans** (`YYYY/Month/YYYY-MM-DD.md`, named by the week's Monday): one `## <Day>: [Recipe](link)` section per
   dinner with a `Cook:` line, then `## Sunday Prep` and `## Shopping List` checklists. Any subset of days is allowed.
@@ -39,7 +39,7 @@ Needs Node 22.18 or newer.
 ## Features (v1)
 - **Recipe library** — filter by protein, GF, weeknight time, rating, and last cooked. Shows the 8-week cook count.
 - **Week planner** — pick dinners, assign cooks, and get variety warnings (repeated key ingredients, protein imbalance, recently cooked).
-- **Shopping list** — consolidated per `protocols/shopping.md`, grouped by aisle, shared checkboxes, and "copy for Instacart".
+- **Shopping list** — consolidated per `reference/shopping.md`, grouped by aisle, shared checkboxes, and "copy for Instacart".
 - **Sunday prep** — a combined, ordered checklist of every recipe's `## Sunday Prep`, where adults can claim tasks.
 - **Tonight** — the weeknight steps for today's dinner, in large text, with the screen kept awake.
 - **Rate** — a quick star rating and note after dinner, appended to the recipe's `## Ratings`.
@@ -49,7 +49,7 @@ Needs Node 22.18 or newer.
    - Schema doc, recipe template, validator (run on every push), and ingredient catalog.
    - Migrate all recipes and plans to the new format.
    - Import the new recipes from the Google Doc, and add their September plan as `2026/September/2026-09-07.md`.
-   - Add `protocols/importing.md`, fix the poultry rule in `protocols/planning.md`, and update `SKILLS.md`.
+   - Add an import guide (now `skills/add-recipe`), fix the poultry rule in `reference/planning.md`, and update `SKILLS.md`.
 1. **Read-only app** (done): this week's plan, recipe library with filters and "longest since cooked" sorting,
    recipe and sauce pages, past plans with a variety check, and "due for a comeback" suggestions. Deployed to GitHub Pages.
 2. **Planning**: week planner, shopping list, and writing back to the repo.

@@ -1,4 +1,4 @@
-// Ingredient lines (`- 1.5 lb salmon fillets, skin on`) and the catalog in protocols/ingredients.md.
+// Ingredient lines (`- 1.5 lb salmon fillets, skin on`) and the catalog in reference/ingredients.md.
 import type { Line } from './markdown.ts';
 import { IssueList } from './issues.ts';
 
@@ -174,7 +174,7 @@ export interface Catalog {
   index: Map<string, CatalogEntry>;
 }
 
-export function parseCatalog(text: string, file = 'protocols/ingredients.md'): { catalog: Catalog; issues: IssueList } {
+export function parseCatalog(text: string, file = 'reference/ingredients.md'): { catalog: Catalog; issues: IssueList } {
   const issues = new IssueList(file);
   const entries: CatalogEntry[] = [];
   const index = new Map<string, CatalogEntry>();

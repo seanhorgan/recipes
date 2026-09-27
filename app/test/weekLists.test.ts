@@ -19,7 +19,7 @@ const recipe = (title: string, ingredients: string, prep: string) =>
 
 const files = () =>
   new Map([
-    ['protocols/ingredients.md', CATALOG],
+    ['reference/ingredients.md', CATALOG],
     ['sauces/yogurt.md', '---\nprep_minutes: 5\n---\n# Yogurt Sauce\n\n## Ingredients\n- 1/2 cup Greek yogurt\n- 1 lemon, juiced\n\n## Directions\n1. Stir.\n'],
     ['recipes/a.md', recipe('Bowls', '- 2 cups cooked quinoa\n- 1 lb cauliflower florets\n- 2 batches [Yogurt Sauce](../sauces/yogurt.md)\n- olive oil', '1. Cook the quinoa.\n2. Roast the cauliflower.')],
     ['recipes/b.md', recipe('Salmon', '- 1.5 lb salmon\n- 1 cup quinoa\n- 1 lemon\n- 1 head cauliflower\n- Optional: 1 cup Greek yogurt', '1. Cook the quinoa.')],
