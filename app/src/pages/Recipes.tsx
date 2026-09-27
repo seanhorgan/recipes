@@ -1,0 +1,111 @@
+import { useMemo, useState } from 'react';
+import { repo, recipeStats, todayIso } from '../data.ts';
+import { PROTEINS, TAGS, currentRating, type Protein } from '../lib/recipe.ts';
+import { PROTEIN_LABEL, RecipeRating, ago, routeFor, shortDate } from '../ui.tsx';
+
+type Sort = 'stale' | 'rating' | 'quick' | 'name';
+
+interface Filters {
+  query: string;
+  proteins: Protein[];
+  tag: string;
+  quick: boolean;
+  sort: Sort;
+}
+
+// Kept at module level so filters survive navigating to a recipe and back.
+let saved: Filters = { query: '', proteins: [], tag: '', quick: false, sort: 'stale' };
+
+export function Recipes() {
+  const [f, setF] = useState<Filters>(saved);
+  const update = (patch: Partial<Filters>) => setF((prev) => (saved = { ...prev, ...patch }));
+  const today = todayIso();
+
+  const rows = useMemo(() => {
+    const q = f.query.trim().toLowerCase();
+    const list = [...repo.recipes.values()]
+      .filter((r) => !f.proteins.length || (r.protein && f.proteins.includes(r.protein)))
+      .filter((r) => !f.tag || r.tags.includes(f.tag))
+      .filter((r) => !f.quick || (r.weeknightMinutes ?? 99) <= 20)
+      .filter((r) => !q || r.title.toLowerCase().includes(q) || r.ingredients.some((i) => i.name.toLowerCase().includes(q)))
+      .map((r) => ({ recipe: r, stats: recipeStats(r, today), rating: currentRating(r)?.stars ?? 0 }));
+    const byName = (a: (typeof list)[number], b: (typeof list)[number]) => a.recipe.title.localeCompare(b.recipe.title);
+    list.sort((a, b) => {
+      if (f.sort === 'rating') return b.rating - a.rating || byName(a, b);
+      if (f.sort === 'quick') return (a.recipe.weeknightMinutes ?? 99) - (b.recipe.weeknightMinutes ?? 99) || byName(a, b);
+      if (f.sort === 'stale') return (a.stats.last ?? '').localeCompare(b.stats.last ?? '') || byName(a, b);
+      return byName(a, b);
+    });
+    return list;
+  }, [f, today]);
+
+  const toggleProtein = (p: Protein) =>
+    update({ proteins: f.proteins.includes(p) ? f.proteins.filter((x) => x !== p) : [...f.proteins, p] });
+
+  return (
+    <>
+      <h1>Recipes</h1>
+      <div className="filters">
+        <input
+          type="search"
+          placeholder="Search recipes or ingredients"
+          value={f.query}
+          onChange={(e) => update({ query: e.target.value })}
+          aria-label="Search recipes or ingredients"
+        />
+        <div className="chip-row" role="group" aria-label="Protein">
+          {PROTEINS.map((p) => (
+            <button key={p} className={`toggle${f.proteins.includes(p) ? ' on' : ''}`} onClick={() => toggleProtein(p)}
+              aria-pressed={f.proteins.includes(p)}>
+              {PROTEIN_LABEL[p]}
+            </button>
+          ))}
+          <button className={`toggle${f.quick ? ' on' : ''}`} onClick={() => update({ quick: !f.quick })} aria-pressed={f.quick}>
+            ⚡ 20 min or less
+          </button>
+        </div>
+        <div className="filter-selects">
+          <label>
+            Style
+            <select value={f.tag} onChange={(e) => update({ tag: e.target.value })}>
+              <option value="">Any</option>
+              {TAGS.map((t) => <option key={t} value={t}>{t}</option>)}
+            </select>
+          </label>
+          <label>
+            Sort
+            <select value={f.sort} onChange={(e) => update({ sort: e.target.value as Sort })}>
+              <option value="stale">Longest since cooked</option>
+              <option value="rating">Top rated</option>
+              <option value="quick">Quickest weeknight</option>
+              <option value="name">A–Z</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <p className="muted count">{rows.length} of {repo.recipes.size} recipes</p>
+      <ul className="card-list">
+        {rows.map(({ recipe: r, stats }) => (
+          <li key={r.path}>
+            <a className="card recipe-card" href={routeFor(r.path)!}>
+              <span className="card-title">{r.title}</span>
+              <span className="card-meta">
+                {r.protein && <span>{PROTEIN_LABEL[r.protein]}</span>}
+                <span>⏱ {r.weeknightMinutes} min</span>
+                {r.prepMinutes > 0 && <span>Prep {r.prepMinutes} min</span>}
+                <RecipeRating recipe={r} />
+              </span>
+              <span className="card-sub muted">
+                {stats.next ? `Planned for ${shortDate(stats.next)}` : ''}
+                {stats.next && stats.last ? ' · ' : ''}
+                {stats.last ? `Last cooked ${ago(stats.last, today)}` : stats.next ? '' : 'Never planned'}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {!rows.length && <p className="empty">No recipes match these filters.</p>}
+    </>
+  );
+}

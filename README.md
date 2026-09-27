@@ -26,7 +26,7 @@ These tasks are usually done by 2 adults so collaboration in each task is import
 - **Sauces:** Shared sauces and dressings live in [`/sauces`](./sauces).
 - **Weekly Plans:** Current and past meal plans are stored by year and month in the [`/2026`](./2026) (and similar) directories.
 - **Editing:** Every file follows [protocols/schema.md](./protocols/schema.md). Copy a template from [`/protocols/templates`](./protocols/templates) to add a recipe or plan.
-- **App:** The meal-planning app lives in [`/app`](./app) (see [app/PLAN.md](./app/PLAN.md)).
+- **App:** Open [seanhorgan.github.io/recipes](https://seanhorgan.github.io/recipes/) on your phone. The code lives in [`/app`](./app) (see [app/PLAN.md](./app/PLAN.md)).
 
 ## For Agents
 AI agents managing this repository should begin by reading [SKILLS.md](./SKILLS.md) to understand current protocols and preferences.
