@@ -5,11 +5,15 @@ Archive.
 
 ## Skills
 
-| Task | Skill |
+| Job | Skill |
 |---|---|
-| **Plan next week's dinners** (the main Sunday-morning job) | [skills/plan-week/SKILL.md](skills/plan-week/SKILL.md) |
-| **Add or import recipes** | [skills/add-recipe/SKILL.md](skills/add-recipe/SKILL.md) |
-| **Record how a dinner went** | Add `- YYYY-MM-DD ★★★★ note` under the recipe's `## Ratings`, dated the night it was cooked. There's one family rating per night. |
+| 1. **Plan next week's dinners** | [skills/plan-week](skills/plan-week/SKILL.md) |
+| 2. **Adjust a week's plan** (swap or move nights, use what's at home) | [skills/adjust-plan](skills/adjust-plan/SKILL.md) |
+| 3. **Run Sunday prep** (schedule it, split it, check it off) | [skills/sunday-prep](skills/sunday-prep/SKILL.md) |
+| 4–5. **Cook tonight's dinner, and adapt it** (substitutions, change of plans) | [skills/cook-tonight](skills/cook-tonight/SKILL.md) |
+| 6. **Find recipes** (by ingredients, rating, how often or how recently cooked) | [skills/find-recipes](skills/find-recipes/SKILL.md) |
+| 7. **Rate a dinner** | [skills/rate-meal](skills/rate-meal/SKILL.md) |
+| **Add or import recipes** | [skills/add-recipe](skills/add-recipe/SKILL.md) |
 
 The skills follow the common `SKILL.md` format (a `name` and `description` header, then instructions):
 - **Claude Code** loads them automatically from `.claude/skills/`.
@@ -24,7 +28,8 @@ Use the first option you have. Every skill explains all three.
 1. **You can run commands (Node 22.18+):** `cd app && npm ci`, then:
    - `npm run plan -- context`: next week's file path, recent weeks, and every recipe with its rating and last-cooked date.
    - `npm run plan -- new <Monday> mon=<slug> tue=<slug> ...`: writes a plan with its Sunday Prep and shopping list,
-     and checks variety.
+     and checks variety. `fill <Monday>` rebuilds those lists after an edit; `check <Monday>` reviews a plan.
+   - `npm run plan -- find "salmon, lemon" [--sort stale|recent|most|rating|quick]`: finds recipes.
    - `npm run validate`: checks every file against the format.
 2. **You can fetch web pages:** the same planning context is published at
    https://seanhorgan.github.io/recipes/agent-context.md.

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { repo, history, todayIso } from '../data.ts';
 import { edit, useSync } from '../sync.ts';
-import { setChecklistItem, type ChecklistItem, type Plan } from '../lib/plan.ts';
+import { updateChecklistItem, type ChecklistItem, type Plan } from '../lib/plan.ts';
 import { formatLong } from '../lib/dates.ts';
 import { PROTEINS } from '../lib/recipe.ts';
 import { varietyReport } from '../lib/variety.ts';
@@ -106,6 +106,7 @@ export function PlanView({ plan, heading }: { plan: Plan; heading?: string }) {
       {shopItems.length > 0 && (
         <Section title={`Shopping list · ${shopDone}/${shopItems.length} checked`}>
           <CopyForInstacart plan={plan} />
+          <p className="muted small">Already have something at home? Check it off so it's not copied.</p>
           {plan.shopping.map((g) => (
             <div key={g.aisle}>
               {(plan.shopping.length > 1 || g.aisle !== 'Other') && <h3>{g.aisle}</h3>}
@@ -123,22 +124,37 @@ export function PlanView({ plan, heading }: { plan: Plan; heading?: string }) {
 /** Checkboxes save straight to the plan file on a connected device; read-only otherwise. */
 function Checklist({ plan, section, items }: { plan: Plan; section: 'Sunday Prep' | 'Shopping List'; items: ChecklistItem[] }) {
   const sync = useSync();
+  const short = (item: ChecklistItem) => item.text.replace(/ · .*$/, '').replace(/\s*\([^()]*\)\s*$/, '');
   const toggle = (item: ChecklistItem, done: boolean) =>
     edit(plan.path, {
-      apply: (text) => setChecklistItem(text ?? '', section, item.text, done),
-      describe: `${done ? 'check' : 'uncheck'} ${item.text.replace(/ · .*$/, '')}`,
+      apply: (text) => updateChecklistItem(text ?? '', section, item.text, { done }),
+      describe: `${done ? 'check' : 'uncheck'} ${short(item)}`,
     });
+  const claim = (item: ChecklistItem, claimedBy: string | null) =>
+    edit(plan.path, {
+      apply: (text) => updateChecklistItem(text ?? '', section, item.text, { claimedBy }),
+      describe: claimedBy ? `${claimedBy} takes ${short(item)}` : `unclaim ${short(item)}`,
+    });
+  const me = sync.name;
   return (
     <ul className="checklist">
       {items.map((i) => (
         <li key={`${i.line}:${i.text}`} className={i.done ? 'done' : ''}>
           <label>
             <input type="checkbox" checked={i.done} disabled={!sync.connected} onChange={(e) => toggle(i, e.target.checked)} />
-            <span>
-              {i.text}
-              {i.claimedBy && <span className="muted"> — {i.claimedBy}</span>}
-            </span>
+            <span>{i.text}</span>
           </label>
+          {section === 'Sunday Prep' && (sync.connected && me && !i.done ? (
+            <button
+              className={`toggle small claim${i.claimedBy ? ' on' : ''}`}
+              onClick={() => claim(i, i.claimedBy === me ? null : me)}
+              title={i.claimedBy && i.claimedBy !== me ? `Take over from ${i.claimedBy}` : undefined}
+            >
+              {i.claimedBy === me ? `Mine (${me})` : i.claimedBy ? `${i.claimedBy}'s` : "I'll do it"}
+            </button>
+          ) : i.claimedBy ? (
+            <span className="muted small claim">{i.claimedBy}</span>
+          ) : null)}
         </li>
       ))}
       {!sync.connected && section === 'Sunday Prep' && (

@@ -1,6 +1,6 @@
 import { repo, currentPlan, focusMonday, latestPlan, recipeStats, todayIso, daysBetween } from '../data.ts';
 import { currentRating } from '../lib/recipe.ts';
-import { formatLong } from '../lib/dates.ts';
+import { formatLong, mondayOf } from '../lib/dates.ts';
 import { PlanView } from './Plans.tsx';
 import { useSync } from '../sync.ts';
 import { PROTEIN_LABEL, RecipeRating, Section, ago, routeFor } from '../ui.tsx';
@@ -44,8 +44,16 @@ export function Home() {
   const latest = latestPlan();
   const heading = !plan ? '' : plan.monday <= today ? 'This week' : plan.monday === monday ? 'Next week' : 'Coming up';
 
+  const tonight = repo.plans.find((p) => p.monday === mondayOf(today))?.days.find((d) => d.date === today);
   return (
     <>
+      {tonight && (tonight.recipePath || tonight.label) && (
+        <a className="card tonight-card" href={href('tonight')}>
+          <span className="muted">Tonight{tonight.cook ? ` · ${tonight.cook} is cooking` : ''}</span>
+          <span className="card-title">{tonight.label}</span>
+          <span className="card-sub">Open the cooking view →</span>
+        </a>
+      )}
       {plan ? (
         <PlanView plan={plan} heading={heading} />
       ) : (

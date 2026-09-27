@@ -5,8 +5,9 @@ import type { Recipe } from '../lib/recipe.ts';
 import { Chip, GitHubLinks, Inline, PROTEIN_LABEL, RecipeRating, Section, Stars, ago, routeFor, shortDate } from '../ui.tsx';
 import { mondayOf } from '../lib/dates.ts';
 import { href } from '../router.ts';
+import { RateRecipe } from '../rate.tsx';
 
-function IngredientList({ recipe }: { recipe: Recipe }) {
+export function IngredientList({ recipe }: { recipe: Recipe }) {
   const groups: { name: string | null; items: Ingredient[] }[] = [];
   for (const i of recipe.ingredients) {
     const last = groups.at(-1);
@@ -38,7 +39,7 @@ function IngredientList({ recipe }: { recipe: Recipe }) {
   );
 }
 
-function Steps({ recipe, steps }: { recipe: Recipe; steps: Recipe['weeknight'] }) {
+export function Steps({ recipe, steps }: { recipe: Recipe; steps: Recipe['weeknight'] }) {
   return (
     <ol className="steps">
       {steps.map((s) => <li key={s.line}><Inline text={s.text} from={recipe.path} /></li>)}
@@ -46,7 +47,7 @@ function Steps({ recipe, steps }: { recipe: Recipe; steps: Recipe['weeknight'] }
   );
 }
 
-function Bullets({ recipe, items }: { recipe: Recipe; items: Recipe['notes'] }) {
+export function Bullets({ recipe, items }: { recipe: Recipe; items: Recipe['notes'] }) {
   return (
     <ul className="bullets">
       {items.map((s) => <li key={s.line}><Inline text={s.text} from={recipe.path} /></li>)}
@@ -119,6 +120,7 @@ export function RecipeDetail({ recipe }: { recipe: Recipe }) {
         ) : (
           <p className="muted">No ratings yet.</p>
         )}
+        <RateRecipe recipe={recipe} />
       </Section>
 
       {cooked.length > 0 && (

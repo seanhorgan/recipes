@@ -55,14 +55,15 @@ export function parseChecklistItem(text: string, line: number): ChecklistItem | 
 }
 
 /**
- * Sets one checklist item's done state in a plan's `## Sunday Prep` or `## Shopping List`, matched by its text.
- * Idempotent, so it can be re-applied on top of a newer version of the file. Unknown items are left alone.
+ * Updates one checklist item in a plan's `## Sunday Prep` or `## Shopping List`, matched by its text: checks it off
+ * and/or sets who has claimed it (null to unclaim). Idempotent, so it can be re-applied on top of a newer version of
+ * the file. Unknown items are left alone.
  */
-export function setChecklistItem(
+export function updateChecklistItem(
   planText: string,
   section: 'Sunday Prep' | 'Shopping List',
   itemText: string,
-  done: boolean,
+  patch: { done?: boolean; claimedBy?: string | null },
 ): string {
   const lines = planText.split('\n');
   let inSection = false;
@@ -75,10 +76,38 @@ export function setChecklistItem(
     if (!inSection) continue;
     const item = parseChecklistItem(lines[i], i + 1);
     if (item && item.text === itemText) {
-      lines[i] = formatChecklistItem({ ...item, done });
+      lines[i] = formatChecklistItem({ ...item, ...patch });
       break;
     }
   }
+  return lines.join('\n');
+}
+
+export function setChecklistItem(
+  planText: string,
+  section: 'Sunday Prep' | 'Shopping List',
+  itemText: string,
+  done: boolean,
+): string {
+  return updateChecklistItem(planText, section, itemText, { done });
+}
+
+/**
+ * Adds a note line under one night of a plan, e.g. "Swap: chicken thighs instead of cod (out of cod)".
+ * Idempotent: a note that's already there isn't added twice.
+ */
+export function addDayNote(planText: string, day: Day, note: string): string {
+  const text = note.trim().replace(/\s+/g, ' ');
+  if (!text) return planText;
+  const lines = planText.split('\n');
+  const start = lines.findIndex((l) => new RegExp(`^##\\s+${day}(:|\\s*$)`).test(l));
+  if (start === -1) return planText;
+  let end = lines.findIndex((l, i) => i > start && /^##\s/.test(l));
+  if (end === -1) end = lines.length;
+  if (lines.slice(start + 1, end).some((l) => l.trim() === text)) return planText;
+  let at = end;
+  while (at > start + 1 && !lines[at - 1].trim()) at--;
+  lines.splice(at, 0, text);
   return lines.join('\n');
 }
 

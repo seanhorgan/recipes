@@ -10,6 +10,9 @@
 //       Rebuild Sunday Prep and the Shopping List after editing a plan by hand (keeps checked items).
 //   npm run plan -- check YYYY-MM-DD
 //       Print the variety check and any problems, without changing anything.
+//   npm run plan -- find ["salmon, lemon"] [--sort stale|recent|most|rating|quick] [--date YYYY-MM-DD]
+//       Find recipes by ingredients you have (comma-separated; more matches first), or browse by last cooked,
+//       times cooked, rating, or weeknight time.
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadRepo, cookHistory, type Repo } from '../src/lib/repo.ts';
@@ -17,7 +20,8 @@ import { agentContext } from '../src/lib/agentContext.ts';
 import { buildWeekLists, renderPlanDays, writeWeekLists, type DraftDay } from '../src/lib/weekLists.ts';
 import { varietyReport } from '../src/lib/variety.ts';
 import { parsePlan } from '../src/lib/plan.ts';
-import { PROTEINS } from '../src/lib/recipe.ts';
+import { PROTEINS, currentRating } from '../src/lib/recipe.ts';
+import { searchRecipes, searchTerms } from '../src/lib/search.ts';
 import { formatLong, isIsoDate, planPath, weekdayIndex } from '../src/lib/dates.ts';
 import { readRepoFiles, REPO_ROOT } from './repoFiles.ts';
 
@@ -139,6 +143,36 @@ if (command === 'context') {
     report(loadRepo(readRepoFiles()), path);
     if (issues.items.some((i) => i.level === 'error')) process.exit(1);
   }
+} else if (command === 'find') {
+  const repo = loadRepo(readRepoFiles());
+  const today = option(args, '--date') ?? localToday();
+  const sort = option(args, '--sort') ?? 'stale';
+  if (!['stale', 'recent', 'most', 'rating', 'quick'].includes(sort)) fail('--sort must be stale, recent, most, rating, or quick');
+  const query = args.filter((a, i) => !a.startsWith('--') && !args[i - 1]?.startsWith('--')).join(' ');
+  const history = cookHistory(repo.plans);
+  const terms = searchTerms(query);
+  const rows = searchRecipes([...repo.recipes.values()], query).map(({ recipe, matched }) => {
+    const past = (history.get(recipe.path) ?? []).filter((d) => d <= today);
+    return { recipe, matched, last: past.at(-1) ?? '', times: past.length, stars: currentRating(recipe)?.stars ?? 0 };
+  });
+  type Row = (typeof rows)[number];
+  const bySort: Record<string, (a: Row, b: Row) => number> = {
+    stale: (a, b) => a.last.localeCompare(b.last),
+    recent: (a, b) => b.last.localeCompare(a.last),
+    most: (a, b) => b.times - a.times,
+    rating: (a, b) => b.stars - a.stars,
+    quick: (a, b) => (a.recipe.weeknightMinutes ?? 99) - (b.recipe.weeknightMinutes ?? 99),
+  };
+  rows.sort((a, b) => (terms.length > 1 ? b.matched.length - a.matched.length : 0) || bySort[sort](a, b) || a.recipe.title.localeCompare(b.recipe.title));
+  console.log(`| Recipe | Slug | Protein | Weeknight min | Rating | Last cooked | Times |${terms.length ? ' Matches |' : ''}`);
+  console.log(`|---|---|---|---|---|---|---|${terms.length ? '---|' : ''}`);
+  for (const r of rows) {
+    console.log(
+      `| ${r.recipe.title} | ${r.recipe.slug} | ${r.recipe.protein} | ${r.recipe.weeknightMinutes} | ${r.stars ? '★'.repeat(r.stars) : '–'} | ` +
+        `${r.last || 'never'} | ${r.times} |${terms.length ? ` ${r.matched.join(', ')} |` : ''}`,
+    );
+  }
+  if (!rows.length) console.log('(no recipes match)');
 } else {
   console.log(readFileSync(new URL(import.meta.url), 'utf8').split('\n').filter((l) => l.startsWith('//')).map((l) => l.slice(3)).join('\n'));
   process.exit(command ? 1 : 0);

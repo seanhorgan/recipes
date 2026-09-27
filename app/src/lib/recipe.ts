@@ -56,6 +56,28 @@ export function formatRating(r: Pick<Rating, 'date' | 'stars' | 'note'>): string
   return `- ${r.date} ${'★'.repeat(r.stars)}${r.note ? ' ' + r.note : ''}`;
 }
 
+/**
+ * Adds a dated family rating to a recipe's `## Ratings` (creating the section at the end if needed). A rating for the
+ * same night replaces the earlier one, so re-applying it is harmless.
+ */
+export function addRating(recipeText: string, rating: Pick<Rating, 'date' | 'stars' | 'note'>): string {
+  const line = formatRating({ ...rating, note: rating.note?.trim().replace(/\s+/g, ' ') || null });
+  const lines = recipeText.replace(/\s+$/, '').split('\n');
+  const start = lines.findIndex((l) => /^##\s+Ratings\s*$/.test(l));
+  if (start === -1) return [...lines, '', '## Ratings', line, ''].join('\n');
+  let end = lines.findIndex((l, i) => i > start && /^##\s/.test(l));
+  if (end === -1) end = lines.length;
+  const same = lines.findIndex((l, i) => i > start && i < end && parseRating(l.replace(/^[-*]\s+/, ''), 0)?.date === rating.date);
+  if (same !== -1) {
+    lines[same] = line;
+  } else {
+    let at = end;
+    while (at > start + 1 && !lines[at - 1].trim()) at--;
+    lines.splice(at, 0, line);
+  }
+  return lines.join('\n') + '\n';
+}
+
 /** The recipe's current rating: the most recent one. */
 export function currentRating(recipe: Recipe): Rating | null {
   return [...recipe.ratings].sort((a, b) => a.date.localeCompare(b.date)).at(-1) ?? null;
