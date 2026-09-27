@@ -13,7 +13,9 @@ Archive.
 
 The skills follow the common `SKILL.md` format (a `name` and `description` header, then instructions):
 - **Claude Code** loads them automatically from `.claude/skills/`.
-- **Other agents** can load the `skills/` folder, or simply read the file for the task.
+- **Agents that read `AGENTS.md`** (Codex, Cursor, Copilot, and others) and **Gemini CLI** (which reads `GEMINI.md`)
+  are pointed here by those files at the repo root.
+- **Other agents** (for example Hermes or Muse) can load the `skills/` folder, or simply read the file for the task.
 
 ## How to work with the repo
 
