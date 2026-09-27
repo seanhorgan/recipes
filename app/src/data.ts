@@ -1,5 +1,6 @@
-// The repo's markdown, bundled at build time. The site is rebuilt on every push to main,
-// so this is always the latest committed data.
+// The repo's data as the app sees it. It starts as the markdown bundled at build time (the site rebuilds on every
+// push to main). On a connected device, sync.ts swaps in the live files from GitHub plus unsaved local edits.
+import { useSyncExternalStore } from 'react';
 import { loadRepo, cookHistory } from './lib/repo.ts';
 import { addDays, mondayOf, toDate } from './lib/dates.ts';
 import type { Plan } from './lib/plan.ts';
@@ -9,10 +10,46 @@ const modules = import.meta.glob<string>(
   ['../../recipes/*.md', '../../sauces/*.md', '../../reference/ingredients.md', '../../20*/*/*.md'],
   { query: '?raw', import: 'default', eager: true },
 );
-const files = new Map(Object.entries(modules).map(([path, text]) => [path.replace(/^(\.\.\/)+/, ''), text]));
+export const bundledFiles: ReadonlyMap<string, string> = new Map(
+  Object.entries(modules).map(([path, text]) => [path.replace(/^(\.\.\/)+/, ''), text]),
+);
 
-export const repo = loadRepo(files);
-export const history = cookHistory(repo.plans);
+let files = new Map(bundledFiles);
+// Live bindings: modules that import these always read the current snapshot.
+export let repo = loadRepo(files);
+export let history = cookHistory(repo.plans);
+
+let version = 0;
+const listeners = new Set<() => void>();
+
+export function currentFiles(): ReadonlyMap<string, string> {
+  return files;
+}
+
+/** Replace the data (all files, or just some paths) and re-render. */
+export function setFiles(next: ReadonlyMap<string, string>, replaceAll = true): void {
+  const merged = replaceAll ? new Map(next) : new Map([...files, ...next]);
+  let changed = merged.size !== files.size;
+  for (const [path, text] of merged) if (files.get(path) !== text) changed = true;
+  if (!changed) return;
+  files = merged;
+  repo = loadRepo(files);
+  history = cookHistory(repo.plans);
+  version++;
+  for (const l of listeners) l();
+}
+
+/** Re-render when the data changes. */
+export function useDataVersion(): number {
+  return useSyncExternalStore(
+    (cb) => {
+      listeners.add(cb);
+      return () => listeners.delete(cb);
+    },
+    () => version,
+  );
+}
+
 export const REPO_URL = 'https://github.com/seanhorgan/recipes';
 
 export function githubUrl(path: string, edit = false): string {

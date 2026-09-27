@@ -1,8 +1,9 @@
 // Builds a week's Sunday Prep checklist and consolidated Shopping List from its recipes,
 // following reference/shopping.md, and writes them into a plan file.
 import { AISLES, formatQuantity, matchIngredient, type Catalog, type CatalogEntry, type Ingredient } from './ingredients.ts';
-import { parseDocument, resolveLink } from './markdown.ts';
-import { parseChecklistItem, formatChecklistItem, prepStepKey, type Plan } from './plan.ts';
+import { parseDocument, relativeLink, resolveLink } from './markdown.ts';
+import { parseChecklistItem, formatChecklistItem, parsePlan, prepStepKey, type Plan } from './plan.ts';
+import { DAYS, formatLong, planPath } from './dates.ts';
 import type { Recipe } from './recipe.ts';
 
 export interface WeekLists {
@@ -116,11 +117,12 @@ export function buildWeekLists(
 
 /**
  * Replaces (or appends) the plan's `## Sunday Prep` and `## Shopping List` sections with freshly built lists.
- * Items whose text is unchanged keep their checked state and claim.
+ * Items whose text is unchanged keep their checked state and claim, as recorded in `previousText`
+ * (by default the plan itself).
  */
-export function writeWeekLists(planText: string, lists: WeekLists): string {
+export function writeWeekLists(planText: string, lists: WeekLists, previousText: string = planText): string {
   const previous = new Map<string, { done: boolean; claimedBy: string | null }>();
-  for (const line of planText.split('\n')) {
+  for (const line of previousText.split('\n')) {
     const item = parseChecklistItem(line, 0);
     if (item) previous.set(item.text, { done: item.done, claimedBy: item.claimedBy });
   }
@@ -143,4 +145,50 @@ export function writeWeekLists(planText: string, lists: WeekLists): string {
   const kept = lines.filter((_, i) => !drop.has(i + 1)).join('\n').trimEnd();
   const blocks = [kept, lists.sundayPrep.length ? prep.join('\n') : '', shopping.length > 1 ? shopping.join('\n') : ''];
   return blocks.filter(Boolean).join('\n\n') + '\n';
+}
+
+/** One night in a plan being written (by the app's planner or the `plan new` script). */
+export interface DraftDay {
+  /** 0 = Monday … 6 = Sunday */
+  day: number;
+  recipePath: string | null;
+  /** Plain text for a night without a recipe, e.g. "Pizza night". */
+  label: string;
+  cook: string | null;
+  notes: string[];
+}
+
+/** The title and day sections of a plan file, before the Sunday Prep and Shopping List are added. */
+export function renderPlanDays(monday: string, days: DraftDay[], recipes: Map<string, Recipe>): string {
+  const path = planPath(monday);
+  const lines = [`# Week of ${formatLong(monday)}`, ''];
+  for (const d of [...days].sort((a, b) => a.day - b.day)) {
+    const recipe = d.recipePath ? recipes.get(d.recipePath) : undefined;
+    lines.push(
+      recipe
+        ? `## ${DAYS[d.day]}: [${recipe.title}](${relativeLink(path, recipe.path)})`
+        : `## ${DAYS[d.day]}: ${d.label.trim() || 'Night off'}`,
+    );
+    if (d.cook) lines.push(`Cook: ${d.cook}`);
+    lines.push(...d.notes);
+    lines.push('');
+  }
+  return lines.join('\n');
+}
+
+/**
+ * The complete plan file for a week: day sections, Sunday Prep, and Shopping List.
+ * Checked items and claims carry over from `previousText` (the current file, if any).
+ */
+export function buildPlanText(
+  monday: string,
+  days: DraftDay[],
+  recipes: Map<string, Recipe>,
+  sauces: Map<string, Recipe>,
+  catalog: Catalog,
+  previousText: string | null = null,
+): string {
+  const daysText = renderPlanDays(monday, days, recipes);
+  const { plan } = parsePlan(planPath(monday), daysText);
+  return writeWeekLists(daysText, buildWeekLists(plan, recipes, sauces, catalog), previousText ?? daysText);
 }

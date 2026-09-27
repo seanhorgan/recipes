@@ -14,11 +14,11 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadRepo, cookHistory, type Repo } from '../src/lib/repo.ts';
 import { agentContext } from '../src/lib/agentContext.ts';
-import { buildWeekLists, writeWeekLists } from '../src/lib/weekLists.ts';
+import { buildWeekLists, renderPlanDays, writeWeekLists, type DraftDay } from '../src/lib/weekLists.ts';
 import { varietyReport } from '../src/lib/variety.ts';
 import { parsePlan } from '../src/lib/plan.ts';
 import { PROTEINS } from '../src/lib/recipe.ts';
-import { DAYS, formatLong, isIsoDate, planPath, weekdayIndex } from '../src/lib/dates.ts';
+import { formatLong, isIsoDate, planPath, weekdayIndex } from '../src/lib/dates.ts';
 import { readRepoFiles, REPO_ROOT } from './repoFiles.ts';
 
 const DAY_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -111,31 +111,22 @@ if (command === 'context') {
     fail(`${path} already exists. Edit it and run "npm run plan -- fill ${monday}", or pass --force to replace it.`);
   }
   const repo = loadRepo(readRepoFiles());
-  const lines = [`# Week of ${formatLong(monday)}`, ''];
   const assignments = args.slice(1).filter((a) => a.includes('='));
   if (!assignments.length) fail('list the dinners, e.g. mon=lemon-dill-salmon-asparagus tue=red-lentil-coconut-dal:Ali');
-  const byDay = new Map<number, string>();
+  const days: DraftDay[] = [];
   for (const a of assignments) {
     const [key, ...rest] = a.split('=');
     const idx = DAY_KEYS.indexOf(key.toLowerCase());
     if (idx === -1) fail(`"${key}" is not a day; use ${DAY_KEYS.join(', ')}`);
-    byDay.set(idx, rest.join('='));
-  }
-  for (const [idx, value] of [...byDay].sort(([a], [b]) => a - b)) {
-    const [slug, cook] = value.split(':');
-    const recipe = repo.recipes.get(`recipes/${slug}.md`);
-    if (recipe) {
-      lines.push(`## ${DAYS[idx]}: [${recipe.title}](../../recipes/${slug}.md)`);
-    } else if (/\s/.test(slug)) {
-      lines.push(`## ${DAYS[idx]}: ${slug}`);
-    } else {
+    const [slug, cook] = rest.join('=').split(':');
+    const recipePath = `recipes/${slug}.md`;
+    if (!repo.recipes.has(recipePath) && !/\s/.test(slug)) {
       const near = [...repo.recipes.values()].filter((r) => slug.split('-').some((w) => w.length > 3 && r.slug.includes(w)));
-      fail(`no recipe "recipes/${slug}.md"` + (near.length ? `. Did you mean: ${near.slice(0, 5).map((r) => r.slug).join(', ')}?` : ''));
+      fail(`no recipe "${recipePath}"` + (near.length ? `. Did you mean: ${near.slice(0, 5).map((r) => r.slug).join(', ')}?` : ''));
     }
-    if (cook) lines.push(`Cook: ${cook}`);
-    lines.push('');
+    days.push({ day: idx, recipePath: repo.recipes.has(recipePath) ? recipePath : null, label: slug, cook: cook || null, notes: [] });
   }
-  fillAndReport(monday, lines.join('\n'));
+  fillAndReport(monday, renderPlanDays(monday, days, repo.recipes));
 } else if (command === 'fill' || command === 'check') {
   const monday = mondayArg(args[0]);
   const path = planPath(monday);
