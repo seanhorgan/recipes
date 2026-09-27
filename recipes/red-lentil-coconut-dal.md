@@ -1,14 +1,24 @@
+---
+protein: plant
+gluten_free: yes
+prep_minutes: 25
+weeknight_minutes: 20
+---
 # Red Lentil & Coconut "Dal"
 
 ## Ingredients
-Prepped red lentils, 1 can coconut milk, cooked quinoa/sorghum, 1 head cauliflower (chopped).
+- 1 cup red lentils
+- turmeric
+- ground ginger
+- 1 can coconut milk
+- 1 head cauliflower, chopped
+- cooked quinoa or sorghum
 
-## Directions
-(Sunday Prep) Simmer 1 cup red lentils with turmeric and ginger for 15 mins until mash-like. (Night of) Sauté cauliflower in a pot. Add the prepped lentils and 1 can coconut milk. Simmer for 10 mins until creamy. Serve over warm grains.
+## Sunday Prep
+1. Simmer the red lentils with turmeric and ginger for 15 mins until mash-like. Refrigerate.
+2. Cook the grains. Refrigerate.
 
-
-## Rating
-⭐ (Placeholder - Edit to rate!)
-
-## History
-- 2026-05-04
+## Weeknight
+1. Sauté the cauliflower in a pot.
+2. Add the prepped lentils and coconut milk. Simmer for 10 mins until creamy.
+3. Serve over warm grains.
