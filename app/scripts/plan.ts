@@ -99,7 +99,7 @@ const [command, ...args] = process.argv.slice(2);
 if (command === 'context') {
   const date = option(args, '--date') ?? localToday();
   if (!isIsoDate(date)) fail('--date must be YYYY-MM-DD');
-  const text = agentContext(loadRepo(readRepoFiles()), date);
+  const text = agentContext(loadRepo(readRepoFiles()), date, readFileSync(join(REPO_ROOT, 'reference/planning.md'), 'utf8'));
   const out = option(args, '--out');
   if (out) {
     mkdirSync(dirname(out), { recursive: true });

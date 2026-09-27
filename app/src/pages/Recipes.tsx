@@ -3,6 +3,8 @@ import { repo, recipeStats, todayIso } from '../data.ts';
 import { PROTEINS, TAGS, currentRating, type Protein } from '../lib/recipe.ts';
 import { PROTEIN_LABEL, RecipeRating, ago, routeFor, shortDate } from '../ui.tsx';
 import { searchRecipes, searchTerms } from '../lib/search.ts';
+import { useSync } from '../sync.ts';
+import { href } from '../router.ts';
 
 type Sort = 'stale' | 'recent' | 'most' | 'rating' | 'quick' | 'name';
 
@@ -19,6 +21,7 @@ let saved: Filters = { query: '', proteins: [], tag: '', quick: false, sort: 'st
 
 export function Recipes() {
   const [f, setF] = useState<Filters>(saved);
+  const sync = useSync();
   const update = (patch: Partial<Filters>) => setF((prev) => (saved = { ...prev, ...patch }));
   const today = todayIso();
 
@@ -54,7 +57,10 @@ export function Recipes() {
 
   return (
     <>
-      <h1>Recipes</h1>
+      <div className="title-row">
+        <h1>Recipes</h1>
+        {sync.connected && <a className="button" href={href('add-recipe')}>Add recipe</a>}
+      </div>
       <div className="filters">
         <input
           type="search"

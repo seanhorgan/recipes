@@ -8,6 +8,7 @@ import { PlanList, PlanDetail } from './pages/Plans.tsx';
 import { Planner } from './pages/Planner.tsx';
 import { Settings } from './pages/Settings.tsx';
 import { Tonight } from './pages/Tonight.tsx';
+import { AddRecipe } from './pages/AddRecipe.tsx';
 
 function Page({ route }: { route: string[] }) {
   const [section, id] = route;
@@ -29,6 +30,7 @@ function Page({ route }: { route: string[] }) {
   if (section === 'plan') return <Planner monday={id} />;
   if (section === 'settings') return <Settings />;
   if (section === 'tonight') return <Tonight />;
+  if (section === 'add-recipe') return <AddRecipe />;
   return (
     <>
       <h1>Not found</h1>
@@ -59,7 +61,7 @@ function SyncBadge() {
 export function App() {
   useDataVersion(); // re-render everything when live data arrives
   const route = useRoute();
-  const tab = route[0] === 'sauces' ? 'recipes' : route[0] === 'plan' ? 'plans' : (route[0] ?? '');
+  const tab = route[0] === 'sauces' || route[0] === 'add-recipe' ? 'recipes' : route[0] === 'plan' ? 'plans' : (route[0] ?? '');
   const tabs = [
     ['', 'This week'],
     ['tonight', 'Tonight'],

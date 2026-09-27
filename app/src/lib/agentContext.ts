@@ -4,8 +4,12 @@ import { matchIngredient } from './ingredients.ts';
 import { cookHistory, type Repo } from './repo.ts';
 import { currentRating } from './recipe.ts';
 import { addDays, formatLong, mondayOf, planPath } from './dates.ts';
+import { planLink, SITE_URL } from './planLink.ts';
 
-export function agentContext(repo: Repo, today: string): string {
+const RAW = 'https://raw.githubusercontent.com/seanhorgan/recipes/main';
+
+/** `rules` is the text of reference/planning.md, included so a chat assistant gets everything from one page. */
+export function agentContext(repo: Repo, today: string, rules = ''): string {
   const history = cookHistory(repo.plans);
   // On Sunday that's tomorrow; any other day, the coming Monday.
   const monday = mondayOf(addDays(today, 1));
@@ -16,7 +20,8 @@ export function agentContext(repo: Repo, today: string): string {
   out.push(
     '# Meal planning context',
     '',
-    `Generated ${today} from the recipes repo (https://github.com/seanhorgan/recipes). Follow skills/plan-week/SKILL.md.`,
+    `Generated ${today} from the recipes repo (https://github.com/seanhorgan/recipes). Agents with repo access follow`,
+    'skills/plan-week/SKILL.md; chat assistants follow chat/claude-project.md.',
     '',
     `- **Next week to plan:** week of ${formatLong(nextMonday)} → \`${planPath(nextMonday)}\`` +
       (repo.plans.some((p) => p.monday === nextMonday) ? ' (a plan already exists; update it rather than replace it)' : ''),
@@ -66,6 +71,33 @@ export function agentContext(repo: Repo, today: string): string {
 
   out.push('', '## Sauces', '');
   for (const s of repo.sauces.values()) out.push(`- ${s.title}: \`../sauces/${s.slug}.md\` (link from a recipe's ingredients)`);
+
+  const example = planLink(nextMonday, [
+    ...rows.slice(0, 2).map((r, i) => ({ day: i, slug: r.r.slug, cook: i === 0 ? 'Ali' : undefined })),
+    { day: 4, label: 'Pizza night' },
+  ]);
+  out.push(
+    '',
+    '## Planner links',
+    '',
+    'A link opens the family app\'s planner already filled in; the family reviews it and taps Save.',
+    '',
+    `- Format: \`${SITE_URL}#/plan/<Monday>?mon=<slug>:<Cook>&tue=<slug>&fri=<Plain%20text>&mon.note=<note>\``,
+    '- Days: mon, tue, wed, thu, fri, sat, sun. A value is a recipe slug from the table above, or plain text (capitalized)',
+    '  for a night without a recipe. `:Ali` or `:Sean` sets the cook. Encode spaces as %20.',
+    `- Example: ${example}`,
+    '',
+    '## Writing a new recipe',
+    '',
+    `- Template: ${RAW}/reference/templates/recipe.md`,
+    `- Full format: ${RAW}/reference/schema.md`,
+    `- Any existing recipe, as an example or to update it: ${RAW}/recipes/<slug>.md`,
+    '- The file name (slug) is the title in lowercase with words joined by hyphens: "Miso-Glazed Cod & Bok Choy" →',
+    '  `miso-glazed-cod-bok-choy`.',
+    '- Use these ingredient names where they fit, so the shopping list knows the aisle:',
+    `  ${repo.catalog.entries.map((e) => e.name).join(', ')}.`,
+  );
+  if (rules.trim()) out.push('', '---', '', rules.trim().replace(/^# /, '## '));
   out.push('');
   return out.join('\n');
 }

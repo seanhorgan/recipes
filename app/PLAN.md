@@ -36,7 +36,7 @@ Each job works in the app and through an agent skill (`skills/`), so it can be d
 | Shared state | Lives in the weekly plan file as markdown checkboxes and `Cook:` lines. Edits are re-applicable transforms (`src/lib/writeQueue.ts`): taps within 1.5 seconds share one commit, and if the file changed on GitHub in the meantime the app re-reads it and re-applies the edits, so neither adult's changes are lost. |
 | Ratings | One family rating per cook, recorded in each recipe's `## Ratings`. The recipe's rating is the most recent one. |
 | Cook history | Derived from the weekly plans only; recipes don't store cook dates, so nothing has to be kept in sync. |
-| Recipe suggestions | Done by AI agents in chat sessions, not in the app. |
+| Recipe suggestions | Done by AI agents. Agents with repo access use `skills/`. Chat assistants without it (Claude chat) follow `chat/claude-project.md` and hand results to the app: a **planner link** (`#/plan/<Monday>?mon=<slug>:<Cook>…`, `lib/planLink.ts`) that opens the planner filled in, or a recipe to paste into **Add recipe** (`#/add-recipe`, `lib/importRecipe.ts`), which checks it like the validator and keeps ratings when updating. |
 | Drinks | Out of scope for now. |
 
 ## Data format (Phase 0 defines it in full in `reference/schema.md`)
