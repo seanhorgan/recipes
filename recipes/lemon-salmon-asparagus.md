@@ -5,7 +5,7 @@ prep_minutes: 5
 weeknight_minutes: 20
 tags: [sheet-pan]
 ---
-# Sheet Pan Salmon & Asparagus
+# Lemon Salmon & Asparagus
 
 *A simple lemony sheet-pan dinner where the oven does the work.*
 

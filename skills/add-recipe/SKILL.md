@@ -12,6 +12,9 @@ AI agent). The file format is in [`reference/schema.md`](../../reference/schema.
    If it already exists, keep the repo version; it has the family's edits. Only add genuinely new details, such as a
    missing quantity, and mention them in the commit message.
 2. **Create** `recipes/<title-in-kebab-case>.md` from [`reference/templates/recipe.md`](../../reference/templates/recipe.md):
+   - **Title** the dish by its main ingredients plus flavor, texture, or a distinctive method ("Crispy", "Stuffed",
+     "Lemon-Dill"). Drop time and cookware words from the source title ("15-Minute", "Quick", "Sheet-Pan", "Skillet").
+     See [`reference/schema.md`](../../reference/schema.md).
    - Fill in the header: `protein`, `gluten_free`, `prep_minutes`, `weeknight_minutes`, `tags`.
    - One ingredient per line, `quantity unit name, note`. Keep the source's quantities, and don't invent any it
      doesn't give.

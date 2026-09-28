@@ -5,7 +5,7 @@ prep_minutes: 10
 weeknight_minutes: 30
 tags: [sheet-pan]
 ---
-# Sheet-Pan Garlic Herb Cod
+# Garlic-Herb Cod
 
 ## Ingredients
 - 1.5 lb cod fillets

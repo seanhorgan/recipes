@@ -50,7 +50,8 @@ When they want a dish that isn't in the recipe list:
    from `…/recipes/<slug>.md` as an example. The essentials:
    - A header between `---` lines with `protein` (fish, shellfish, poultry, plant, or egg), `gluten_free: yes`,
      `prep_minutes`, `weeknight_minutes`, and `tags` (for example `[sheet-pan]`).
-   - `# Title`.
+   - `# Title`: the main ingredients plus flavor, texture, or a distinctive method ("Crispy", "Stuffed",
+     "Lemon-Dill"). No time or cookware words ("15-Minute", "Quick", "Sheet-Pan", "Skillet").
    - `## Ingredients`: one per line, as `- quantity unit name, note`. Use the known ingredient names on the page where
      they fit.
    - `## Sunday Prep`: numbered steps that can be done ahead. Seafood is cooked on the night, not on Sunday.

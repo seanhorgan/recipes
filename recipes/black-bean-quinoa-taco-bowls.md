@@ -5,7 +5,7 @@ prep_minutes: 20
 weeknight_minutes: 15
 tags: [bowl]
 ---
-# Quick Black Bean & Quinoa Taco Bowls with Avocado
+# Black Bean & Quinoa Taco Bowls with Avocado
 
 ## Ingredients
 - 2 cans (15 oz) black beans, rinsed and drained

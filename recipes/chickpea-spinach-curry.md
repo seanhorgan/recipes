@@ -5,7 +5,7 @@ prep_minutes: 10
 weeknight_minutes: 20
 tags: [bowl]
 ---
-# Quick Chickpea & Spinach Curry
+# Chickpea & Spinach Curry
 
 *A cozy coconut curry served over rice.*
 

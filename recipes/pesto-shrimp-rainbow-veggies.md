@@ -5,7 +5,7 @@ prep_minutes: 10
 weeknight_minutes: 25
 tags: [sheet-pan]
 ---
-# Sheet-Pan Pesto Shrimp & Rainbow Veggies
+# Pesto Shrimp & Rainbow Veggies
 
 ## Ingredients
 - 1 lb shrimp, peeled and deveined

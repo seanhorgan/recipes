@@ -5,7 +5,7 @@ prep_minutes: 0
 weeknight_minutes: 20
 tags: [skillet]
 ---
-# Mediterranean Shrimp & White Bean Skillet Bake
+# Mediterranean Shrimp & White Bean Bake
 
 *A one-pan braise using heart-healthy fats and quick protein.*
 

@@ -5,7 +5,7 @@ prep_minutes: 0
 weeknight_minutes: 15
 tags: [skillet]
 ---
-# 15-Minute Black Bean Quesadillas
+# Black Bean Quesadillas
 
 *Pantry-staple quesadillas with almost no chopping.*
 

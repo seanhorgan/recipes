@@ -94,6 +94,8 @@ export function agentContext(repo: Repo, today: string, rules = ''): string {
     `- Any existing recipe, as an example or to update it: ${RAW}/recipes/<slug>.md`,
     '- The file name (slug) is the title in lowercase with words joined by hyphens: "Miso-Glazed Cod & Bok Choy" →',
     '  `miso-glazed-cod-bok-choy`.',
+    '- Title: the main ingredients plus flavor, texture, or a distinctive method ("Crispy", "Stuffed", "Lemon-Dill").',
+    '  No time or cookware words ("15-Minute", "Quick", "Sheet-Pan", "Skillet").',
     '- Use these ingredient names where they fit, so the shopping list knows the aisle:',
     `  ${repo.catalog.entries.map((e) => e.name).join(', ')}.`,
   );

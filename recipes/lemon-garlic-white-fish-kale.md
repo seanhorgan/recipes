@@ -5,7 +5,7 @@ prep_minutes: 5
 weeknight_minutes: 15
 tags: [skillet]
 ---
-# Lemon-Garlic White Fish & Kale Skillet
+# Lemon-Garlic White Fish & Kale
 
 *A quick, high-iron pescatarian skillet with bright citrus notes.*
 

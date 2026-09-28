@@ -28,6 +28,9 @@ Errors must be fixed. Warnings are hints (for example, an ingredient missing fro
 
 The file name is the title in lowercase kebab-case, e.g. `lemon-dill-salmon-asparagus.md`.
 
+**Titles:** Name the dish by its main ingredients plus anything describing flavor, texture, or a distinctive method (e.g. "Crispy", "Stuffed", "Pan-Seared", "Lemon-Dill"). Leave out cooking time and cookware ("15-Minute", "Quick", "Easy", "Sheet-Pan", "Skillet"). For example, "Black Bean Quesadillas", not "15-Minute Black Bean Quesadillas", and
+"Garlic-Herb Cod", not "Sheet-Pan Garlic Herb Cod". Cookware belongs in `tags`, and time in `weeknight_minutes`.
+
 ```markdown
 ---
 protein: fish

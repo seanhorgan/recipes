@@ -5,7 +5,7 @@ prep_minutes: 10
 weeknight_minutes: 30
 tags: [sheet-pan]
 ---
-# Sheet-Pan Lemon Chicken & Roasted Radishes
+# Lemon Chicken & Roasted Radishes
 
 ## Ingredients
 - 4 chicken breasts
