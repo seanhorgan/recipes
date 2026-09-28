@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { repo, history, todayIso } from '../data.ts';
 import { edit, useSync } from '../sync.ts';
 import { updateChecklistItem, type ChecklistItem, type Plan } from '../lib/plan.ts';
@@ -40,16 +40,14 @@ function VarietyCheck({ plan }: { plan: Plan }) {
     ...v.recentRepeats.map((r) => `${r.recipe} was also on the menu ${shortDate(r.lastDate)}`),
   ];
   return (
-    <Section title="Variety check">
-      <div className="chip-row">
-        {mix.map((p) => <Chip key={p}>{PROTEIN_LABEL[p]} × {v.proteins[p]}</Chip>)}
-      </div>
+    <div className="variety small muted">
+      <span>Variety: {mix.map((p) => `${PROTEIN_LABEL[p]} × ${v.proteins[p]}`).join(' · ')}</span>
       {flags.length ? (
         <ul className="bullets warn-list">{flags.map((f) => <li key={f}>{f}</li>)}</ul>
       ) : (
-        <p className="muted">No repeated key ingredients, dish styles, or recent repeats. 👍</p>
+        <span> · no repeated key ingredients, dish styles, or recent repeats 👍</span>
       )}
-    </Section>
+    </div>
   );
 }
 
@@ -66,7 +64,7 @@ export function PlanView({ plan, heading }: { plan: Plan; heading?: string }) {
         <EditPlanLink monday={plan.monday} />
       </div>
       {heading && <p className="lede">Week of {formatLong(plan.monday)}</p>}
-      <ol className="week">
+      <ol className="week week-calendar" style={{ '--days': plan.days.length } as CSSProperties}>
         {plan.days.map((d) => {
           const recipe = d.recipePath ? repo.recipes.get(d.recipePath) : undefined;
           const isToday = d.date === today;

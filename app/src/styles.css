@@ -130,6 +130,16 @@ footer { max-width: 760px; margin: 0 auto; padding: 1rem 16px 2rem; color: var(-
 .day-title { font-weight: 600; }
 .day-note { font-size: 0.85rem; }
 
+/* Plan view: Mon–Fri side by side like a calendar; one column on narrow screens. */
+main:has(.week-calendar) { max-width: 1120px; }
+@media (min-width: 800px) {
+  .week-calendar { grid-template-columns: repeat(var(--days, 5), minmax(0, 1fr)); }
+  .week-calendar .day { grid-template-columns: 1fr; gap: 0.5rem; align-content: start; }
+  .week-calendar .day-name { display: flex; align-items: baseline; gap: 0.4rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+}
+.variety { margin: 0.6rem 0.25rem 0; }
+.variety .warn-list { margin: 0.25rem 0 0; }
+
 /* Recipe content */
 .ingredients, .bullets, .checklist, .ratings { padding-left: 1.2rem; margin: 0.25rem 0; }
 .ingredients li, .bullets li, .ratings li { margin: 0.2rem 0; }

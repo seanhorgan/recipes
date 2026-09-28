@@ -65,8 +65,8 @@ export function App() {
   const tabs = [
     ['', 'This week'],
     ['tonight', 'Tonight'],
-    ['recipes', 'Recipes'],
     ['plans', 'Plans'],
+    ['recipes', 'Recipes'],
   ];
   return (
     <>
