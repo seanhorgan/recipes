@@ -68,9 +68,11 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Eggs | Dairy & Eggs | key | | |
 | Feta | Dairy & Eggs | | Block of feta | feta cheese |
 | Goat cheese | Dairy & Eggs | | | crumbled goat cheese |
+| Mozzarella pearls | Dairy & Eggs | | | fresh mozzarella pearls |
 | Greek yogurt | Dairy & Eggs | | Plain Greek yogurt | plain Greek yogurt |
 | Parmesan | Dairy & Eggs | | | grated Parmesan |
 | Ricotta | Dairy & Eggs | | Whole milk ricotta | ricotta cheese |
+| Shredded Mexican blend cheese | Dairy & Eggs | | | shredded cheese, shredded cheddar |
 | Extra-firm tofu | Refrigerated | key | | tofu |
 | GF pesto | Refrigerated | | Certified gluten-free basil pesto | pesto, basil pesto |
 | Salsa | Refrigerated | | | |
@@ -84,11 +86,14 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | GF flatbreads | Bakery | | | GF flatbread crusts |
 | Corn tortillas | Bakery | | | |
 | Corn tostada shells | Bakery | | | tostada shells |
+| Flour tortillas | Bakery | | GF flour tortillas | tortillas |
 | Quinoa | Grains & Pasta | | | |
 | Brown rice | Grains & Pasta | | | |
+| Instant rice | Grains & Pasta | | Instant or microwavable pouch rice | pouch rice |
 | Sorghum | Grains & Pasta | | | |
 | GF pasta | Grains & Pasta | | Red lentil or chickpea pasta | GF fusilli, GF penne |
 | GF rice noodles | Grains & Pasta | | | rice noodles |
+| Potato gnocchi | Grains & Pasta | | Gluten-free shelf-stable potato gnocchi | gnocchi |
 | Red lentils | Grains & Pasta | key | | |
 | Green lentils | Grains & Pasta | key | | |
 | Polenta | Grains & Pasta | | Tube of pre-cooked polenta | tube polenta |
@@ -144,5 +149,6 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Red pepper flakes | Spices & Condiments | staple | | |
 | Shawarma spice blend | Spices & Condiments | | | |
 | GF taco seasoning | Spices & Condiments | | | taco seasoning |
+| Curry powder | Spices & Condiments | | | yellow curry powder |
 | Dijon mustard | Spices & Condiments | staple | | mustard, yellow mustard |
 | Zing dressing | Spices & Condiments | staple | | Jar A |
