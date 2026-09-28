@@ -2,8 +2,8 @@
 protein: fish
 gluten_free: yes
 prep_minutes: 30
-weeknight_minutes: 15
-tags: [skillet]
+weeknight_minutes: 20
+tags: [baked]
 ---
 # Turmeric-Ginger Cod with Roasted Root Mash
 
@@ -24,10 +24,9 @@ tags: [skillet]
 2. Drain and mash with olive oil and a splash of coconut milk or broth, **keeping the potato skins in the mash** for texture and nutrients. Refrigerate.
 
 ## Weeknight
-1. Reheat the root mash.
-2. Rub the cod with turmeric, ginger, salt, and pepper.
-3. Pan-sear the cod in olive oil over medium-high heat for 3–4 mins per side until flaky.
-4. Serve the cod over a generous bed of the mash.
+1. Heat the oven to 425°F. Rub the cod with the olive oil, turmeric, ginger, salt, and pepper, and put it on a lined sheet pan.
+2. Bake 10–12 mins until the cod flakes easily. Reheat the root mash while it bakes.
+3. Serve the cod over a generous bed of the mash.
 
 ## Ratings
 - 2026-05-13 ★★★★

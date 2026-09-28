@@ -2,10 +2,10 @@
 protein: fish
 gluten_free: yes
 prep_minutes: 20
-weeknight_minutes: 15
-tags: [skillet]
+weeknight_minutes: 20
+tags: [sheet-pan]
 ---
-# Pan-Seared Salmon with Lemon-Herb Quinoa & Asparagus
+# Baked Salmon with Lemon-Herb Quinoa & Asparagus
 
 ## Ingredients
 - 4 salmon fillets, about 6 oz each
@@ -22,7 +22,7 @@ tags: [skillet]
 2. Trim the asparagus.
 
 ## Weeknight
-1. Season the salmon generously with salt and pepper. Heat 1 tbsp olive oil in a large skillet over medium-high heat. Sear the salmon for 4 mins until a crust forms.
-2. Flip; add the garlic and asparagus around the salmon and cook 3–4 mins more until the salmon is cooked through and the asparagus is tender-crisp.
+1. Heat the oven to 425°F. Season the salmon generously with salt and pepper and put it on a lined sheet pan.
+2. Toss the asparagus and garlic with 1 tbsp olive oil and spread around the salmon. Bake 12–15 mins until the salmon flakes easily and the asparagus is tender-crisp.
 3. Warm the quinoa and stir in the remaining olive oil, the lemon juice, and the dill.
 4. Serve the salmon and asparagus alongside the quinoa, with lemon wedges.
