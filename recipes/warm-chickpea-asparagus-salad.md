@@ -16,7 +16,7 @@ tags: [salad]
 - arugula
 
 ## Sunday Prep
-1. Toss the chickpeas with olive oil, lemon zest, and salt; roast at 400°F until crisp. Refrigerate.
+1. Pat the chickpeas dry. Toss with olive oil, lemon zest, and salt; roast at 400°F for 25–30 mins, shaking halfway, until crisp. Refrigerate.
 
 ## Weeknight
 1. Sauté the asparagus for 4 mins. Toss in the roasted chickpeas just to warm them.
