@@ -18,3 +18,4 @@ Before committing:
 - Check your changes with `cd app && npm ci && npm run validate`. If you can't run commands, the "Validate recipes"
   GitHub Action checks every push.
 - The repo is public. Never commit tokens or other secrets.
+- Commit and push straight to `main`. Don't open pull requests for this repo.
