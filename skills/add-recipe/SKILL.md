@@ -21,8 +21,8 @@ AI agent). The file format is in [`reference/schema.md`](../../reference/schema.
    - **Split the method** into `## Sunday Prep` (roasting, chopping, cooking grains, sauces, anything that keeps) and
      `## Weeknight` (what's left for the night, ideally 15–30 minutes). Seafood is cooked on the night.
    - Shared sauces live in `sauces/` and are linked from the ingredient list.
-   - Apply [`reference/planning.md`](../../reference/planning.md): gluten-free by default, no mushrooms, and a
-     `## Kid Boost` if the meal is light on protein.
+   - Apply [`reference/planning.md`](../../reference/planning.md): gluten-free by default, no mushrooms, fish baked
+     rather than pan-seared, and a `## Kid Boost` if the meal is light on protein.
 3. **Add any new ingredients** to [`reference/ingredients.md`](../../reference/ingredients.md), with aisle, kind, and
    how to buy it.
 4. **Don't add ratings.** The family adds those after cooking.

@@ -2,8 +2,8 @@
 protein: fish
 gluten_free: yes
 prep_minutes: 35
-weeknight_minutes: 15
-tags: [skillet]
+weeknight_minutes: 20
+tags: [sheet-pan]
 ---
 # Crispy Turmeric Salmon & Sweet Potato "Steaks"
 
@@ -21,7 +21,7 @@ tags: [skillet]
 1. Peel and cube the sweet potatoes; toss with oil and salt and roast at 400°F for 25 mins. Refrigerate.
 
 ## Weeknight
-1. Rub the salmon with turmeric and salt.
-2. Pan-sear the salmon skin-side down for 4 mins. Add the pre-roasted sweet potatoes to the pan to crisp up.
-3. Flip the salmon and cook 2 mins more.
-4. Stir in the spinach at the end until wilted.
+1. Heat the oven to 425°F. Rub the salmon with olive oil, turmeric, and salt.
+2. Put the salmon skin-side down on a lined sheet pan and spread the pre-roasted sweet potatoes around it.
+3. Bake 12–15 mins, until the salmon flakes easily and the sweet potatoes are hot and crisp at the edges.
+4. Pile the spinach onto the hot pan for the last 2 mins to wilt, or serve it raw as a bed under the salmon.

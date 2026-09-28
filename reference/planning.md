@@ -18,6 +18,8 @@
 - **Healthy defaults:** Avoid too much fat, sugar, and processed ingredients.
 
 ## Scheduling & Prep
+- **Bake fish, don't pan-sear:** pan-searing makes a mess that takes time to clean. Cook fish in the oven (baked or
+  roasted on a lined sheet pan) instead, and convert pan-sear steps when adding or importing recipes.
 - **Sunday Prep focus:** Optimize for meals that can be partially or fully prepped on Sunday.
 - **Fast Weeknight Execution:** Aim for 10-15 minute active assembly/cook time.
 - **Unified Meals:** Plan exactly ONE main meal for the family, with optional protein "boosters" for the kids.
