@@ -25,7 +25,7 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Bell pepper | Produce | | | Wegmans Organic Red Bell Pepper | red bell pepper, yellow bell pepper |
 | Broccoli | Produce | key | | Wegmans Organic Broccoli Florets (10 oz) | broccoli florets |
 | Butternut squash | Produce | key | | Wegmans Butternut Squash (20 oz) | |
-| Cabbage | Produce | key | Bag of pre-shredded green & red cabbage | | shredded cabbage |
+| Cabbage | Produce | key | | Wegmans Cabbage, Shredded, Red (10 oz) | shredded cabbage |
 | Carrots | Produce | key | Large orange carrots (not baby carrots) | Wegmans Organic Carrots | carrot |
 | Cauliflower | Produce | key | 2 lb family pack of pre-cut florets | Wegmans Cauliflower Florets, FAMILY PACK (2 lb) | cauliflower florets |
 | Cherry tomatoes | Produce | | | Wegmans Cherry Tomatoes (1 pt) | |
@@ -89,12 +89,12 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | GF flatbreads | Bakery | | | BFree Naan Bread, Gluten Free, Stone Baked | GF flatbread crusts |
 | Corn tortillas | Bakery | | | La Banderita Corn Tortillas, White (16 oz) | |
 | Corn tostada shells | Bakery | | | | tostada shells |
-| Flour tortillas | Bakery | | GF flour tortillas | Siete Tortillas, Grain Free, Cassava Flour (8 ct) | tortillas |
+| Flour tortillas | Bakery | | | Mission Super Soft Flour Tortillas, Soft Taco (10 ct) | tortillas |
 | Quinoa | Grains & Pasta | | | Bob's Red Mill Quinoa, Organic, Whole Grain (26 oz) | |
 | Brown rice | Grains & Pasta | | | Wegmans Organic Long Grain Brown Rice (32 oz) | |
 | Instant rice | Grains & Pasta | | Instant or microwavable pouch rice | | pouch rice |
 | Sorghum | Grains & Pasta | | | | |
-| GF pasta | Grains & Pasta | | Red lentil or chickpea pasta | | GF fusilli, GF penne |
+| GF pasta | Grains & Pasta | | | Barilla Gluten Free Penne Pasta (12 oz) | GF fusilli, GF penne |
 | GF rice noodles | Grains & Pasta | | | Wegmans Organic White Rice Noodles (7.7 oz) | rice noodles |
 | Potato gnocchi | Grains & Pasta | | Gluten-free shelf-stable potato gnocchi | De Cecco Gnocchi, Gluten-Free, Fresh Potato (17.6 oz) | gnocchi |
 | Red lentils | Grains & Pasta | key | | Wegmans Organic Red Lentils (16 oz) | |

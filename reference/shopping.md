@@ -9,7 +9,7 @@
 - **Pantry staples** (Kind `staple` in `ingredients.md`) stay off the list; note them under "check the pantry" instead.
 
 ## Dietary Defaults (Gluten-Free)
-- **Pasta:** Default to Red Lentil or Chickpea GF pasta.
+- **Pasta:** Default to Barilla gluten-free pasta; everyone eats it.
 - **Bread:** Default to GF Baguettes, Sourdough, or Flatbreads.
 - **Grains:** Use Quinoa, Sorghum, or Rice.
 
@@ -21,5 +21,6 @@ carrots rather than baby carrots) is in the **Buy as** column of [`ingredients.m
 The family shops at Wegmans on Instacart. For each item on a week's shopping list, search for the
 **Instacart product** listed for that ingredient in [`ingredients.md`](ingredients.md); it's what the family usually
 buys, with its package size. Buy enough packages to cover the listed quantity. If an item has no product listed, or
-the product is out of stock, pick one that fits the ingredient name and **Buy as** (gluten-free where it matters).
+the product is out of stock, pick one that fits the ingredient name and **Buy as** (gluten-free where a dish is shared
+with Ali). When the family's orders and a note here disagree, go with the orders.
 Pantry staples stay out of the cart unless someone says they're running low.
