@@ -16,3 +16,10 @@
 ## Ingredient Specifics
 How we like to buy specific items (for example, cauliflower as a 2 lb family pack of pre-cut florets, and large orange
 carrots rather than baby carrots) is in the **Buy as** column of [`ingredients.md`](ingredients.md).
+
+## Filling the Instacart Cart
+The family shops at Wegmans on Instacart. For each item on a week's shopping list, search for the
+**Instacart product** listed for that ingredient in [`ingredients.md`](ingredients.md); it's what the family usually
+buys, with its package size. Buy enough packages to cover the listed quantity. If an item has no product listed, or
+the product is out of stock, pick one that fits the ingredient name and **Buy as** (gluten-free where it matters).
+Pantry staples stay out of the cart unless someone says they're running low.

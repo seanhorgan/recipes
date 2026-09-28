@@ -62,6 +62,15 @@ test('agent context names the next week and lists recipes', () => {
   assert.match(ctx, /week of October 5, 2026 → `2026\/October\/2026-10-05.md` \(a plan already exists/);
   assert.match(ctx, /\| Bowls \| a \| plant \|/);
   assert.match(agentContext(loadRepo(files()), '2026-10-07'), /week of October 12, 2026/);
+  assert.doesNotMatch(ctx, /## Instacart products/);
+});
+
+test('agent context lists the usual Instacart product for each ingredient that has one', () => {
+  const catalog = '| Ingredient | Aisle | Kind | Instacart product |\n|---|---|---|---|\n' +
+    '| Salmon | Seafood | key | Wegmans Fresh EU Organic Salmon Fillet |\n| Olive oil | Pantry | staple | Wegmans EVOO |\n| Lemon | Produce | | |\n';
+  const ctx = agentContext(loadRepo(new Map([...files(), ['reference/ingredients.md', catalog]])), '2026-10-04');
+  assert.match(ctx, /## Instacart products[\s\S]*- Salmon: Wegmans Fresh EU Organic Salmon Fillet\n- Olive oil: Wegmans EVOO \(staple\)/);
+  assert.doesNotMatch(ctx, /- Lemon:/);
 });
 
 test('prep steps that differ only by storage notes, case, or punctuation count as the same', () => {

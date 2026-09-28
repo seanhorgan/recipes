@@ -37,11 +37,11 @@ test('ingredient lines', () => {
 });
 
 const CATALOG = `
-| Ingredient | Aisle | Kind | Buy as | Also called |
-|---|---|---|---|---|
-| Sweet potato | Produce | key | | yam |
-| Olive oil | Pantry | staple | | extra virgin olive oil |
-| Cauliflower | Produce | key | 2 lb family pack of florets | cauliflower florets |
+| Ingredient | Aisle | Kind | Buy as | Instacart product | Also called |
+|---|---|---|---|---|---|
+| Sweet potato | Produce | key | | | yam |
+| Olive oil | Pantry | staple | | | extra virgin olive oil |
+| Cauliflower | Produce | key | 2 lb family pack of florets | Wegmans Cauliflower Florets, FAMILY PACK (2 lb) | cauliflower florets |
 `;
 
 test('catalog parsing and matching', () => {
@@ -50,6 +50,8 @@ test('catalog parsing and matching', () => {
   assert.equal(matchIngredient(catalog, 'large sweet potatoes')?.name, 'Sweet potato');
   assert.equal(matchIngredient(catalog, 'Extra-virgin olive oil')?.name, 'Olive oil');
   assert.equal(matchIngredient(catalog, 'Cauliflower florets')?.buyAs, '2 lb family pack of florets');
+  assert.equal(matchIngredient(catalog, 'cauliflower')?.instacart, 'Wegmans Cauliflower Florets, FAMILY PACK (2 lb)');
+  assert.equal(matchIngredient(catalog, 'sweet potato')?.instacart, null);
   assert.equal(matchIngredient(catalog, 'kale'), undefined);
   assert.equal(matchIngredient(catalog, 'yam or cauliflower')?.name, 'Sweet potato');
 

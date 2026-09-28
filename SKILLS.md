@@ -49,7 +49,7 @@ family all share. Skills link here instead of repeating these, so each rule live
 
 - **Family preferences, nutrition, and variety:** [reference/planning.md](reference/planning.md)
 - **Shopping list rules:** [reference/shopping.md](reference/shopping.md)
-- **Ingredients (aisle, how to buy, pantry staples):** [reference/ingredients.md](reference/ingredients.md)
+- **Ingredients (aisle, how to buy, usual Instacart product, pantry staples):** [reference/ingredients.md](reference/ingredients.md)
 - **File formats:** [reference/schema.md](reference/schema.md), with templates in [reference/templates/](reference/templates)
 
 Key points:

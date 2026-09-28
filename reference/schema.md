@@ -10,7 +10,7 @@ they follow a few fixed conventions. Each fact lives in exactly one place:
 | What we cook each week, and who cooks it | `YYYY/Month/YYYY-MM-DD.md` (weekly plans) |
 | When a dish was last cooked | Derived from the weekly plans (not stored in recipes) |
 | How the family rated a dish | The recipe's `## Ratings` section |
-| Aisle, how to buy it, pantry staple | `reference/ingredients.md` |
+| Aisle, how to buy it, usual Instacart product, pantry staple | `reference/ingredients.md` |
 
 Templates: [`reference/templates/recipe.md`](templates/recipe.md) and [`reference/templates/plan.md`](templates/plan.md).
 

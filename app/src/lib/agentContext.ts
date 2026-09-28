@@ -72,6 +72,19 @@ export function agentContext(repo: Repo, today: string, rules = ''): string {
   out.push('', '## Sauces', '');
   for (const s of repo.sauces.values()) out.push(`- ${s.title}: \`../sauces/${s.slug}.md\` (link from a recipe's ingredients)`);
 
+  const products = repo.catalog.entries.filter((e) => e.instacart);
+  if (products.length) {
+    out.push(
+      '',
+      '## Instacart products',
+      '',
+      'To fill the Instacart cart from a shopping list, search Wegmans for the product listed for each item. For an item',
+      "that isn't listed, search by its name. Pantry staples are only bought when the family says they're running low.",
+      '',
+    );
+    for (const e of products) out.push(`- ${e.name}: ${e.instacart}${e.kind === 'staple' ? ' (staple)' : ''}`);
+  }
+
   const example = planLink(nextMonday, [
     ...rows.slice(0, 2).map((r, i) => ({ day: i, slug: r.r.slug, cook: i === 0 ? 'Ali' : undefined })),
     { day: 4, label: 'Pizza night' },

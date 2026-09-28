@@ -164,6 +164,8 @@ export interface CatalogEntry {
   /** `key` ingredients define a dish and count toward variety checks; `staple`s stay off the shopping list. */
   kind: IngredientKind;
   buyAs: string | null;
+  /** The exact product the family usually buys on Instacart, with its package size. */
+  instacart: string | null;
   aliases: string[];
   line: number;
 }
@@ -215,6 +217,7 @@ export function parseCatalog(text: string, file = 'reference/ingredients.md'): {
       aisle,
       kind: kindText === 'key' || kindText === 'staple' ? kindText : null,
       buyAs: get('buy as') || null,
+      instacart: get('instacart product') || null,
       aliases: get('also called').split(',').map((a) => a.trim()).filter(Boolean),
       line,
     };
