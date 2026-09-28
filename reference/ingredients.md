@@ -74,6 +74,7 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Extra-firm tofu | Refrigerated | key | | tofu |
 | GF pesto | Refrigerated | | Certified gluten-free basil pesto | pesto, basil pesto |
 | Salsa | Refrigerated | | | |
+| Guacamole | Refrigerated | | | |
 | Frozen peas | Frozen | | | peas |
 
 ## Bakery, Grains & Pasta
@@ -84,10 +85,12 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Corn tortillas | Bakery | | | |
 | Corn tostada shells | Bakery | | | tostada shells |
 | Quinoa | Grains & Pasta | | | |
+| Brown rice | Grains & Pasta | | | |
 | Sorghum | Grains & Pasta | | | |
 | GF pasta | Grains & Pasta | | Red lentil or chickpea pasta | GF fusilli, GF penne |
 | GF rice noodles | Grains & Pasta | | | rice noodles |
 | Red lentils | Grains & Pasta | key | | |
+| Green lentils | Grains & Pasta | key | | |
 | Polenta | Grains & Pasta | | Tube of pre-cooked polenta | tube polenta |
 
 ## Canned & Jarred
