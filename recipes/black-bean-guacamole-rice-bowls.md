@@ -26,3 +26,6 @@ tags: [bowl]
 2. Heat the olive oil in a skillet over medium heat. Sauté the diced onion for 3–4 mins until soft and lightly golden.
 3. Add the black beans, cumin, and half the salsa. Simmer for 5 mins until hot and slightly thickened.
 4. Divide the rice among bowls. Top with the beans, tomatoes, guacamole, and the remaining salsa.
+
+## Ratings
+- 2026-09-29 ★★★★ Kids loved it.

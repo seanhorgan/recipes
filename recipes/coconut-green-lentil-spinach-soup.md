@@ -15,10 +15,10 @@ tags: [soup]
 - 1 tsp turmeric
 - 1 tsp ground ginger
 - 1 tsp cumin
-- 2 cups water, or vegetable broth
 - 3 cups baby spinach
-- 1 cup cooked brown rice
+- 2 cups cooked brown rice
 - salt and pepper
+- Optional: 2 cups water, or vegetable broth for a soupier dinner
 
 ## Sunday Prep
 1. Dice the onion. Refrigerate.
@@ -30,3 +30,6 @@ tags: [soup]
 
 ## Kid Boost
 - Stir in 1/4 cup pumpkin seeds or a spoonful of Greek yogurt on top.
+
+## Ratings
+- 2026-09-30 ★★★★ Kids liked it. Could make a larger serving for leftovers.
