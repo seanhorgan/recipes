@@ -30,3 +30,6 @@ tags: [soup]
 
 ## Kid Boost
 - Stir in 1/4 cup pumpkin seeds or a spoonful of Greek yogurt on top.
+
+## Ratings
+- 2026-09-30 ★★★★ Kids liked it. Could make a larger serving for leftovers.
