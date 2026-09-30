@@ -25,3 +25,6 @@ tags: [sheet-pan]
 2. Put the salmon skin-side down on a lined sheet pan and spread the pre-roasted sweet potatoes around it.
 3. Bake 12–15 mins, until the salmon flakes easily and the sweet potatoes are hot and crisp at the edges.
 4. Pile the spinach onto the hot pan for the last 2 mins to wilt, or serve it raw as a bed under the salmon.
+
+## Ratings
+- 2026-09-28 ★★★★★ Tumeric flavor was amazing.
