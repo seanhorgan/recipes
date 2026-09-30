@@ -24,3 +24,6 @@ tags: [bowl]
 1. Warm the rice.
 2. Simmer the black beans with the cumin and half the salsa for 5 mins until hot and slightly thickened.
 3. Divide the rice among bowls. Top with the beans, tomatoes, onion, guacamole, and the remaining salsa.
+
+## Ratings
+- 2026-09-29 ★★★★ Kids loved it.
