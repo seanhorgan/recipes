@@ -80,6 +80,10 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | GF pesto | Refrigerated | | Certified gluten-free basil pesto | Wegmans Italian Classics Basil Pesto Sauce (6.7 oz) | pesto, basil pesto |
 | Salsa | Refrigerated | | | Newman's Own Salsa, Mild, Chunky (16 oz) | |
 | Guacamole | Refrigerated | | | Wegmans Guacamole (12 oz) | |
+## Frozen
+| Ingredient | Aisle | Kind | Buy as | Instacart product | Also called |
+|---|---|---|---|---|---|
+| Jeni's Goat Cheese Ice Cream | Frozen | | | Jeni's Goat Cheese with Red Cherries Ice Cream (1 pt) | goat cheese ice cream, Jeni's ice cream |
 | Frozen peas | Frozen | | | Wegmans Frozen Sweet Peas (16 oz) | peas |
 
 ## Bakery, Grains & Pasta
