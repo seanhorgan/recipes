@@ -19,6 +19,6 @@ tags: [soup]
 1. Toss the cubed squash with olive oil and salt; roast at 400°F until tender. Refrigerate.
 
 ## Weeknight
-1. Simmer the roasted squash, beans, and broth for 10 mins. Add the thyme.
+1. In a pot, bring the roasted squash, beans, and vegetable broth to a boil over high heat. Reduce heat to medium-low, cover (or leave lid slightly ajar), and simmer gently for 10 minutes. Stir in the thyme.
 2. Blend with an immersion blender until smooth.
 3. Serve with olive-oil-toasted GF baguette crostini.
