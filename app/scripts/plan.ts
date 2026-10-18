@@ -84,6 +84,8 @@ function report(repo: Repo, path: string): void {
     ...v.repeatedKeys.map((k) => `key ingredient ${k.ingredient} in: ${k.recipes.join(', ')}`),
     ...v.repeatedTags.map((t) => `dish style "${t.tag}" repeated: ${t.recipes.join(', ')}`),
     ...v.recentRepeats.map((r) => `${r.recipe} was also planned ${r.lastDate} (within 4 weeks)`),
+    ...v.backToBackSeafood.map((b) => `seafood two nights in a row: ${b.days[0]} ${b.recipes[0]}, ${b.days[1]} ${b.recipes[1]}`),
+    ...v.lastWeekProteins.map((k) => `${k.ingredient} (${k.recipe}) was also on last week's menu`),
   ];
   console.log(flags.length ? `\nVariety warnings:\n${flags.map((f) => `  - ${f}`).join('\n')}` : '\nVariety: no warnings.');
   const issues = repo.issues.filter((i) => i.file === path);

@@ -12,7 +12,14 @@ export interface VarietyReport {
   repeatedTags: { tag: string; recipes: string[] }[];
   /** Dinners that were also planned in the 4 weeks before this one. */
   recentRepeats: { recipe: string; lastDate: string }[];
+  /** Fish or shellfish dinners on two nights in a row. */
+  backToBackSeafood: { days: [string, string]; recipes: [string, string] }[];
+  /** Key seafood, meat, or poultry ingredients that were also in the week before this one. */
+  lastWeekProteins: { ingredient: string; recipe: string }[];
 }
+
+const SEAFOOD: Protein[] = ['fish', 'shellfish'];
+const PROTEIN_AISLES = ['Seafood', 'Meat & Poultry'];
 
 function repeats(pairs: [string, string][]): { key: string; recipes: string[] }[] {
   const by = new Map<string, string[]>();
@@ -35,16 +42,40 @@ export function varietyReport(
   const tagPairs: [string, string][] = [];
   const recentRepeats: VarietyReport['recentRepeats'] = [];
   const windowStart = plan.monday ? addDays(plan.monday, -28) : '';
+  const backToBackSeafood: VarietyReport['backToBackSeafood'] = [];
+  const lastWeekProteins: VarietyReport['lastWeekProteins'] = [];
+  const lastWeekStart = plan.monday ? addDays(plan.monday, -7) : '';
+  const lastWeekKeys = new Set<string>();
+  for (const [path, dates] of history) {
+    const r = recipes.get(path);
+    if (!r || !dates.some((d) => d >= lastWeekStart && d < plan.monday)) continue;
+    for (const ing of r.ingredients) {
+      const entry = ing.optional || ing.link ? undefined : matchIngredient(catalog, ing.name);
+      if (entry?.kind === 'key' && PROTEIN_AISLES.includes(entry.aisle)) lastWeekKeys.add(entry.name);
+    }
+  }
+  let prev: { date: string; day: string; recipe: Recipe } | undefined;
 
   for (const day of plan.days) {
     const r = day.recipePath ? recipes.get(day.recipePath) : undefined;
-    if (!r) continue;
+    if (!r) {
+      prev = undefined;
+      continue;
+    }
     if (r.protein) proteins[r.protein]++;
     for (const ing of r.ingredients) {
       if (ing.optional || ing.link) continue;
       const entry = matchIngredient(catalog, ing.name);
       if (entry?.kind === 'key') keyPairs.push([entry.name, r.title]);
+      if (entry && lastWeekKeys.has(entry.name) && !lastWeekProteins.some((p) => p.ingredient === entry.name)) {
+        lastWeekProteins.push({ ingredient: entry.name, recipe: r.title });
+      }
     }
+    if (prev && addDays(prev.date, 1) === day.date && r.protein && prev.recipe.protein &&
+        SEAFOOD.includes(r.protein) && SEAFOOD.includes(prev.recipe.protein)) {
+      backToBackSeafood.push({ days: [prev.day, day.day], recipes: [prev.recipe.title, r.title] });
+    }
+    prev = { date: day.date, day: day.day, recipe: r };
     for (const t of r.tags) tagPairs.push([t, r.title]);
     const earlier = (history.get(r.path) ?? []).filter((d) => d >= windowStart && d < plan.monday);
     if (earlier.length) recentRepeats.push({ recipe: r.title, lastDate: earlier[earlier.length - 1] });
@@ -55,5 +86,7 @@ export function varietyReport(
     repeatedKeys: repeats(keyPairs).map(({ key, recipes }) => ({ ingredient: key, recipes })),
     repeatedTags: repeats(tagPairs).map(({ key, recipes }) => ({ tag: key, recipes })),
     recentRepeats,
+    backToBackSeafood,
+    lastWeekProteins,
   };
 }

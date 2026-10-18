@@ -122,7 +122,7 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Sweet corn | Canned & Jarred | | | Wegmans Crisp N Sweet Whole Kernel Corn (15.25 oz) | canned sweet corn, corn |
 | Pickled red onions | Canned & Jarred | | | | |
 | Vegetable broth | Canned & Jarred | | GF low-sodium vegetable broth | Wegmans Organic Vegetable Broth (32 fl oz) | broth, GF vegetable broth, low-sodium vegetable broth |
-| Red lentil soup | Canned & Jarred | | | | lentil soup |
+| Red lentil soup | Canned & Jarred | key | | | lentil soup |
 
 ## Pantry
 | Ingredient | Aisle | Kind | Buy as | Instacart product | Also called |

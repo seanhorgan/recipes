@@ -93,6 +93,8 @@ function PlannerForm({ monday, link }: { monday: string; link: LinkDraft | null 
     ...v.repeatedKeys.map((k) => `${k.ingredient} in ${k.recipes.length} dinners`),
     ...v.repeatedTags.map((t) => `${t.recipes.length} ${t.tag} dinners`),
     ...v.recentRepeats.map((r) => `${r.recipe} was on the menu ${shortDate(r.lastDate)}`),
+    ...v.backToBackSeafood.map((b) => `seafood two nights in a row: ${b.days[0]} ${b.recipes[0]}, ${b.days[1]} ${b.recipes[1]}`),
+    ...v.lastWeekProteins.map((k) => `${k.ingredient} (${k.recipe}) was also on last week's menu`),
   ];
 
   return (

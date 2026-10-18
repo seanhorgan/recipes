@@ -39,6 +39,8 @@ list with last-cooked dates, using the first option that works for you:
 - `weeknight_minutes` of 30 or less.
 - Nothing cooked in the last 4 weeks (marked `⚠ recent` in the context).
 - No key ingredient twice in the week, and no dish style (`tags`) twice (see "Meal Variety" in `planning.md`).
+- No fish or shellfish on two nights in a row.
+- No seafood, meat, or poultry from last week's plan (for example, shrimp two weeks running).
 
 **Should:**
 - A protein mix of about 2 fish/shellfish, 2 plant, and at most 1 poultry or egg. Poultry is fine occasionally;
@@ -47,6 +49,22 @@ list with last-cooked dates, using the first option that works for you:
 - At least one favorite (★★★★ or more), and at most one or two recipes the family hasn't had before.
 - A total Sunday prep (the sum of `prep_minutes`) of about 2 hours or less.
 - Enough protein for the kids. If a dinner is light, add a note under that day, e.g. `Kid boost: side of edamame.`
+
+**Review the picks before you propose them.** The family has caught these mistakes before, so check each one yourself:
+- Read last week's plan, including its notes. A dinner that was skipped (say, the salmon on a night they ate out)
+  is a good candidate to bring back, and last week's proteins are the ones to avoid.
+- Read every dinner's full ingredient list. Two dinners on the same base, like red lentil soup and red lentil pasta,
+  count as a repeat even when the checker doesn't flag them. Where a recipe offers a choice ("red lentil or chickpea
+  pasta"), pick the option that avoids the overlap and say so in a note.
+- Apply the family's cooking rules to each recipe as written: bake fish rather than pan-searing it (`planning.md`), and
+  add a note under the day when a recipe's steps say otherwise.
+- When the person asks for something specific (simpler dinners, less prep), favor the recipes that best fit it.
+  Count prep shared between dinners only once, such as one batch of quinoa for two nights.
+
+**The recipes that are left can't make a good week?** For example, when the favorites are all recent, or the rules
+leave only one fish dinner. Don't settle for a weak plan. Suggest one or two new recipes that fit the rules (a dinner the
+family is likely to enjoy, kept simple), say why, and add the ones they want with the
+[add-recipe skill](../add-recipe/SKILL.md).
 
 **A dish that isn't in the repo yet?** Add it first with the [add-recipe skill](../add-recipe/SKILL.md), then plan it.
 Don't change existing recipes while planning unless you're asked to.
@@ -62,6 +80,8 @@ npm run plan -- new 2026-10-05 mon=lemon-dill-salmon-asparagus:Ali tue=red-lenti
 - The command writes the plan with its Sunday Prep checklist and shopping list, then prints a variety check and any
   problems.
 - If there are variety warnings, swap dinners and run it again with `--force`.
+- `new` rewrites the whole file, so notes you added under the days are lost. To change a dinner in a plan that already
+  has notes, edit its heading and run `fill` instead.
 - After editing a plan by hand, run `npm run plan -- fill 2026-10-05` to rebuild the two lists. Checked items stay checked.
 
 **If you can only edit files:** copy [`reference/templates/plan.md`](../../reference/templates/plan.md) and follow

@@ -30,6 +30,13 @@
   within the same week.
 - **Avoid repeats:** Don't repeat a recipe cooked in the last 4 weeks, and don't use the same `key` ingredient (see
   `ingredients.md`) twice in one week. *(Proposed default; adjust as needed.)*
+- **No fish two nights in a row:** Space fish and shellfish dinners out (for example Monday and Wednesday), never on
+  back-to-back nights.
+- **Don't repeat last week's protein:** Don't plan a seafood, meat, or poultry `key` ingredient (shrimp, salmon, cod,
+  chicken...) that was on the previous week's plan.
+- **Same base counts as a repeat:** Two dinners built on the same base (for example red lentil soup and red lentil
+  pasta, or two quinoa bowls) count as a repeat even when their `key` ingredients differ. Read each dinner's full
+  ingredient list, not just its keys.
 - **Mix proteins:** Aim for a mix across the week, for example 2 fish/seafood, 2 plant, and at most 1 poultry.
   *(Proposed default; adjust as needed.)*
 - **Last cooked:** Work out when a recipe was last cooked from the weekly plan files. Recipes don't store it.

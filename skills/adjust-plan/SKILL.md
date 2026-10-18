@@ -13,8 +13,8 @@ first.
 - **Swap or move nights:** move the whole day section: the heading, its `Cook:` line, and its notes. Keep seafood
   early in the week where possible.
 - **Replace a dinner:** pick a replacement with the [find-recipes skill](../find-recipes/SKILL.md). Follow the same
-  rules as [plan-week](../plan-week/SKILL.md): gluten-free, no repeats from the last 4 weeks, and no key ingredient or
-  dish style twice.
+  rules as [plan-week](../plan-week/SKILL.md): gluten-free, no repeats from the last 4 weeks, no fish two nights in a
+  row, nothing on the same base as another dinner, and no key ingredient or dish style twice.
 - **Use what's at home:** search for the ingredients on hand (`npm run plan -- find "chicken, spinach"`). Prefer
   recipes that use the most of them and still fit the rules. On the shopping list, check off (`[x]`) anything the
   family already has.

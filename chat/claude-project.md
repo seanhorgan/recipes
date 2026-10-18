@@ -31,7 +31,9 @@ changes.
    - Nothing cooked in the last 4 weeks.
    - No key ingredient or dish style twice.
    - About 2 fish/seafood, 2 plant, and at most 1 poultry.
-   - Seafood early in the week.
+   - Seafood early in the week, but never two nights in a row.
+   - No seafood, meat, or poultry from last week's plan, and no two dinners on the same base (red lentil soup and red
+     lentil pasta count as a repeat).
    - A weeknight time of 30 minutes or less, and about 2 hours of Sunday prep in total.
    - Enough protein for the kids.
 3. Reply with a short table (night, dinner, protein, minutes, cook) and one line on variety. Then give the planner link:

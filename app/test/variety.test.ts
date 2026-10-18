@@ -32,3 +32,19 @@ test('variety report flags repeated key ingredients, formats, and recent repeats
   assert.deepEqual(report.repeatedTags.map((t) => t.tag), ['sheet-pan']);
   assert.deepEqual(report.recentRepeats, [{ recipe: 'A', lastDate: '2026-08-24' }]);
 });
+
+test('variety report flags seafood on back-to-back nights and last week\'s proteins', () => {
+  const files = new Map([
+    ['reference/ingredients.md', CATALOG + '| Shrimp | Seafood | key | | |\n'],
+    ['recipes/salmon.md', recipe('Salmon', 'fish', 'sheet-pan', '- 1 lb salmon')],
+    ['recipes/shrimp.md', recipe('Shrimp', 'shellfish', 'stir-fry', '- 1 lb shrimp')],
+    ['recipes/bowl.md', recipe('Bowl', 'plant', 'bowl', '- 1 lemon')],
+    ['2026/September/2026-09-07.md', '# W\n\n## Tuesday: [Shrimp](../../recipes/shrimp.md)\n'],
+    ['2026/September/2026-09-14.md', '# W\n\n## Monday: [Salmon](../../recipes/salmon.md)\n\n## Tuesday: [Shrimp](../../recipes/shrimp.md)\n\n## Wednesday: [Bowl](../../recipes/bowl.md)\n'],
+  ]);
+  const repo = loadRepo(files);
+  const plan = repo.plans.find((p) => p.monday === '2026-09-14')!;
+  const report = varietyReport(plan, repo.recipes, repo.catalog, cookHistory(repo.plans));
+  assert.deepEqual(report.backToBackSeafood, [{ days: ['Monday', 'Tuesday'], recipes: ['Salmon', 'Shrimp'] }]);
+  assert.deepEqual(report.lastWeekProteins, [{ ingredient: 'Shrimp', recipe: 'Shrimp' }]);
+});
