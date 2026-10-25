@@ -26,9 +26,10 @@ tags: [pasta]
 - 2 tbsp fresh parsley, chopped
 
 ## Sunday Prep
-1. Heat the olive oil in a large pot or deep skillet over medium heat. Add the onion and carrots with 1/2 tsp salt and cook 7–8 mins, stirring, until soft. Add the garlic for 1 min.
-2. Raise the heat to medium-high, add the turkey, and break it into small crumbles with a wooden spoon. Cook 6–7 mins until no pink remains.
-3. Stir in the marinara, crushed tomatoes, oregano, red pepper flakes, the remaining 1/2 tsp salt, and the pepper. Simmer uncovered on low for 15 mins, stirring now and then, until thick. Cool and refrigerate.
+1. Finely dice 1 yellow onion, peel and finely dice 2 carrots, and mince 3 cloves garlic.
+2. Heat 2 tbsp olive oil in a large pot or deep skillet over medium heat. Add the onion and carrots with 1/2 tsp salt and cook 7–8 mins, stirring, until soft. Add the garlic for 1 min.
+3. Raise the heat to medium-high, add 1 lb ground turkey, and break it into small crumbles with a wooden spoon. Cook 6–7 mins until no pink remains.
+4. Stir in 1 jar (23.5 oz) marinara sauce, 1 can (15 oz) crushed tomatoes, 1 tsp dried oregano, 1/4 tsp red pepper flakes, 1/2 tsp salt, and 1/2 tsp black pepper. Simmer uncovered on low for 15 mins, stirring now and then, until thick. Cool and refrigerate.
 
 ## Weeknight
 1. Bring a large pot of water to a boil with 1 tbsp salt.

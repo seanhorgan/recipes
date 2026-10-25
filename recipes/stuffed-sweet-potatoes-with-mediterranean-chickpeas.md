@@ -21,7 +21,7 @@ tags: [baked]
 - Optional: 1/4 cup pumpkin seeds
 
 ## Sunday Prep
-1. Heat the oven to 400°F. Scrub the sweet potatoes, prick each 4–5 times with a fork, and set them on a foil-lined sheet pan. Roast for 45–50 mins until a knife slides in easily. Cool, then refrigerate whole.
+1. Heat the oven to 400°F. Scrub 5 large sweet potatoes, prick each 4–5 times with a fork, and set them on a foil-lined sheet pan. Roast for 45–50 mins until a knife slides in easily. Cool, then refrigerate whole.
 
 ## Weeknight
 1. Heat the oven to 400°F. Cut the sweet potatoes in half lengthwise, set them cut side up on a lined sheet pan, and reheat for 12–15 mins until hot through. (Or microwave 2 halves at a time for 2–3 mins.)

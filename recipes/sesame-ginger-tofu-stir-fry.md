@@ -25,9 +25,9 @@ tags: [stir-fry]
 - 1 tsp toasted sesame oil
 
 ## Sunday Prep
-1. Drain the tofu, wrap each block in a clean kitchen towel, and press under a heavy pan for 15 mins. Cut into 3/4-inch cubes. Refrigerate in a container lined with a paper towel.
-2. Whisk the tamari, maple syrup, rice vinegar, ginger, garlic, and sesame oil together in a jar.
-3. Cut the broccoli into bite-size florets and slice the bell pepper into thin strips. Refrigerate together with the snap peas.
+1. Drain 2 blocks (14 oz each) extra-firm tofu, wrap each block in a clean kitchen towel, and press under a heavy pan for 15 mins. Cut into 3/4-inch cubes. Refrigerate in a container lined with a paper towel.
+2. Make the sauce: grate 1 tbsp fresh ginger and mince 2 cloves garlic. Whisk them in a jar with 1/4 cup tamari, 2 tbsp maple syrup, 1 tbsp rice vinegar, and 1 tsp toasted sesame oil. Refrigerate.
+3. Cut 3 cups broccoli into bite-size florets and slice 1 red bell pepper into thin strips. Refrigerate together in a zip-top bag with 2 cups sugar snap peas.
 
 ## Weeknight
 1. Bring a large pot of water to a boil. Cook the rice noodles according to the package (usually 4–6 mins), drain, rinse under cold water so they don't stick, and set aside.

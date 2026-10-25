@@ -22,7 +22,7 @@ tags: [soup]
 - 1/2 tsp black pepper
 
 ## Sunday Prep
-1. Dice the onion and mince the garlic. Refrigerate in a small container.
+1. Dice 1 yellow onion and mince 3 cloves garlic. Refrigerate together in a small container.
 
 ## Weeknight
 1. Heat the oven to 350°F for the bread.
