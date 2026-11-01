@@ -16,7 +16,7 @@ tags: [pasta]
 - 1 package fresh mozzarella pearls, drained
 
 ## Sunday Prep
-1. Halve the cherry tomatoes. Refrigerate.
+1. Halve 1 pint cherry tomatoes. Refrigerate.
 
 ## Weeknight
 1. Bring a large pot of salted water to a boil. Cook the gnocchi per the package (usually 2–3 mins, until they float).

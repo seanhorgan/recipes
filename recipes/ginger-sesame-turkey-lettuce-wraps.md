@@ -26,9 +26,10 @@ tags: [skillet]
 - 1 tsp toasted sesame oil
 
 ## Sunday Prep
-1. Shred the carrots and finely dice the bell pepper. Refrigerate together.
-2. Whisk the tamari, maple syrup, rice vinegar, ginger, garlic, and sesame oil in a jar. Refrigerate.
-3. Wash and separate the lettuce leaves, pat dry, and refrigerate wrapped in a paper towel.
+1. Shred 2 carrots and finely dice 1 bell pepper. Refrigerate together.
+2. Make the sauce: grate 1 tbsp fresh ginger and mince 2 cloves garlic. Whisk them in a jar with 3 tbsp tamari, 1 tbsp maple syrup, 1 tbsp rice vinegar, and 1 tsp toasted sesame oil. Refrigerate.
+3. Separate the leaves from 2 heads butter lettuce, wash, pat dry, and refrigerate wrapped in a paper towel.
+4. Chop 1/2 cup cashews. Store at room temperature.
 
 ## Weeknight
 1. Heat the avocado oil in a large skillet over medium-high heat. Add the turkey and break it into small crumbles. Cook 6–7 mins until no pink remains.

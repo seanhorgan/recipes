@@ -21,9 +21,9 @@ tags: [soup]
 - Optional: 2 cups water, or vegetable broth for a soupier dinner
 
 ## Sunday Prep
-1. Cook the brown rice. Refrigerate.
-2. Cook the green lentils (about 1 cup dry makes 3 cups cooked): simmer in plenty of water for 20–25 mins until tender, then drain. Refrigerate.
-3. Dice the onion. Refrigerate.
+1. Cook the brown rice for the soup: bring 2/3 cup brown rice and 1 1/2 cups water to a boil, cover, and simmer on low for 45 mins (makes 2 cups cooked). Refrigerate.
+2. Cook the green lentils: rinse 1 cup dry green lentils, cover with 3 cups water, and simmer 20–25 mins until tender (makes about 3 cups cooked). Drain. Refrigerate.
+3. Dice 1 yellow onion. Refrigerate.
 
 ## Weeknight
 1. Sauté the onion in the olive oil for 4 mins. Stir in the turmeric, ginger, and cumin for 1 min.

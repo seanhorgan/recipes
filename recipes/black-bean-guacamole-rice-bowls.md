@@ -18,8 +18,8 @@ tags: [bowl]
 - Optional: 1 lime, cut into wedges
 
 ## Sunday Prep
-1. Cook the brown rice. Refrigerate.
-2. Halve the cherry tomatoes and finely dice the onion. Refrigerate.
+1. Cook the brown rice for the bowls: bring 2/3 cup brown rice and 1 1/2 cups water to a boil, cover, and simmer on low for 45 mins (makes 2 cups cooked). Refrigerate.
+2. Halve 1 cup cherry tomatoes and finely dice 1/2 yellow onion. Refrigerate.
 
 ## Weeknight
 1. Warm the rice.
