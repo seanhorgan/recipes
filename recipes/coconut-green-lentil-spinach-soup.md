@@ -1,7 +1,7 @@
 ---
 protein: plant
 gluten_free: yes
-prep_minutes: 5
+prep_minutes: 45
 weeknight_minutes: 15
 tags: [soup]
 ---
@@ -21,7 +21,9 @@ tags: [soup]
 - Optional: 2 cups water, or vegetable broth for a soupier dinner
 
 ## Sunday Prep
-1. Dice the onion. Refrigerate.
+1. Cook the brown rice. Refrigerate.
+2. Cook the green lentils (about 1 cup dry makes 3 cups cooked): simmer in plenty of water for 20–25 mins until tender, then drain. Refrigerate.
+3. Dice the onion. Refrigerate.
 
 ## Weeknight
 1. Sauté the onion in the olive oil for 4 mins. Stir in the turmeric, ginger, and cumin for 1 min.

@@ -1,7 +1,7 @@
 ---
 protein: plant
 gluten_free: yes
-prep_minutes: 10
+prep_minutes: 50
 weeknight_minutes: 10
 tags: [bowl]
 ---
@@ -18,7 +18,8 @@ tags: [bowl]
 - Optional: 1 lime, cut into wedges
 
 ## Sunday Prep
-1. Halve the cherry tomatoes and finely dice the onion. Refrigerate.
+1. Cook the brown rice. Refrigerate.
+2. Halve the cherry tomatoes and finely dice the onion. Refrigerate.
 
 ## Weeknight
 1. Warm the rice.
