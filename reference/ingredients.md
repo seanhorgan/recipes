@@ -38,6 +38,7 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Garlic | Produce | staple | | Bulk Garlic | garlic cloves |
 | Green beans | Produce | key | | Wegmans Organic French Beans (8 oz) | |
 | Kale | Produce | | | Wegmans Organic Kale Greens (12 oz) | baby kale |
+| Butter lettuce | Produce | | 2 heads of butter (Bibb) lettuce | | Bibb lettuce, lettuce leaves |
 | Leeks | Produce | key | | Wegmans Cleaned & Cut Leeks (8 oz) | |
 | Lemon | Produce | | | Wegmans Lemons | lemon juice, lemon zest |
 | Lime | Produce | | | Large Fresh Limes | lime juice |
