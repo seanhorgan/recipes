@@ -28,3 +28,6 @@ tags: [pasta]
 
 ## Kid Boost
 - Red lentil or chickpea pasta roughly doubles the protein. Add a side of shelled edamame for more.
+
+## Ratings
+- 2026-11-17 ★★★★★ Kids loved it. Could probably make a bit more for leftovers.
