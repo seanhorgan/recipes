@@ -4,13 +4,14 @@ import { edit, save, useSync } from '../sync.ts';
 import { DAYS, addDays, formatLong, isIsoDate, mondayOf, planPath } from '../lib/dates.ts';
 import { parsePlan } from '../lib/plan.ts';
 import { currentRating, PROTEINS } from '../lib/recipe.ts';
-import { buildPlanText, buildWeekLists, renderPlanDays, type DraftDay } from '../lib/weekLists.ts';
+import { buildPlanText, buildWeekLists, renderPlanDays, swapDraftDays, type DraftDay } from '../lib/weekLists.ts';
 import { varietyReport } from '../lib/variety.ts';
 import { searchRecipes, searchTerms } from '../lib/search.ts';
 import { Chip, PROTEIN_LABEL, Section, Stars, ago, shortDate } from '../ui.tsx';
 import { hashQuery, href } from '../router.ts';
 import { parsePlanLink, type LinkDraft } from '../lib/planLink.ts';
 import { FAMILY_COOKS } from '../family.ts';
+import { useDayDragSwap } from '../dragSwap.ts';
 
 export function Planner({ monday: requested }: { monday?: string }) {
   const sync = useSync();
@@ -50,11 +51,32 @@ function PlannerForm({ monday, link }: { monday: string; link: LinkDraft | null 
   const [picking, setPicking] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [swapStatus, setSwapStatus] = useState<{ text: string; undo: { from: number; to: number } | null } | null>(null);
 
   const setDay = (day: number, patch: Partial<DraftDay>) =>
     setDays((ds) => ds.map((d) => (d.day === day ? { ...d, ...patch } : d)));
   const missing = [0, 1, 2, 3, 4, 5, 6].filter((i) => !days.some((d) => d.day === i));
   const filled = days.filter((d) => d.recipePath || d.label.trim());
+
+  // Rearranging the week: drag one night's dinner onto another day and the two nights swap places.
+  const planned = useMemo(() => [...days].sort((a, b) => a.day - b.day).map((d) => d.day), [days]);
+  const dinner = (day: number) => {
+    const d = days.find((x) => x.day === day);
+    return (d?.recipePath ? repo.recipes.get(d.recipePath)?.title : d?.label.trim()) ?? '';
+  };
+  const swapNights = (from: number, to: number) => {
+    if (from === to) return;
+    const traded = `${dinner(from)} ↔ ${dinner(to)}`;
+    setDays((ds) => swapDraftDays(ds, from, to));
+    setSwapStatus({ text: `Swapped ${DAYS[from]} and ${DAYS[to]}: ${traded}.`, undo: { from, to } });
+  };
+  const undoSwap = () => {
+    if (!swapStatus?.undo) return;
+    const { from, to } = swapStatus.undo;
+    setDays((ds) => swapDraftDays(ds, from, to));
+    setSwapStatus(null);
+  };
+  const drag = useDayDragSwap(planned, swapNights);
 
   // Preview what will be saved: variety, Sunday prep, and shopping list size.
   const preview = useMemo(() => {
@@ -116,15 +138,45 @@ function PlannerForm({ monday, link }: { monday: string; link: LinkDraft | null 
           {link.problems.length > 0 && <ul className="bullets warn-list">{link.problems.map((p) => <li key={p}>{p}</li>)}</ul>}
         </div>
       )}
+      {planned.length > 1 && (
+        <p className="muted small drag-hint">
+          Drag a dinner's <span aria-hidden="true">⠿</span> handle onto another day to swap the two nights, or move one
+          with the arrow keys. The saved week changes when you save.
+        </p>
+      )}
+      {swapStatus && (
+        <p className="swap-status" role="status">
+          <span>{swapStatus.text}</span>
+          {swapStatus.undo && <button className="toggle small" onClick={undoSwap}>Undo</button>}
+          <button className="toggle small" onClick={() => setSwapStatus(null)} aria-label="Dismiss this message">✕</button>
+        </p>
+      )}
       <ol className="week">
         {[...days].sort((a, b) => a.day - b.day).map((d) => {
           const recipe = d.recipePath ? repo.recipes.get(d.recipePath) : undefined;
           const date = addDays(monday, d.day);
+          const dragged = drag.drag?.from === d.day;
+          const target = drag.drag != null && drag.drag.over === d.day && drag.drag.over !== drag.drag.from;
           return (
-            <li key={d.day} className="day planner-day">
+            <li key={d.day} ref={drag.registerDay(d.day)} className={`day planner-day${dragged ? ' dragging' : ''}${target ? ' drop-target' : ''}`}>
               <div className="day-name">
-                {DAYS[d.day].slice(0, 3)}
-                <span className="muted">{shortDate(date).slice(4)}</span>
+                <span className="day-abbr">
+                  {DAYS[d.day].slice(0, 3)}
+                  <span className="muted">{shortDate(date).slice(4)}</span>
+                </span>
+                <button
+                  type="button"
+                  className="drag-handle"
+                  {...drag.handleProps(d.day)}
+                  onClick={() => setSwapStatus({
+                    text: `Move ${DAYS[d.day]}'s dinner with the arrow keys, or drag the handle onto another day.`,
+                    undo: null,
+                  })}
+                  aria-label={`Move ${DAYS[d.day]}'s dinner to another day`}
+                  title="Drag onto another day to swap the two nights, or use the arrow keys"
+                >
+                  ⠿
+                </button>
               </div>
               <div className="day-body">
                 <button className="pick" onClick={() => setPicking(d.day)}>

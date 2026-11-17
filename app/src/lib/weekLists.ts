@@ -158,6 +158,18 @@ export interface DraftDay {
   notes: string[];
 }
 
+/**
+ * Swaps two nights in a draft week: the dinner, who's cooking, and the notes move together, so the two days trade
+ * places. Days keep their position in the week; only what's planned for each moves. Its own inverse, so it undoes a
+ * swap as well as making one.
+ */
+export function swapDraftDays(days: DraftDay[], a: number, b: number): DraftDay[] {
+  const first = days.find((d) => d.day === a);
+  const second = days.find((d) => d.day === b);
+  if (!first || !second || a === b) return days;
+  return days.map((d) => (d.day === a ? { ...second, day: a } : d.day === b ? { ...first, day: b } : d));
+}
+
 /** The title and day sections of a plan file, before the Sunday Prep and Shopping List are added. */
 export function renderPlanDays(monday: string, days: DraftDay[], recipes: Map<string, Recipe>): string {
   const path = planPath(monday);

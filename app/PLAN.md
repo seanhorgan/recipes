@@ -19,7 +19,7 @@ Each job works in the app and through an agent skill (`skills/`), so it can be d
 | Job | In the app | Agent skill |
 |---|---|---|
 | 1. Plan meals for the week | Planner (`#/plan`): picker sorted by longest since cooked, cooks, notes, live variety check | `plan-week` |
-| 2. Adjust plans for ingredients at home | "What you have" search in the planner and Recipes; Edit plan; check off shopping items you already have | `adjust-plan` |
+| 2. Adjust plans for ingredients at home | "What you have" search in the planner and Recipes; Edit plan (drag a dinner's handle onto another day to swap the two nights, or move it with the arrow keys); check off shopping items you already have | `adjust-plan` |
 | 3. Prep meals for the week | Sunday Prep checklist with "I'll do it" claims | `sunday-prep` |
 | 4. Make the meal for the night | Tonight (`#/tonight`): unfinished prep first, ingredients, big steps, keep screen on | `cook-tonight` |
 | 5. Adjust a meal (substitution, change of plans) | Tonight: add a note ("Swap: …"), or change dinners in the planner | `cook-tonight`, `adjust-plan` |
@@ -51,7 +51,7 @@ Each job works in the app and through an agent skill (`skills/`), so it can be d
 
 ## Features (v1)
 - **Recipe library** — filter by protein, GF, weeknight time, rating, and last cooked. Shows the 8-week cook count.
-- **Week planner** — pick dinners, assign cooks, and get variety warnings (repeated key ingredients, protein imbalance, recently cooked).
+- **Week planner** — pick dinners, assign cooks, rearrange the week by dragging one night's dinner onto another day (the two nights swap, notes and all), and get variety warnings (repeated key ingredients, protein imbalance, recently cooked).
 - **Shopping list** — consolidated per `reference/shopping.md`, grouped by aisle, shared checkboxes, and "copy for Instacart".
 - **Sunday prep** — a combined, ordered checklist of every recipe's `## Sunday Prep`, where adults can claim tasks.
 - **Tonight** — the weeknight steps for today's dinner, in large text, with the screen kept awake.

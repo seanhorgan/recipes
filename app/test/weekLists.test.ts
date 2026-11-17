@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadRepo } from '../src/lib/repo.ts';
-import { buildWeekLists, writeWeekLists } from '../src/lib/weekLists.ts';
+import { buildPlanText, buildWeekLists, swapDraftDays, writeWeekLists, type DraftDay } from '../src/lib/weekLists.ts';
 import { agentContext } from '../src/lib/agentContext.ts';
 import { parsePlan, prepStepKey } from '../src/lib/plan.ts';
 
@@ -95,4 +95,42 @@ test('the validator warns about duplicate Sunday Prep steps in a plan', () => {
   assert.deepEqual(issues.items.map((i) => [i.level, i.line, i.message]), [
     ['warning', 8, 'Same Sunday Prep step as line 6; merge them into one line naming both recipes'],
   ]);
+});
+
+const mon: DraftDay = { day: 0, recipePath: 'recipes/a.md', label: '', cook: 'Ali', notes: ['Double the sauce.'] };
+const thu: DraftDay = { day: 3, recipePath: null, label: 'Pizza night', cook: 'Sean', notes: [] };
+
+test('swapping two nights moves each dinner, its cook, and its notes, and keeps every day in place', () => {
+  const week = [mon, thu];
+  const swapped = swapDraftDays(week, 0, 3);
+  assert.deepEqual(swapped, [{ ...thu, day: 0 }, { ...mon, day: 3 }]);
+  assert.deepEqual(swapped.map((d) => d.day), [0, 3]);
+  assert.deepEqual(swapDraftDays(swapped, 0, 3), swapDraftDays(swapped, 3, 0)); // same either way round
+  assert.deepEqual(swapDraftDays(swapped, 3, 0), week); // its own inverse
+  assert.equal(swapDraftDays(week, 1, 3), week); // a day with nothing planned is left alone
+  assert.equal(swapDraftDays(week, 0, 0), week);
+});
+
+test('a swapped week saves with the nights swapped and the lists rebuilt from the new order', () => {
+  const repo = loadRepo(files());
+  const draft: DraftDay[] = [
+    { day: 0, recipePath: 'recipes/a.md', label: '', cook: 'Ali', notes: ['Extra cauliflower'] },
+    { day: 1, recipePath: 'recipes/b.md', label: '', cook: 'Sean', notes: [] },
+  ];
+  const text = buildPlanText(
+    '2026-10-05',
+    swapDraftDays(draft, 0, 1),
+    repo.recipes,
+    repo.sauces,
+    repo.catalog,
+    files().get('2026/October/2026-10-05.md')!,
+  );
+  const { plan, issues } = parsePlan('2026/October/2026-10-05.md', text);
+  assert.deepEqual(issues.items, []);
+  assert.deepEqual(plan.days.map((d) => [d.day, d.recipePath, d.cook, d.notes]), [
+    ['Monday', 'recipes/b.md', 'Sean', []],
+    ['Tuesday', 'recipes/a.md', 'Ali', ['Extra cauliflower']],
+  ]);
+  assert.match(text, /- \[ \] Cook the quinoa\. \(Salmon, Bowls\)/); // prep order follows the new week order
+  assert.match(text, /- \[x\] Lemon \(3\) — Sean/); // a checked item survives a swap
 });

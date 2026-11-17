@@ -196,6 +196,25 @@ main:has(.week-calendar) { max-width: 1120px; }
 /* Planner */
 .week-switch { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin: 0 0 0.75rem; }
 .planner-day .day-body { gap: 0.4rem; }
+.planner-day .day-name { justify-items: start; gap: 0.3rem; }
+.day-abbr { display: grid; line-height: 1.2; }
+
+/* Rearranging the week: drag a dinner's handle onto another day and the two nights swap. */
+.drag-handle {
+  font: inherit; font-size: 1rem; line-height: 1; min-width: 2.25rem; min-height: 2.25rem; padding: 0.3rem;
+  border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--muted);
+  cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+}
+.drag-handle:hover { border-color: var(--accent); color: var(--accent); }
+.drag-handle:active { cursor: grabbing; }
+.drag-handle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.day.dragging { opacity: 0.5; }
+.day.drop-target { border-color: var(--accent); border-style: dashed; background: var(--accent-soft); }
+.drag-hint { margin: 0.25rem 0 0.6rem; }
+.swap-status {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 0.6rem;
+  background: var(--accent-soft); border-radius: var(--radius); padding: 0.5rem 0.75rem; font-size: 0.9rem;
+}
 .pick {
   display: grid; gap: 0.15rem; text-align: left; width: 100%; font: inherit; color: var(--text); cursor: pointer;
   background: var(--surface-2); border: 1px dashed var(--border); border-radius: 10px; padding: 0.55rem 0.7rem;
