@@ -29,3 +29,6 @@ tags: [tacos]
 2. Mash 2 avocados in a bowl with the juice of 1/2 lime and 1/4 tsp salt. Cut the other lime half into wedges.
 3. Spread about 2 tbsp avocado on each of the 8 tostada shells. Top each with about 3/4 cup of the cauliflower and chickpeas, 1 tbsp salsa, and 1 tbsp Greek yogurt (or feta).
 4. Serve 2 tostadas each, with the lime wedges.
+
+## Ratings
+- 2026-11-17 ★★★ Will wanted more protein, like a ground burger (impossible meat).
