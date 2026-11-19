@@ -33,3 +33,6 @@ tags: [skillet]
 5. Move the skillet to the oven and bake 12–15 mins, until the center is set and doesn't jiggle. Rest 3 mins, then cut into 8 wedges.
 6. While it bakes, toss 4 cups arugula with 1 tbsp olive oil, the juice of 1/2 lemon, and a pinch of salt.
 7. Serve 2 wedges each with the salad.
+
+## Ratings
+- 2026-11-18 ★★★★★ Plenty food, enough for leftovers. Kids loved it.
