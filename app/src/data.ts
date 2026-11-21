@@ -2,8 +2,8 @@
 // push to main). On a connected device, sync.ts swaps in the live files from GitHub plus unsaved local edits.
 import { useSyncExternalStore } from 'react';
 import { loadRepo, cookHistory } from './lib/repo.ts';
-import { addDays, mondayOf, toDate } from './lib/dates.ts';
-import type { Plan } from './lib/plan.ts';
+import { toDate } from './lib/dates.ts';
+import { focusWeek, type Plan } from './lib/plan.ts';
 import type { Recipe } from './lib/recipe.ts';
 
 const modules = import.meta.glob<string>(
@@ -82,11 +82,11 @@ export function recipeStats(recipe: Recipe, today: string): RecipeStats {
 }
 
 /**
- * Monday of the week the family is focused on. On Sundays that's the week starting tomorrow,
- * since Sunday is when the next week gets planned, shopped, and prepped.
+ * Monday of the week the family is focused on: next week from Sunday (when it gets planned, shopped, and prepped),
+ * or as soon as this week's plan has no nights left. See focusWeek in lib/plan.ts.
  */
 export function focusMonday(today: string): string {
-  return mondayOf(addDays(today, 1));
+  return focusWeek(today, repo.plans);
 }
 
 /** The plan for the focus week, else the next upcoming plan. */

@@ -181,3 +181,16 @@ test('repo cross-checks and cook history', () => {
   assert.ok(!messages.some((m) => /2026-03-23 is not a night/.test(m)));
   assert.deepEqual(cookHistory(repo.plans).get('recipes/lemon-dill-salmon.md'), ['2026-03-23']);
 });
+
+test('focus week moves on once this week has no nights left', async () => {
+  const { focusWeek } = await import('../src/lib/plan.ts');
+  const day = (date: string, label = 'Dinner') => ({ date, label, recipePath: null }) as never;
+  const plans = [{ monday: '2026-11-16', days: [day('2026-11-16'), day('2026-11-20', 'Dinner out')] }];
+  assert.equal(focusWeek('2026-11-18', plans), '2026-11-16'); // midweek
+  assert.equal(focusWeek('2026-11-20', plans), '2026-11-16'); // Friday is still planned
+  assert.equal(focusWeek('2026-11-21', plans), '2026-11-23'); // Saturday, nothing left
+  assert.equal(focusWeek('2026-11-22', plans), '2026-11-23'); // Sunday always looks ahead
+  assert.equal(focusWeek('2026-11-24', []), '2026-11-23'); // no plan yet: stay on this week
+  const withSat = [{ monday: '2026-11-16', days: [day('2026-11-21')] }];
+  assert.equal(focusWeek('2026-11-21', withSat), '2026-11-16'); // a Saturday dinner keeps this week
+});

@@ -1,7 +1,7 @@
 // Weekly plans (YYYY/Month/YYYY-MM-DD.md). Format: reference/schema.md
 import { parseDocument, resolveLink, type Line } from './markdown.ts';
 import { IssueList } from './issues.ts';
-import { DAYS, addDays, isIsoDate, planPath, weekdayIndex, type Day } from './dates.ts';
+import { DAYS, addDays, isIsoDate, mondayOf, planPath, weekdayIndex, type Day } from './dates.ts';
 
 export interface PlanDay {
   day: Day;
@@ -37,6 +37,18 @@ export interface Plan {
 }
 
 const PATH_RE = /^(\d{4})\/([A-Za-z]+)\/(\d{4}-\d{2}-\d{2})\.md$/;
+
+/**
+ * The Monday of the week the app should show as "this week". It moves on to next week on Sunday (shopping and prep
+ * day), or earlier once this week's plan has no nights left from today on (e.g. Saturday after a Friday night out).
+ */
+export function focusWeek(today: string, plans: readonly Pick<Plan, 'monday' | 'days'>[]): string {
+  const monday = mondayOf(today);
+  if (weekdayIndex(today) === 6) return addDays(monday, 7);
+  const current = plans.find((p) => p.monday === monday);
+  const nightsLeft = current?.days.some((d) => d.date >= today && (d.recipePath || d.label)) ?? true;
+  return nightsLeft ? monday : addDays(monday, 7);
+}
 
 export function isPlanPath(path: string): boolean {
   return PATH_RE.test(path);
