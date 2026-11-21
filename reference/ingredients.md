@@ -72,6 +72,8 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Eggs | Dairy & Eggs | key | | Wegmans Organic Large Brown Eggs, 12 Count, Cage Free | |
 | Feta | Dairy & Eggs | | Block of feta | Odyssey Feta, Gluten Free, Reduced Fat, Chunk (8 oz) | feta cheese |
 | Goat cheese | Dairy & Eggs | | | Wegmans Fresh Goat Cheese Mild (4 oz) | crumbled goat cheese |
+| Halloumi | Dairy & Eggs | key | Block of halloumi | | halloumi cheese |
+| Paneer | Dairy & Eggs | key | Block of paneer | | paneer cheese |
 | Mozzarella pearls | Dairy & Eggs | | | BelGioioso Cheese, Fresh Mozzarella, Pearls (8 oz) | fresh mozzarella pearls |
 | Greek yogurt | Dairy & Eggs | | Plain Greek yogurt | Stonyfield Organic Greek Plain Organic Whole Milk Yogurt | plain Greek yogurt |
 | Parmesan | Dairy & Eggs | | | BelGioioso Parmesan Cheese - Grated (5 oz) | grated Parmesan |
@@ -86,6 +88,7 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 |---|---|---|---|---|---|
 | Jeni's Goat Cheese Ice Cream | Frozen | | | Jeni's Goat Cheese with Red Cherries Ice Cream (1 pt) | goat cheese ice cream, Jeni's ice cream |
 | Frozen peas | Frozen | | | Wegmans Frozen Sweet Peas (16 oz) | peas |
+| Edamame | Frozen | key | Frozen shelled edamame | | shelled edamame |
 
 ## Bakery, Grains & Pasta
 | Ingredient | Aisle | Kind | Buy as | Instacart product | Also called |
@@ -130,6 +133,7 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 |---|---|---|---|---|---|
 | Cashews | Pantry | | | Wegmans Raw Whole Cashews (9.5 oz) | raw cashews |
 | Pine nuts | Pantry | | | | |
+| Peanut butter | Pantry | | Natural creamy peanut butter | | |
 | Pumpkin seeds | Pantry | | | Stony Brook Pepitas (3 oz) | pepitas |
 | Walnuts | Pantry | | | Wegmans Chopped Walnuts (8 oz) | |
 | Olive oil | Pantry | staple | | Wegmans Italian Classics Italian Extra Virgin Olive Oil (33.8 fl oz) | extra virgin olive oil |
@@ -158,5 +162,6 @@ potatoes", match too). When a recipe uses a new ingredient, add a row here. The 
 | Shawarma spice blend | Spices & Condiments | | | | |
 | GF taco seasoning | Spices & Condiments | | | Siete Mild Taco Seasoning | taco seasoning |
 | Curry powder | Spices & Condiments | | | Wegmans Organic Seasoning, Powder, Curry | yellow curry powder |
+| Garam masala | Spices & Condiments | | | | |
 | Dijon mustard | Spices & Condiments | staple | | Grey Poupon Dijon Mustard (8 oz) | mustard, yellow mustard |
 | Zing dressing | Spices & Condiments | staple | | | Jar A |
