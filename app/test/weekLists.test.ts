@@ -34,7 +34,7 @@ test('week lists merge quantities, expand sauces, and skip staples and optional 
   assert.deepEqual(lists.sundayPrep, [
     'Cook the quinoa. (Bowls, Salmon)',
     'Roast the cauliflower. (Bowls)',
-    'Make the Yogurt Sauce (for Bowls)',
+    'Make 2 batches of the Yogurt Sauce, each: 1/2 cup Greek yogurt; 1 lemon, juiced (for Bowls)',
   ]);
   assert.deepEqual(lists.shopping, [
     { aisle: 'Produce', items: ['Cauliflower (1 lb + 1 head) · 2 lb family pack', 'Lemon (3)'] },

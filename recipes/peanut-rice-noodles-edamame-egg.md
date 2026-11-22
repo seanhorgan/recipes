@@ -29,7 +29,7 @@ tags: [stir-fry]
 - 1/4 cup water
 
 ## Sunday Prep
-1. Whisk the peanut sauce ingredients together until smooth. Refrigerate.
+1. Make the peanut sauce: whisk 1/3 cup peanut butter, 3 tbsp tamari, the juice of 1 lime, 1 tbsp maple syrup, 1 tbsp rice vinegar, 1 tbsp grated fresh ginger, and 1/4 cup water until smooth. Refrigerate.
 
 ## Weeknight
 1. Cook the rice noodles according to the package, adding the edamame for the last 3 mins. Drain and rinse briefly with warm water.

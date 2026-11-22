@@ -26,8 +26,8 @@ tags: [skillet]
 - Optional: GF flatbreads, warmed
 
 ## Sunday Prep
-1. Make the spinach sauce: heat 1 tbsp olive oil in a large pot over medium heat and cook the onion 6 mins until soft. Stir in the garlic, ginger, garam masala, cumin, and turmeric for 1 min. Add the crushed tomatoes and 1/2 tsp salt; simmer 5 mins. Add the spinach by handfuls until wilted. Blend smooth with 1/2 cup water. Cool. Refrigerate.
-2. Cook the brown rice. Refrigerate.
+1. Make the spinach sauce: heat 1 tbsp olive oil in a large pot over medium heat and cook 1 diced yellow onion 6 mins until soft. Stir in 3 cloves minced garlic, 1 tbsp grated fresh ginger, 2 tsp garam masala, 1 tsp cumin, and 1/2 tsp turmeric for 1 min. Add 1 cup crushed tomatoes and 1/2 tsp salt; simmer 5 mins. Add 10 oz spinach by handfuls until wilted. Blend smooth with 1/2 cup water. Cool. Refrigerate.
+2. Cook 1.5 cups brown rice. Refrigerate.
 
 ## Weeknight
 1. Heat the oven to 425°F. Toss the paneer cubes with 1 tbsp olive oil and a pinch of salt on a parchment-lined sheet pan. Bake 12–15 mins, turning once, until golden in spots.

@@ -41,6 +41,10 @@ function expand(recipe: Recipe, sauces: Map<string, Recipe>): { ing: Ingredient;
   return out;
 }
 
+function formatBatches(n: number): string {
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100);
+}
+
 export function buildWeekLists(
   plan: Plan,
   recipes: Map<string, Recipe>,
@@ -52,7 +56,7 @@ export function buildWeekLists(
   // Sunday prep: each recipe's steps in dinner order, with matching steps (like "Cook the quinoa." and
   // "Cook the quinoa. Refrigerate.") merged into one line that keeps the fuller wording; then one line per sauce.
   const steps = new Map<string, { text: string; titles: string[] }>();
-  const sauceUsers = new Map<string, { sauce: Recipe; users: string[] }>();
+  const sauceUsers = new Map<string, { sauce: Recipe; users: string[]; batches: number }>();
   for (const r of week) {
     for (const step of r.sundayPrep) {
       const key = prepStepKey(step.text);
@@ -64,14 +68,19 @@ export function buildWeekLists(
     for (const ing of r.ingredients) {
       const sauce = ing.link ? sauces.get(resolveLink(r.path, ing.link)) : undefined;
       if (!sauce || ing.optional) continue;
-      const entry = sauceUsers.get(sauce.path) ?? { sauce, users: [] };
+      const entry = sauceUsers.get(sauce.path) ?? { sauce, users: [], batches: 0 };
       if (!entry.users.includes(r.title)) entry.users.push(r.title);
+      entry.batches += ing.quantity?.min ?? 1;
       sauceUsers.set(sauce.path, entry);
     }
   }
   const sundayPrep = [...steps.values()].map(({ text, titles }) => `${text} (${titles.join(', ')})`);
-  for (const { sauce, users } of sauceUsers.values()) {
-    sundayPrep.push(`Make the ${sauce.title} (for ${users.join(', ')})`);
+  // Sauce lines list the measured ingredients, so the prep list can be followed without opening the sauce.
+  for (const { sauce, users, batches } of sauceUsers.values()) {
+    const what = batches === 1 ? `the ${sauce.title}` : `${formatBatches(batches)} batches of the ${sauce.title}`;
+    const ingredients = sauce.ingredients.filter((i) => !i.optional).map((i) => i.raw);
+    const per = batches === 1 ? '' : ', each';
+    sundayPrep.push(`Make ${what}${ingredients.length ? `${per}: ${ingredients.join('; ')}` : ''} (for ${users.join(', ')})`);
   }
 
   // Shopping: merge by catalog entry, summing quantities that share a unit.

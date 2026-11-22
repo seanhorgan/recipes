@@ -91,7 +91,7 @@ npm run plan -- new 2026-10-05 mon=lemon-dill-salmon-asparagus:Ali tue=red-lenti
 - `## Sunday Prep`: each recipe's `## Sunday Prep` steps as `- [ ] <step> (<Recipe Title>)`, in dinner order.
   Steps that are the same apart from wording like a trailing "Refrigerate." (for example "Cook the quinoa") go on
   one line naming every recipe; the validator warns about duplicates. Add
-  `- [ ] Make the <Sauce> (for <Recipe>)` for each linked sauce.
+  `- [ ] Make the <Sauce>: <its ingredient lines, separated by "; "> (for <Recipe>)` for each linked sauce.
 - `## Shopping List`: follow [`reference/shopping.md`](../../reference/shopping.md). Include linked sauces' ingredients
   and merge duplicates, adding up the quantities. Group under `### Aisle` headings in the aisle order of
   [`reference/ingredients.md`](../../reference/ingredients.md), and use its "Buy as" text. Leave pantry staples off

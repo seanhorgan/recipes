@@ -22,8 +22,8 @@ tags: [sheet-pan]
 - 1 batch [Lemon-Garlic Yogurt Sauce](../sauces/lemon-garlic-yogurt-sauce.md)
 
 ## Sunday Prep
-1. Par-roast the potatoes: heat the oven to 400°F. Toss the halved potatoes with 1 tbsp olive oil, the oregano, and 1/2 tsp salt on a parchment-lined sheet pan. Roast 20 mins until just tender. Cool. Refrigerate.
-2. Cut the red onion into wedges. Refrigerate.
+1. Par-roast the potatoes: heat the oven to 400°F. Toss 1.5 lb halved baby potatoes with 1 tbsp olive oil, 1 tsp dried oregano, and 1/2 tsp salt on a parchment-lined sheet pan. Roast 20 mins until just tender. Cool. Refrigerate.
+2. Cut 1 red onion into wedges. Refrigerate.
 
 ## Weeknight
 1. Heat the oven to 425°F. Spread the potatoes, broccoli, onion, and cherry tomatoes over 2 parchment-lined sheet pans. Toss with 2 tbsp olive oil, the smoked paprika, salt, and pepper. Roast 12 mins.
