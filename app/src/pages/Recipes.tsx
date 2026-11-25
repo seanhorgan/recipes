@@ -59,7 +59,10 @@ export function Recipes() {
     <>
       <div className="title-row">
         <h1>Recipes</h1>
-        {sync.connected && <a className="button" href={href('add-recipe')}>Add recipe</a>}
+        <span className="title-actions">
+          <a className="button" href={href('desserts')}>🍰 Desserts</a>
+          {sync.connected && <a className="button" href={href('add-recipe')}>Add recipe</a>}
+        </span>
       </div>
       <div className="filters">
         <input

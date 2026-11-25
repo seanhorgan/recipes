@@ -5,6 +5,7 @@ import { loadRepo, cookHistory } from './lib/repo.ts';
 import { toDate } from './lib/dates.ts';
 import { focusWeek, type Plan } from './lib/plan.ts';
 import type { Recipe } from './lib/recipe.ts';
+import { parseFreeform, type FreeformPage } from './lib/freeform.ts';
 
 const modules = import.meta.glob<string>(
   ['../../recipes/*.md', '../../sauces/*.md', '../../reference/ingredients.md', '../../20*/*/*.md'],
@@ -12,6 +13,16 @@ const modules = import.meta.glob<string>(
 );
 export const bundledFiles: ReadonlyMap<string, string> = new Map(
   Object.entries(modules).map(([path, text]) => [path.replace(/^(\.\.\/)+/, ''), text]),
+);
+
+// Desserts are free-form pages outside dinner planning, so they stay out of loadRepo. They come from the build,
+// which reruns on every push to main.
+const dessertModules = import.meta.glob<string>('../../desserts/*.md', { query: '?raw', import: 'default', eager: true });
+export const desserts: ReadonlyMap<string, FreeformPage> = new Map(
+  Object.entries(dessertModules).map(([path, text]) => {
+    const page = parseFreeform(path.replace(/^(\.\.\/)+/, ''), text);
+    return [page.slug, page];
+  }),
 );
 
 let files = new Map(bundledFiles);

@@ -14,9 +14,9 @@ export const PROTEIN_LABEL: Record<Protein, string> = {
   egg: '🥚 Egg',
 };
 
-/** Route for a repo path like `recipes/x.md` or `sauces/y.md`, or null if the app has no page for it. */
+/** Route for a repo path like `recipes/x.md`, `sauces/y.md` or `desserts/z.md`, or null if the app has no page for it. */
 export function routeFor(path: string): string | null {
-  const m = /^(recipes|sauces)\/([^/]+)\.md$/.exec(path);
+  const m = /^(recipes|sauces|desserts)\/([^/]+)\.md$/.exec(path);
   return m ? href(m[1], m[2]) : null;
 }
 

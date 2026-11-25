@@ -1,5 +1,5 @@
 import { useRoute, href } from './router.ts';
-import { recipeBySlug, sauceBySlug, repo, REPO_URL, useDataVersion } from './data.ts';
+import { recipeBySlug, sauceBySlug, desserts, repo, REPO_URL, useDataVersion } from './data.ts';
 import { useSync, type SyncStatus } from './sync.ts';
 import { Home } from './pages/Home.tsx';
 import { Recipes } from './pages/Recipes.tsx';
@@ -9,6 +9,7 @@ import { Planner } from './pages/Planner.tsx';
 import { Settings } from './pages/Settings.tsx';
 import { Tonight } from './pages/Tonight.tsx';
 import { AddRecipe } from './pages/AddRecipe.tsx';
+import { Desserts, DessertDetail } from './pages/Desserts.tsx';
 
 function Page({ route }: { route: string[] }) {
   const [section, id] = route;
@@ -21,6 +22,11 @@ function Page({ route }: { route: string[] }) {
   if (section === 'sauces' && id) {
     const s = sauceBySlug(id);
     if (s) return <SauceDetail sauce={s} />;
+  }
+  if (section === 'desserts' && !id) return <Desserts />;
+  if (section === 'desserts') {
+    const d = desserts.get(id);
+    if (d) return <DessertDetail page={d} />;
   }
   if (section === 'plans' && !id) return <PlanList />;
   if (section === 'plans') {
@@ -61,7 +67,7 @@ function SyncBadge() {
 export function App() {
   useDataVersion(); // re-render everything when live data arrives
   const route = useRoute();
-  const tab = route[0] === 'sauces' || route[0] === 'add-recipe' ? 'recipes' : route[0] === 'plan' ? 'plans' : (route[0] ?? '');
+  const tab = route[0] === 'sauces' || route[0] === 'desserts' || route[0] === 'add-recipe' ? 'recipes' : route[0] === 'plan' ? 'plans' : (route[0] ?? '');
   const tabs = [
     ['', 'This week'],
     ['tonight', 'Tonight'],

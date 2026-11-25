@@ -194,3 +194,18 @@ test('focus week moves on once this week has no nights left', async () => {
   const withSat = [{ monday: '2026-11-16', days: [day('2026-11-21')] }];
   assert.equal(focusWeek('2026-11-21', withSat), '2026-11-16'); // a Saturday dinner keeps this week
 });
+
+test('dessert pages: title, description, subheadings, steps, bullets, and paragraphs', async () => {
+  const { parseFreeform, isDessertPath } = await import('../src/lib/freeform.ts');
+  const page = parseFreeform('desserts/bars.md', '# Bars\n\n*Sweet.*\n\n## Ingredients\n### Crust\n- 2 cups crumbs\n- butter,\n  melted\n\n## Directions\n1. Mix.\n2. Bake.\n\n## Rating\n⭐ Placeholder\n');
+  assert.equal(page.slug, 'bars');
+  assert.equal(page.title, 'Bars');
+  assert.equal(page.description, 'Sweet.');
+  assert.deepEqual(page.sections, [
+    { heading: 'Ingredients', blocks: [{ kind: 'subheading', text: 'Crust' }, { kind: 'bullets', items: ['2 cups crumbs', 'butter, melted'] }] },
+    { heading: 'Directions', blocks: [{ kind: 'steps', items: ['Mix.', 'Bake.'] }] },
+    { heading: 'Rating', blocks: [{ kind: 'paragraph', text: '⭐ Placeholder' }] },
+  ]);
+  assert.ok(isDessertPath('desserts/bars.md'));
+  assert.ok(!isDessertPath('recipes/bars.md'));
+});
