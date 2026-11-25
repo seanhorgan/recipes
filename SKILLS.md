@@ -61,6 +61,7 @@ Key points:
 - `/recipes`: Individual dish files.
 - `/sauces`: Shared sauces and dressings, linked from recipe ingredients.
 - `/drinks`: Beverage recipes (not yet in the standard format).
+- `/desserts`: Dessert recipes (free-form, like `/drinks`). Not part of dinner planning.
 - `/2026`: Weekly meal plans, by month.
 - `/reference`: Shared rules, file formats, and the ingredient catalog.
 - `/skills`: Step-by-step workflows for agents (linked into `.claude/skills` for Claude Code).

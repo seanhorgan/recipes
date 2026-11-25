@@ -23,6 +23,7 @@ These tasks are usually done by 2 adults so collaboration in each task is import
 ## For Humans
 - **Recipes:** Browse the [`/recipes`](./recipes) folder for dinner ideas.
 - **Drinks:** Check [`/drinks`](./drinks) for beverage inspiration.
+- **Desserts:** Baking and dessert recipes live in [`/desserts`](./desserts).
 - **Sauces:** Shared sauces and dressings live in [`/sauces`](./sauces).
 - **Weekly Plans:** Current and past meal plans are stored by year and month in the [`/2026`](./2026) (and similar) directories.
 - **Editing:** Every file follows [reference/schema.md](./reference/schema.md). Copy a template from [`/reference/templates`](./reference/templates) to add a recipe or plan.
